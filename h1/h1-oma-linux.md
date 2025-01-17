@@ -116,6 +116,43 @@ Kirjauduttuani sisään pääsin asennetun Debianin työpöydälle. Testasin vie
 
 <img src="https://github.com/user-attachments/assets/b44f41df-286c-40c9-9aa7-9d86a75263bb" width="500"> <br/>
 
+### Päivitysten ja palomuurin asennus
+
+Tämän jälkeen avasin terminaalin ja päivitin package-listan komennolla ```sudo apt-get update```
+
+<img src="https://github.com/user-attachments/assets/12d66ea5-3d28-4eaf-a6cf-2059190cbf66" width="500"> <br/>
+
+<img src="https://github.com/user-attachments/assets/b5f23569-c790-4805-8020-7bcc3d305c6e" width="500"> <br/>
+
+Tämän jälkeen päivitin ohjelmat komennolla ```sudo apt-get -y dist-upgrade```
+
+<img src="https://github.com/user-attachments/assets/d929bce6-9367-4385-a6ea-e134e68c8254" width="500"> <br/>
+
+<img src="https://github.com/user-attachments/assets/b6c6126a-b775-4629-bb71-b4d9ca088e9e" width="500"> <br/>
+
+Jatkoin asentamalla palomuurin komennolla ```apt-get -y install ufw```
+
+<img src="https://github.com/user-attachments/assets/c6f54428-b75f-4c2a-85a6-06808e50964e" width="500"> <br/>
+
+Kun komento ei toiminut halutulla tavalla, tarkastin uudelleen antamani komennon. Antamani komento ei toiminut, sillä komennon alusta puuttui ```sudo ``` joten yritin uudelleen komennolla ```sudo apt-get -y install ufw```
+
+<img src="https://github.com/user-attachments/assets/09d18954-9ece-45a7-abf4-65b66abb2322" width="500"> <br/>
+
+<img src="https://github.com/user-attachments/assets/e6c07b9a-8626-4c40-b7eb-4d2bda331e3c" width="500"> <br/>
+
+Tämän jälkeen laitoin palomuurin vielä päälle komennolla ```sudo ufw enable```
+
+<img src="https://github.com/user-attachments/assets/694da6ca-e710-471a-a8e2-ebc6f1fbd5be" width="500"> <br/>
+
+<img src="https://github.com/user-attachments/assets/92ac4a8e-68d1-4718-990a-8f16777161d8" width="500"> <br/>
+
+Palomuurin käynnistyksen jälkeen suljin terminaalin ja tein lopuksi uudelleenkäynnistyksen valitsemalla ensin '<em>Applications</em>' -valikon -> '<em>Log Out</em>' -> '<em>Restart</em>'
+
+<img src="https://github.com/user-attachments/assets/bd881514-9fab-4851-876e-c95f448a30b7" width="500"> <br/>
+
+<img src="https://github.com/user-attachments/assets/7fe4b7c9-1452-4b9e-ae84-54138b6552b6" width="500"> <br/>
+
+
 ### Levytilan tarkastaminen terminaalista
 
 Voit tarkastaa Linuxilla nykyisen levytilan ja sen käytön käynnistämällä terminaalin ja kirjoittamalla terminaaliin ```df -h```
