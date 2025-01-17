@@ -118,7 +118,7 @@ Kirjauduttuani sisään pääsin asennetun Debianin työpöydälle. Testasin vie
 
 ## Muita huomioita
 
-Kokonaisuudessaan asennusprosessi alkoi 17.01.2025 kello 17:30 ja päättyi samana päivänä kello 19:00. Dokumentointi tapahtui sekä asennuksen aikana että sen jälkeen. 
+Kokonaisuudessaan asennusprosessi alkoi 17.01.2025 kello 17:30 ja päättyi samana päivänä kello 19:00. Dokumentointi tapahtui sekä asennuksen aikana että sen jälkeen. Dokumentoinnissa käytetty hyödyksi githubin dokumentaatiota. 
 
 ## Lähteet
 
@@ -137,3 +137,7 @@ Käytetty Linuxin asennus virtuaalikoneeseen -tehtävässä
 Stackoverlow. 2019. Debian 10 install what is default account and password?.   
 https://stackoverflow.com/questions/58885785/debian-10-install-what-is-default-account-and-password  
 Käytetty Linuxin asennus virtuaalikoneeseen -tehtävässä  
+
+GitHub. s.a. Quickstart for writing on GitHub.  
+https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/quickstart-for-writing-on-github  
+Käytetty dokumentaatiossa. 
