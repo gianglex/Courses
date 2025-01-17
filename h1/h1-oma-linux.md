@@ -79,7 +79,7 @@ Jatkoin testaamalla virtuaalikoneen toimivuutta avaamalla selaimen ja menemäll�
 
 Kun olin saanut testattua selaimen toimivuuden, suljin selaimen ja jatkoin Debianin asennukseen käynnistämällä työpöydältä '<em>Install Debian</em>'
 
-## Debianin asennus virtuaalikoneelle ja testaus
+## Debianin asennus ja testaus
 
 <img src="https://github.com/user-attachments/assets/baa93b31-0366-4d41-a11d-0153b7638c4d" width="500"> <br/>
 
