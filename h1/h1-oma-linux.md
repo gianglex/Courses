@@ -134,6 +134,10 @@ Kokonaisuudessaan asennusprosessi alkoi 17.01.2025 kello 17:30 ja päättyi sama
 
 ## Lähteet
 
+Karvinen, T. 2025. Linux Palvelimet 2025 alkukevät.  
+https://terokarvinen.com/linux-palvelimet/  
+Tehtävänanto   
+
 Karvinen, T. 2006. Raportin kirjoittaminen.   
 https://terokarvinen.com/2006/raportin-kirjoittaminen-4/  
 Käytetty raportin kirjoittamisesta -tehtävässä.   
