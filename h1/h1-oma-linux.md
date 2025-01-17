@@ -57,7 +57,7 @@ En muuttanut Unattended Install -asetuksia
 
 Käynnistin virtuaalikoneen painamalla '<em>Start</em>'
 
-Virtuaalikoneen käynnistyessä virtuaalikoneeseen tuli teksti '<em>No bootable medium found!</em>' sekä ponnahdusikkuna '<em>The virtual machine failed to boot...</em>
+Virtuaalikoneen käynnistyessä virtuaalikoneeseen tuli teksti '<em>No bootable medium found!</em>' sekä ponnahdusikkuna '<em>The virtual machine failed to boot...</em>'
 
 <img src="https://github.com/user-attachments/assets/2f569720-b0bf-4df3-867b-34d425b22ece" width="500"> <br/>
 
@@ -79,21 +79,18 @@ Jatkoin testaamalla virtuaalikoneen toimivuutta avaamalla selaimen ja menemäll�
 
 Kun olin saanut testattua selaimen toimivuuden, suljin selaimen ja jatkoin Debianin asennukseen käynnistämällä työpöydältä '<em>Install Debian</em>'
 
-## Debianin asennus virtuaalikoneelle
+## Debianin asennus virtuaalikoneelle ja testaus
 
 <img src="https://github.com/user-attachments/assets/baa93b31-0366-4d41-a11d-0153b7638c4d" width="500"> <br/>
 
 Valitsin asennukseeni alla olevat asetukset: 
 
-Language: American English
-
-Region: Europe / Zone: Helsinki
-
-Keyboard Model: Generic 105-key PC / Finnish / Default
-
-Erase disk / [  ] Encrypt system / Boot loader location: Master Boot Record
-
+Language: American English  
+Region: Europe / Zone: Helsinki  
+Keyboard Model: Generic 105-key PC / Finnish / Default  
+Erase disk / [  ] Encrypt system / Boot loader location: Master Boot Record  
 Name: Giang Le / username: giang / Computer name: VBOX-G / <em>salasanani</em>
+
 
 <img src="https://github.com/user-attachments/assets/e0edfc6d-9550-4b30-aea6-b00f52b8a945" width="500"> <br/>
 
@@ -113,7 +110,7 @@ Asennuksen lopuksi käynnistin asennusvalikosta virtuaalikoneen uudelleen. Ja p�
 
 <img src="https://github.com/user-attachments/assets/d7b9bd05-1edf-4a81-8617-95d49c08de10" width="500"> <br/>
 
-Kirjauduttuani sisään pääsin asennetun Debianin työpöydälle. Testasin vielä virtuaalikoneen toiminnan käynnistämällä selaimen ja menemällä googlen kautta Debianin sivuille. 
+Kirjauduttuani sisään pääsin asennetun Debianin työpöydälle. Testasin vielä virtuaalikoneen toimintaa käynnistämällä selaimen ja menemällä googlen kautta Debianin sivuille. 
 
 <img src="https://github.com/user-attachments/assets/e49bcdad-1a82-405e-a8ec-f772ea504d1f" width="500"> <br/>
 
