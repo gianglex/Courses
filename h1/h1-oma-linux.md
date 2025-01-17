@@ -53,7 +53,7 @@ En muuttanut Unattended Install -asetuksia
 <img src="https://github.com/user-attachments/assets/2e4f158e-3e95-4321-85d3-d8d967340106" width="500">  <br/>
   
 
-## Virtuaalikoneen käynnistys, Debianin Live ja testaus
+## Virtuaalikoneen käynnistys, Debian Live ja testaus
 
 Käynnistin virtuaalikoneen painamalla '<em>Start</em>'
 
@@ -115,6 +115,18 @@ Kirjauduttuani sisään pääsin asennetun Debianin työpöydälle. Testasin vie
 <img src="https://github.com/user-attachments/assets/e49bcdad-1a82-405e-a8ec-f772ea504d1f" width="500"> <br/>
 
 <img src="https://github.com/user-attachments/assets/b44f41df-286c-40c9-9aa7-9d86a75263bb" width="500"> <br/>
+
+## Levytilan tarkastaminen terminaalista
+
+Voit tarkastaa Linuxilla nykyisen levytilan ja sen käytön käynnistämällä terminaalin ja kirjoittamalla terminaaliin ```df -h```
+
+<img src="https://github.com/user-attachments/assets/4ee5fe9a-9491-4cdd-8683-9f416fc5ca7d" width="500"> <br/>
+
+## Internetyhteyedn testaaminen ping-komennolla terminaalista
+
+Voit testata Linuxilla internet yhteyttäsi yrittämällä yhdistää google.com:iin. Avaa terminaali ja kirjoita terminaaliin ```ping -c 4 google.com```
+
+<img src="https://github.com/user-attachments/assets/d6f8d1d5-140b-4d02-b48a-9e3ff06f8381" width="500"> <br/>
 
 ## Muita huomioita
 
