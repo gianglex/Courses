@@ -116,7 +116,9 @@ Kirjauduttuani sisään pääsin asennetun Debianin työpöydälle. Testasin vie
 
 <img src="https://github.com/user-attachments/assets/b44f41df-286c-40c9-9aa7-9d86a75263bb" width="500"> <br/>
 
+## Muita huomioita
 
+Kokonaisuudessaan asennusprosessi alkoi 17.01.2025 kello 17:30 ja päättyi samana päivänä kello 19:00. Dokumentointi tapahtui sekä asennuksen aikana että sen jälkeen. 
 
 ## Lähteet
 
