@@ -27,7 +27,7 @@ AMD 7950X, alikellotettu
 RTX3080, alikellotettu  
 Kotiverkossa
 
-## Debianin asennus VirtualBoxiin
+### Debianin asennus VirtualBoxiin
 
 Aloitin lataamalla uusimman Debian version (https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/). Versioksi valikoitui '<em>debian-live-12.9.0-amd64-xfce.iso</em>'
 
@@ -53,7 +53,7 @@ En muuttanut Unattended Install -asetuksia
 <img src="https://github.com/user-attachments/assets/2e4f158e-3e95-4321-85d3-d8d967340106" width="500">  <br/>
   
 
-## Virtuaalikoneen käynnistys, Debian Live ja testaus
+### Virtuaalikoneen käynnistys, Debian Live ja testaus
 
 Käynnistin virtuaalikoneen painamalla '<em>Start</em>'
 
@@ -79,7 +79,7 @@ Jatkoin testaamalla virtuaalikoneen toimivuutta avaamalla selaimen ja menemäll�
 
 Kun olin saanut testattua selaimen toimivuuden, suljin selaimen ja jatkoin Debianin asennukseen käynnistämällä työpöydältä '<em>Install Debian</em>'
 
-## Debianin asennus ja testaus
+### Debianin asennus ja testaus
 
 <img src="https://github.com/user-attachments/assets/baa93b31-0366-4d41-a11d-0153b7638c4d" width="500"> <br/>
 
@@ -116,13 +116,13 @@ Kirjauduttuani sisään pääsin asennetun Debianin työpöydälle. Testasin vie
 
 <img src="https://github.com/user-attachments/assets/b44f41df-286c-40c9-9aa7-9d86a75263bb" width="500"> <br/>
 
-## Levytilan tarkastaminen terminaalista
+### Levytilan tarkastaminen terminaalista
 
 Voit tarkastaa Linuxilla nykyisen levytilan ja sen käytön käynnistämällä terminaalin ja kirjoittamalla terminaaliin ```df -h```
 
 <img src="https://github.com/user-attachments/assets/4ee5fe9a-9491-4cdd-8683-9f416fc5ca7d" width="500"> <br/>
 
-## Internetyhteyedn testaaminen ping-komennolla terminaalista
+### Internetyhteyedn testaaminen ping-komennolla terminaalista
 
 Voit testata Linuxilla internet yhteyttäsi yrittämällä yhdistää google.com:iin. Avaa terminaali ja kirjoita terminaaliin ```ping -c 4 google.com```
 
