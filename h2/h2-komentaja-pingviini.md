@@ -38,7 +38,7 @@ Btop ohjelman käyttötarkoituksena on helpottaa järjestelmän monitorointia. O
 
 ### googler
 
-Googler ohjelman tarkoituksena on mahdollistaa googlen käyttö komentorivissä. En valitettavasti saanut yrityksistä huolimatta googleria toimimaan alkuun. 
+Googler ohjelman tarkoituksena on mahdollistaa googlen käyttö komentorivissä. En valitettavasti saanut yrityksistä huolimatta googleria toimimaan. 
 
 <img src="https://github.com/user-attachments/assets/ea8a16a9-2858-41a5-95cb-9660d9c88488" width="500"> <br/>
 
