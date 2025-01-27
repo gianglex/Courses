@@ -132,7 +132,7 @@ Tehtävä b.
 
 GibHub. s.a. Btop.
 https://github.com/aristocratos/btop
-Tehtövö b. 
+Tehtävä b. 
 
 GitHub. s.a. Googler. 
 https://github.com/jarun/googler
