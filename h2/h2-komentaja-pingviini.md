@@ -46,7 +46,11 @@ Tarkastin ensin komennolla ```$ googler --version``` ohjelman version. GitHubiss
 
 <img src="https://github.com/user-attachments/assets/19642a68-5fc3-4340-9f1b-9ee95c5ce90e" width="500"> <br/>
 
-Tämän jälkeen asensin ohjeiden mukaisesti standalone-version komennolla ```$ sudo curl -o /usr/local/bin/googler https://raw.githubusercontent.com/jarun/googler/v4.3.2/googler && sudo chmod +x /usr/local/bin/googler``` ja päivitin sen vielä komennolla ```$ sudo googler -u```
+Tämän jälkeen asensin ohjeiden mukaisesti standalone-version komennolla 
+
+```$ sudo curl -o /usr/local/bin/googler https://raw.githubusercontent.com/jarun/googler/v4.3.2/googler && sudo chmod +x /usr/local/bin/googler``` 
+
+ja päivitin sen vielä komennolla ```$ sudo googler -u```
 
 <img src="https://github.com/user-attachments/assets/1d9f8481-2cb6-4566-a0d9-3a4565c6451e" width="500"> <br/>
 
