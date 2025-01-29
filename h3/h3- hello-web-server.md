@@ -49,19 +49,20 @@ Loin tämän jälkeen vielä .conf tiedoston verkkosivulleni komennolla
 </br>
 <img src="https://github.com/user-attachments/assets/5bbaa36e-2748-4c19-9327-0f033877ab31" width="500"> <br/>
 
-conf tiedostoon tuli alla oleva teksti: 
+.conf tiedostoon tuli alla oleva teksti: 
 ```
 <VirtualHost *:80>
  ServerName giang.example.com
  ServerAlias www.giang.example.com
- DocumentRoot /home/xubuntu/publicsites/giang.example.com
- <Directory /home/xubuntu/publicsites/giang.example.com>
+ DocumentRoot /home/giang/public-sites/giang.example.com
+ <Directory /home/giang/public-sites/giang.example.com>
    Require all granted
  </Directory>
 </VirtualHost>
 ```   
 </br>
-<img src="https://github.com/user-attachments/assets/19f19883-561e-42c5-9ee6-fdd644162ec0" width="500"> <br/>
+<img src="https://github.com/user-attachments/assets/d984ed99-fad1-4483-829b-62d68bce2eed" width="500"> <br/>
+
 
 Aktivoin tämän jälkeen sivun ja käynnistin Apache2:n uudelleen komennoilla
 
@@ -72,29 +73,135 @@ Aktivoin tämän jälkeen sivun ja käynnistin Apache2:n uudelleen komennoilla
 </br>
 <img src="https://github.com/user-attachments/assets/5ba79826-f196-48f2-aeca-6ed0c45e2281" width="500"> <br/>
 
-Kokeilin tämän jälkeen mennä Firefox-selaimella localhost sivulle (http://localhost) tarkastaakseni että sivuni toimii)
-<img src="https://github.com/user-attachments/assets/94751d6c-0068-4898-b22b-a6e0a9a5280b" width="500"> <br/>
+Tämän jälkeen tarkastin vielä mitkä sivustot ovat kytketty päälle komennolla
+```ls /etc/apache2/sites-enabled/```   
+</br>
+
+Sillä siellä oli giang.example.com.conf:n lisäksi 000-default.conf, pitää 000-default.conf kytkeä pois päältä ja uudelleenkäynnistää apache2
+```sudo a2dissite 000-default.conf```
+</br>
+
+<img src="https://github.com/user-attachments/assets/070cfe1e-7e0b-4c5e-9967-103d4baa41c9" width="500"> <br/>
+
+
+Kokeilin tämän jälkeen mennä Firefox-selaimella localhost sivulle (http://localhost) tarkastaakseni että toimivatko sivuni
+
+<img src="https://github.com/user-attachments/assets/2919c6b3-2e14-4471-a0dd-c00539f1ad12" width="500"> <br/>
+
+Sivustoni kuitenkin antoi 403 Forbidden koodia, joten kävin tarkastamassa mitä error.log näyttää. 
+
+```sudo tail -1 /var/log/apache2/error.log```
+
+Error.logissa oli polku /home/giang/public-sites, joten tarkastin vielä polun komennolla
+
+```ls /home/giang/public-sites```
+<img src="https://github.com/user-attachments/assets/d18466cc-28b9-40f6-9461-2e3435832b01" width="500"> <br/>
+
+
+ls-komennon antaman virhekoodin perusteella osasin päätellä, että kansiota johon .conf tiedosto viittaa ei ole olemassa, joten loin puuttuvan kansion
+
+```mkdir /home/giang/public-sites/giang.example.com/```
+
+<img src="https://github.com/user-attachments/assets/3f03d563-1362-4da4-969c-f2510297d2b3" width="500"> <br/>
+
+Palasin tämän jälkeen takaisin selaimeen ja päivitin sivun (shift + sivun päivitys). Sillä sivu antoi edelleen 403 koodia, palasin tarkastamaan error.logia. 
+
+<img src="https://github.com/user-attachments/assets/3a9736a1-e1f2-461d-9d46-4ee50646f879" width="500"> <br/>
+
+
+
+## Lokien tulkinta
 
 Kävin tämän jälkeen ensin tarkastamassa mitä apachen lokitiedostoja löytyy komennolla 
+
 ```sudo ls /var/log/apache2/```
 </br>
 
-Ja sitten tarkastin error.log:n sisällön komennolla 
+Ja sitten tarkastin error.log:n sisällön komennolla   
+
 ```sudo tail /var/log/apache2/error.log```
 </br>
+
 <img src="https://github.com/user-attachments/assets/2c1be2f8-51fb-4c35-9d03-a54d6e3fbb85" width="500"> <br/>
 
 
 
-Lopuksi tarkastin vielä access.log:n sisällön komennolla
+Lopuksi tarkastin vielä access.log:n sisällön komennolla   
+
 ```sudo tail /var/log/apache2/access.log```
 </br>
+
 <img src="https://github.com/user-attachments/assets/986b54e1-2338-4ec8-8442-5152ae7391a8" width="500"> <br/>
 
-## hattu.example.com luonti ja asettaminen palvelimen oletussivuksi
+### access.log:n tulkinta
+
+Tulkitaan seuraavaksi access.log:ssa olevaa viimeistä kahta riviä: 
+
+![b1](https://github.com/user-attachments/assets/e799ee32-0655-4e42-8331-a2c104008ef0)
+
+```
+127.0.0.1 - - [30/Jan/2025:00:31:31 +0200] "GET / HTTP/1.1" 200 289 "-" "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+127.0.0.1 - - [30/Jan/2025:00:31:31 +0200] "GET /favicon.ico HTTP/1.1" 404 487 "http://localhost/" "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+```
+
+```127.0.0.1``` <-- Pyynnön lähettäjän IP-osoite   
+```-``` pyynnön lähettäjän nimi, tyypillisesti pidetään tyhjänä   
+```-``` pyynnön lähettäjän userid   
+```[30/Jan/2025:00:31:31 +0200]``` pyynnön aika ja päivämäärä   
+```"GET / HTTP/1.1"``` pyynnön tyyppi ja pyydetty resurssi   
+```200``` HTTP status koodi. HTTP koodi 200 = OK   
+```289``` palautetun objektin koko   
+```"-"``` viittaus, josta pyyntö lähtenyt   
+```"Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"``` identiointi, jonka selain lähettää palvelimelle
+
+Merkittävimmät erot ensimmäisen ja toisen rivin välillä: 
+
+```"GET /favicon.ico HTTP/1.1"``` poiteken aiempaan ```/``` selain pyytää ```favicon.ico``` tiedostoa   
+```404``` poiketen aiempaan ```200```-koodiin, HTTP status koodi ```404``` tarkoittaa että pyydettyä tietoa ei löytynyt   
+```"http://localhost/"``` poiketen aiempaan ```-```, tällä pyynnöllä on viite ```http://localhost/```   
 
 
 
+## Uuden sivun hattu.example.com luonti ja asettaminen palvelimen etusivuksi
+Luodaan ensin taas uusi .conf tiedosto hattu.example.com:a varten.   
+
+```sudoedit /etc/apache2/sites-available/hattu.example.com.conf```
+
+ja lisätään luotuun .conf tiedostoon tuli alla oleva teksti: 
+```
+<VirtualHost *:80>
+ ServerName hattu.example.com
+ ServerAlias www.hattu.example.com
+ DocumentRoot /home/giang/public-sites/hattu.example.com
+ <Directory /home/giang/public-sites/hattu.example.com>
+   Require all granted
+ </Directory>
+</VirtualHost>
+```   
+
+Aktivoin tämän jälkeen sivun ja käynnistin Apache2:n uudelleen komennoilla
+
+```sudo a2ensite hattu.example.com```
+</br>
+
+```sudo systemctl restart apache2```   
+</br>
+
+
+
+## Lähteet: 
+
+Loggly. s.a. Linux Logging Basics
+https://www.loggly.com/ultimate-guide/linux-logging-basics/
+Tehtävä b. 
+
+Fitzpatrick S. 2020. Understanding Apache Access Log: View, locate and analyze
+https://www.sumologic.com/blog/apache-access-log/
+Tehtävä b. 
+
+Umbraco. s.a. What are HTTP status codes?
+https://umbraco.com/knowledge-base/http-status-codes/
+Tehtävä b. 
 
 a) Testaa, että weppipalvelimesi vastaa localhost-osoitteesta. Asenna Apache-weppipalvelin, jos se ei ole jo asennettuna.
 b) Etsi lokista rivit, jotka syntyvät, kun lataat omalta palvelimeltasi yhden sivun. Analysoi rivit (eli selitä yksityiskohtaisesti jokainen kohta ja numero, etsi tarvittaessa lähteitä).
