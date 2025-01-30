@@ -107,6 +107,7 @@ Sivustoni kuitenkin antoi 403 Forbidden koodia, joten kävin tarkastamassa mitä
 Error.logissa oli polku /home/giang/public-sites, joten tarkastin vielä polun komennolla
 
 ```ls /home/giang/public-sites```
+
 <img src="https://github.com/user-attachments/assets/d18466cc-28b9-40f6-9461-2e3435832b01" width="500"> <br/>
 
 
