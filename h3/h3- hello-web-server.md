@@ -104,9 +104,17 @@ ls-komennon antaman virhekoodin perusteella osasin päätellä, että kansiota j
 
 <img src="https://github.com/user-attachments/assets/3f03d563-1362-4da4-969c-f2510297d2b3" width="500"> <br/>
 
-Palasin tämän jälkeen takaisin selaimeen ja päivitin sivun (shift + sivun päivitys). Sillä sivu antoi edelleen 403 koodia, palasin tarkastamaan error.logia. 
+Palasin tämän jälkeen takaisin selaimeen ja päivitin sivun (shift + sivun päivitys). Sillä sivu antoi edelleen 403 koodia, palasin tarkastamaan error.logia. Error.login perusteella pystyin päättelemään, että minulta puuttui vielä ```index.html``` tiedosto joten loin sen
 
-<img src="https://github.com/user-attachments/assets/3a9736a1-e1f2-461d-9d46-4ee50646f879" width="500"> <br/>
+```sudo tail -1 /var/log/apache2/error.log```
+
+```micro /home/giang/public-sites/giang.example.com/index.html```
+
+<img src="https://github.com/user-attachments/assets/45d34a90-b30d-406e-be28-4ba07bf24095" width="500"> <br/>
+
+Palasin tämän jälkeen tarkistamaan toimiiko sivu 
+
+<img src="https://github.com/user-attachments/assets/3976e09b-d6bc-4822-ae08-bb0836b76854" width="500"> <br/>
 
 
 
@@ -137,7 +145,7 @@ Lopuksi tarkastin vielä access.log:n sisällön komennolla
 
 Tulkitaan seuraavaksi access.log:ssa olevaa viimeistä kahta riviä: 
 
-![b1](https://github.com/user-attachments/assets/e799ee32-0655-4e42-8331-a2c104008ef0)
+<img src="https://github.com/user-attachments/assets/e799ee32-0655-4e42-8331-a2c104008ef0" width="500"> <br/>
 
 ```
 127.0.0.1 - - [30/Jan/2025:00:31:31 +0200] "GET / HTTP/1.1" 200 289 "-" "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
