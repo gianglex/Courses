@@ -21,7 +21,15 @@ GPU: 00:02.0 VMware SVGA II Adapter
 Memory: 7941MiB  
 
 
-## Apache: Name-based Virtual Host Support
+## Apache: Name-based Virtual Host lyhyesti
+
+IP-based virtual host käyttää yhteyden IP-osoitetta päätelläkseen oikean virtual hostin. 
+
+Name-based virtual hostingissa hostname on osana HTTP headeriä, mikä mahdollistaa useamman hostin käyttämisen samalla IP-osoitteella. 
+
+Name-based virtual hosting vähentää IP-osoitteiden kysyntää. 
+
+
 
 ## Apache web-palvelimen luonti ja verkkopalvelimen luonti
 
@@ -77,8 +85,12 @@ Tämän jälkeen tarkastin vielä mitkä sivustot ovat kytketty päälle komenno
 ```ls /etc/apache2/sites-enabled/```   
 </br>
 
-Sillä siellä oli giang.example.com.conf:n lisäksi 000-default.conf, pitää 000-default.conf kytkeä pois päältä ja uudelleenkäynnistää apache2
+Sillä siellä oli ```giang.example.com.conf``` lisäksi ```000-default.conf```, pitää ```000-default.conf``` kytkeä pois päältä ja uudelleenkäynnistää apache2
+
 ```sudo a2dissite 000-default.conf```
+</br>
+
+```sudo systemctl restard apache2```
 </br>
 
 <img src="https://github.com/user-attachments/assets/070cfe1e-7e0b-4c5e-9967-103d4baa41c9" width="500"> <br/>
@@ -171,11 +183,15 @@ Merkittävimmät erot ensimmäisen ja toisen rivin välillä:
 
 
 ## Uuden sivun hattu.example.com luonti ja asettaminen palvelimen etusivuksi
+
 Luodaan ensin taas uusi .conf tiedosto hattu.example.com:a varten.   
 
 ```sudoedit /etc/apache2/sites-available/hattu.example.com.conf```
+</br>
 
-ja lisätään luotuun .conf tiedostoon tuli alla oleva teksti: 
+<img src="https://github.com/user-attachments/assets/77347517-b6c5-4efe-81b3-4764439e5d28" width="500"> <br/>
+
+Lisäsin luotuun .conf tiedostoon alla olevan tekstin: 
 ```
 <VirtualHost *:80>
  ServerName hattu.example.com
@@ -185,7 +201,11 @@ ja lisätään luotuun .conf tiedostoon tuli alla oleva teksti:
    Require all granted
  </Directory>
 </VirtualHost>
-```   
+```
+</br>
+
+<img src="https://github.com/user-attachments/assets/d0f60630-bc17-4a58-9fd3-22c33d7aa202" width="500"> <br/>
+
 
 Aktivoin tämän jälkeen sivun ja käynnistin Apache2:n uudelleen komennoilla
 
@@ -195,26 +215,81 @@ Aktivoin tämän jälkeen sivun ja käynnistin Apache2:n uudelleen komennoilla
 ```sudo systemctl restart apache2```   
 </br>
 
+Tämän jälkeen tarkastin vielä mitkä sivut ovat apachessa aktivoituna. 
+
+```ls /etc/apache2/sites-enabled/```
+</br>
+
+<img src="https://github.com/user-attachments/assets/633c9a1e-7073-4761-ac29-62671a75f45c" width="500"> <br/>
+
+Vastauksen perusteella pystyin päättelemään, että hattu.example.comin lisäksi aktiivisena on myös giang.example.com joten deaktivoin giang.example.comin ja uudelleenkäynnistin jälleen apachen. 
+
+```sudo a2dissite giang.example.com```
+</br>
+
+```sudo systemctl restart apache2```   
+</br>
+
+<img src="https://github.com/user-attachments/assets/c41f7caa-ca9f-447e-8582-fc5bf19b119d" width="500"> <br/>
+
+Tiesin etten ollut vielä luonut vaadittua index.html sivua uudelle verkkosivulle, joten loin uuden polun ja index.html tiedoston sinne. 
+
+
+
+```micro /home/giang/public-sites/hattu.example.com/```
+</br>
+
+```micro /home/giang/public-sites/hattu.example.com/index.html```
+</br>
+
+<img src="https://github.com/user-attachments/assets/48760bab-5f37-4541-90ae-f8f20fbf1985" width="500"> <br/>
+
+<img src="https://github.com/user-attachments/assets/78477efc-20e9-45ad-9f69-85530296eba9" width="500"> <br/>
+
+Tämän jälkeen palasin testaamaan verkkosivua (http://localhost), joka toimi odotetusti. 
+
+<img src="https://github.com/user-attachments/assets/9ddf05d9-92a0-46db-a65b-3010e990c384" width="500"> <br/>
+
+## curl ja curl -I
+
+```curl``` komennolla voidaan hakea URL-osoitteita. 
+
+```curl -I``` komennolla haetaan URL-osoitteista vain Response headerit. 
+
+Esimerkki response headereitä ovat mm.:
+```HTTP/1.1 200 OK``` kertoo HTTP version, HTTP statuskoodin sekä statuksen tekstin   
+```Date``` nimensä mukaisesti kertoo päivämäärän ja ajan   
+```Server``` kertoo palvelimen tyypin   
+```Content-Type``` kertoo sisällön tyypin   
+
+<img src="https://github.com/user-attachments/assets/cc6dbe0f-7d0d-412b-87ff-6d5c0a07b8a4" width="500"> <br/>
 
 
 ## Lähteet: 
+Apache HTTP server project. s.a. Name-based Virtual Host Support.   
+https://httpd.apache.org/docs/2.4/vhosts/name-based.html   
+Tiivistelmä.   
 
-Loggly. s.a. Linux Logging Basics
-https://www.loggly.com/ultimate-guide/linux-logging-basics/
-Tehtävä b. 
+Karvinen, T. 2025. Linux Palvelimet 2025 alkukevät.   
+https://terokarvinen.com/linux-palvelimet/   
+Tehtävänanto.   
 
-Fitzpatrick S. 2020. Understanding Apache Access Log: View, locate and analyze
-https://www.sumologic.com/blog/apache-access-log/
-Tehtävä b. 
+Karvinen, T. 2018. Name Based Virtual Hosts on Apache.    
+https://terokarvinen.com/2018/04/10/name-based-virtual-hosts-on-apache-multiple-websites-to-single-ip-address/   
+Tiivistelmä ja tehtävä a.    
 
-Umbraco. s.a. What are HTTP status codes?
-https://umbraco.com/knowledge-base/http-status-codes/
-Tehtävä b. 
+Loggly. s.a. Linux Logging Basics.    
+https://www.loggly.com/ultimate-guide/linux-logging-basics/   
+Tehtävä b.    
 
-a) Testaa, että weppipalvelimesi vastaa localhost-osoitteesta. Asenna Apache-weppipalvelin, jos se ei ole jo asennettuna.
-b) Etsi lokista rivit, jotka syntyvät, kun lataat omalta palvelimeltasi yhden sivun. Analysoi rivit (eli selitä yksityiskohtaisesti jokainen kohta ja numero, etsi tarvittaessa lähteitä).
-c) Etusivu uusiksi. Tee uusi name based virtual host. Sivun tulee näkyä suoraan palvelimen etusivulla http://localhost/. Sivua pitää pystyä muokkaamaan normaalina käyttäjänä, ilman sudoa. Tee uusi, laita vanhat pois päältä. Uusi sivu on hattu.example.com, ja tämän pitää näkyä: asetustiedoston nimessä, asetustiedoston ServerName-muuttujassa sekä etusivun sisällössä (esim title, h1 tai p).
-e) Tee validi HTML5 sivu.
-f) Anna esimerkit 'curl -I' ja 'curl' -komennoista. Selitä 'curl -I' muutamasta näyttämästä otsakkeesta (response header), mitä ne tarkoittavat.
-m) Vapaaehtoinen, suosittelen tekemään: Hanki GitHub Education -paketti.
-o) Vapaaehtoinen, vaikea: Laita sama tietokone vastaamaan kahdellla eri sivulla kahdesta eri nimestä. Eli kaksi weppisiteä samalla koneelle, esim. foo.example.com ja bar.example.com. Voit simuloida nimipalvelun toimintaa hosts-tiedoston avulla.
+Fitzpatrick S. 2020. Understanding Apache Access Log: View, locate and analyze.    
+https://www.sumologic.com/blog/apache-access-log/   
+Tehtävä b.    
+
+Umbraco. s.a. What are HTTP status codes?   
+https://umbraco.com/knowledge-base/http-status-codes/   
+Tehtävä b.    
+
+APIdog. s.a. Curl -i Command.    
+https://apidog.com/articles/curl-i-command/   
+Tehtävä f.    
