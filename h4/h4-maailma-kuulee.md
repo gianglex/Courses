@@ -180,10 +180,10 @@ Karvinen, T. 2025. Linux Palvelimet 2025 alkukevät.
 https://terokarvinen.com/linux-palvelimet/   
 Tehtävänanto.   
 
-Karvinen, T. 2017. First Steps on a New Virtual Private Server.
-https://terokarvinen.com/2017/first-steps-on-a-new-virtual-private-server-an-example-on-digitalocean/
-Tehtävät a, b, c, x. 
+Karvinen, T. 2017. First Steps on a New Virtual Private Server.   
+https://terokarvinen.com/2017/first-steps-on-a-new-virtual-private-server-an-example-on-digitalocean/   
+Tehtävät a, b, c, x.    
 
-Lehto, S. 2022. Teoriasta käytäntöön pilvipalvelimen avulla. 
-https://susannalehto.fi/2022/teoriasta-kaytantoon-pilvipalvelimen-avulla-h4/
-Tehtävä x. 
+Lehto, S. 2022. Teoriasta käytäntöön pilvipalvelimen avulla.    
+https://susannalehto.fi/2022/teoriasta-kaytantoon-pilvipalvelimen-avulla-h4/   
+Tehtävä x.    
