@@ -56,6 +56,7 @@ Lopuksi valitsin vielä autetikointivaihtoehdoksi SSH-avaimen salasanan sijasta 
 
 <img src="https://github.com/user-attachments/assets/f1bf5450-08f0-4f03-b044-1445821dfb3f" width="500"> <br/>
 
+Luotuani dropletin, näkyi se valmiina 
 
 ### OpenSSH-Clientin asennus & SSH avainparin luonti
 
@@ -75,6 +76,32 @@ Luomani avainparin julkista avainta pääsin tarkastelemaan komennolla ```cat ~/
 
 ## b) Virtuaalipalvelimen alkutoimet
 
+### Uuden käyttäjän luonti ja SSH-yhteys uuteen käyttäjään
+
+Aloitin ensin yhdistämällä virtuaalipalvelimelleni komennolla ```ssh root@164.92.200.216```
+![b1](https://github.com/user-attachments/assets/551d4a45-ec8e-485a-bae1-ac47a5bc6a55)
+
+Ensimmäisenä aloitin luomalla uuden käyttäjän komennolla ```sudo adduser giang```
+![b2](https://github.com/user-attachments/assets/1ebebe4d-df03-4860-b368-faa64e054ef5)
+
+Lisäsin tämän jälkeen vielä käyttäjän sudo-ryhmään ja adm-ryhmään komennolla ```sudo adduser giang sudo``` ja ```sudo adduser giang adm```
+![b3](https://github.com/user-attachments/assets/01286afb-5309-4e6e-a520-d5eda7d193ec)
+
+Tämän jälkeen ryhdyin testaamaan toimiiko luomani käyttäjä. Poistuin ensin SSH yhteydestä komennolla ```exit``` ja yhdistämällä tämän jälkeen uudella käyttäjälläni ```ssh giang@164.92.200.216```
+![b4](https://github.com/user-attachments/assets/bd397096-a190-4afb-835f-8d23fa0ac0cf)
+
+En päässyt yhdistämään luomalleni käyttäjälleni, sillä luomani käyttäjä ei tunnistanut SSH-avaintani. Otin jälleen yhteyden root:n avulla palvelimelleni, jotta saan kopioitua .ssh kansion uudelle käyttäjälleni. Käytin .ssh kansion kopioimiseen komentoa ```cp -n -r /root/.ssh /home/giang/```, joka kopioi .ssh kansion rootilta käyttäjän giang kotihakemistoon. 
+![b5](https://github.com/user-attachments/assets/269ee547-a5bd-47c1-be11-ade2872416e6)
+
+Navigoin seuraavaksi hakemistoon ```/home/giang/``` ja tarkastin vielä kopioidun kansion komennolla ```ls -al``` 
+![b6](https://github.com/user-attachments/assets/4d040f1b-6633-4539-bcda-d396b15f9e22)
+
+
+Kopioitu .ssh kansion omistaa edelleen root, joten muutin kansion omistajan komennolla ```chown giang.giang .ssh -R``` ja tarkastin uudelleen kansion omistajuuden komennolla ```ls -al``` 
+![b7](https://github.com/user-attachments/assets/10cf8f2c-bc88-4125-aa55-8878dc898bcd)
+
+Tämän jälkeen testasin jälleen yhdistämistä uudelle käyttäjälle ensin poistumalla komennolla ```exit``` ja yhdistämällä tämän jälkeen uudella käyttäjälläni ```ssh giang@164.92.200.216```
+![b8](https://github.com/user-attachments/assets/e1f8b4cc-5953-4431-86ff-41ed138141e1)
 
 ## c) Webpalvelimen asennus virtuaalipalvelimelle
 
