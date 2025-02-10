@@ -28,8 +28,27 @@ Memory: 7941MiB
 - On tärkeää sulkea root ja päivittää ohjelmistot
 
 ## a) Virtuaalipalvelimen vuokraus
+Valitsin palveluntarjoajakseni Digital Oceanin, jonka saa veloituksetta GitHub Education paketissa. 
+
+Rekisteröinnin jälkeen aloitin luomaan uutta Droplettia. 
+
+
+Palvelimeni sijainniksi valitsin Frankfurtin, sillä se oli vaihtoehdoista minua maantieteellisesti lähimpänä EU:n sisällä oleva vaihtoehto. 
+
+
+Käyttöjärjestelmäksi valikoitui Debian 12 x64. 
+
+Virtuaalipalvelimen prosessoriksi valitsin halvimman mahdollisen: Jaettu CPU, 1 CPU / 512MB RAM / 10GB SSD. Kurssin tarpeisiin tämän pitäisi olla riittävä. 
+
+Lisäpalveluna myytävää levytilaa ja varmuuskopiointivaihtoehdon jätin tilaamatta. 
+
+Lopuksi valitsin vielä autetikointivaihtoehdoksi SSH-avaimen salasanan sijasta. 
+
+
+
 
 ## b) Virtuaalipalvelimen alkutoimet
+
 
 ## c) Webpalvelimen asennus virtuaalipalvelimelle
 
