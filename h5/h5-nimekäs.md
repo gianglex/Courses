@@ -25,10 +25,12 @@ Memory: 7941MiB
 Minulla oli jo valmiiksi olemassa oleva domain HostingPalvelusta (https://www.hostingpalvelu.fi/) aiempia projektejani varten. Domainille oli lisäksi domainparkki-palvelu, jolla domaineja pystyy hallinnoimaan. Kokonaisuudessaan ei ollut palveluista edullisin, mutta en nähyt myöskään suurta hyötyä lähteä tekemään domainin siirtoa toiselle palveluntarjoajalle. 
 
 Hostingpalvelun domainpalvelusta pääsi cPanel hallintapaneeliin. 
+
 <img src="https://github.com/user-attachments/assets/ebf1a9c7-91e5-43bb-98ee-8a4581a528d0" width="500"> <br/>
 
 
 Hallintapaneelista pääsin muokkaamaan DNS-tietueet giangle.fi:lle, josta ohjasin giangle.fi:n verkkopalvelimeni IP-osoitteelle. 
+
 <img src="https://github.com/user-attachments/assets/90b45774-4848-4fb7-be48-57228e3f0f64" width="500"> <br/>
 
 
