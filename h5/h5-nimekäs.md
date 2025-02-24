@@ -59,10 +59,15 @@ Lisäsin uuteen .conf tiedostoon alla olevat tiedot:
 Luotuani .conf tiedoston, loin vielä kansiot polkuun jotka .conf tiedostossa mainitsin poluksi. 
 
 ```cd```
+
 ```mkdir public-sites```
+
 ```cd public-sites```
+
 ```mkdir giangle.fi```
+
 ```cd giangle.fi```
+
 
 Tämän jälkeen loin ```index.html``` tiedoston giangle.fi-kansioon komennolla ```nano index.html```, johon lisäsin tekstiksi vain ```24.2. Testisivu``` jotta pystyin testaamaan sivun toiminnan. 
 
