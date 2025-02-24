@@ -113,18 +113,92 @@ Sivun toimiessa odotetusti muokkasin nykyisen index.html:n ja loin kaksi uutta a
 </html>
 ```
 
+## d) Alidomainien luonti
 
+Loin luomalle sivulleni vielä uudet alidomaimet cPanel -hallintapaneelissa. Loin alidomainit cname.giangle.fi sekä testi.giangle.fi. 
 
+<img src="https://github.com/user-attachments/assets/d5c6854a-aa57-48ea-b18d-f50169715aa7" width="500"> <br/>   
 
-a) Nimi. Laita julkinen nimi osoittamaan omaan koneeseesi. (Siis vastaava kuin terokarvinen.com. Nimen saattaa saada myös ilmaiseksi Github Education -paketilla. Suosittelen hankkimaan oikean nimen, mutta jos välttämättä haluat, voit myös simuloida nimen toimintaa paikallisesti hosts-tiedoston avulla.)
-b) Based. Laita Name Based Virtual Host näkymään uudessa nimessäsi. Kotisvuja pitää pystyä muokkaamaan ilman pääkäyttäjän oikeuksia.
-c) Kotisivu. Tee vähintään kolmen erillisen alasivun (esim. index.html, blog.html, projects.html) kotisivu ja kopioi se näkymään palvelimellesi. Sivujen muokkaamisen pitää onnistua ilman pääkäyttäjän oikeuksia, niiden kopioiminen pääkäyttäjänä testisivun paikalle ei käy. Kotisivujen ei tarvitse olla hienoja, mutta niiden tulee olla validia HTML:ää ja linkittää toisiinsa.
-d) Alidomain. Tee kaksi uutta alidomainia, jotka osoittava omaan koneeseesi. Esimerkiksi palvelu on example.com -> linuxkurssi.example.com. Alidomainit ovat tyypillisesti ilmaisia, kun sinulla on päädomain (example.com). Tässä tehtävässä riittää, että alidomainit avaavat saman sivun kuin päädomain. (Vapaaehtoinen bonus: Tee toinen alidomain A-tietueella ja toinen CNAME-tietueella. Vapaaehtoinen bonus: tee alidomainiin oma erillinen name based virtual host.)
-e) Tutki jonkin nimen DNS-tietoja 'host' ja 'dig' -komennoilla. Käytä kumpaakin komentoa kaikkiin nimiin ja vertaa tuloksia. Katso man-sivulta, miten komennot toimivat - esimerkiksi miten 'dig' näyttää kaikki kentät. Analysoi tulokset, keskity nimipalvelimelta tulleisiin kenttiin (dig näyttää paljon muutakin tietoa). Etsi tarvittaessa uusia lähteitä haastaviin kohtiin. Sähköpostin todentamiseen liittyvät SPF ja DMARC -tietojen yksityiskohdat on jätetty vapaaehtoiseksi lisätehtäväksi. Tutkittavat nimet:
-Oma domain-nimesi. Vertaa tuloksia nimen vuokraajan (namecheap.com, name.com...) weppiliittymässä näkyviin asetuksiin.
-Jonkin pikkuyrityksen, kerhon tai yksittäisen henkilön weppisivut. (Ei kuitenkaan kurssikaverin tällä viikolla vuokrattua nimeä).
-Jonkin suuren ja kaikkien tunteman palvelun tiedot.
-f) Vapaaehtoinen bonus: Aakkossalaattia sähköpostiin. Etsi palvelu, jonka DNS-tiedoissa on SPF ja DMARC. Selitä näiden kenttien osat ja vaikutukset yksityiskohtaisesti. Voit halutessasi käyttää tulkinnan apuna jotain ohjelmaa tai palvelua, kunhan selität ja tulkitset lopputuloksen myös itse.
+## e) host & dig
+
+Aloitin kokeilemalla komentoa ```dig google.com```, joka ei kuitenkaan toiminut, sillä ohjelmaa ei oltu vielä asennettu Linuxilleni, joten asensin puuttuvan ohjelman komennolla ```sudo apt-get install dnsutils```
+
+<img src="https://github.com/user-attachments/assets/08e6fed9-6bae-4f5d-b9df-68d13bc069d7" width="500"> <br/>   
+
+```
+$ host cname.giangle.fi
+cname.giangle.fi is an alias for giangle.fi.
+giangle.fi has address 164.92.200.216
+```
+
+```
+$ dig cname.giangle.fi any
+
+; <<>> DiG 9.18.33-1~deb12u2-Debian <<>> cname.giangle.fi any
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 22842
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;cname.giangle.fi.		IN	ANY
+
+;; ANSWER SECTION:
+cname.giangle.fi.	264	IN	CNAME	giangle.fi.
+giangle.fi.		264	IN	A	164.92.200.216
+
+;; Query time: 3 msec
+;; SERVER: 10.0.2.3#53(10.0.2.3) (TCP)
+;; WHEN: Mon Feb 24 17:43:58 EET 2025
+;; MSG SIZE  rcvd: 75
+```
+
+Hain tarkoituksella cname.giangle.fi:tä nähdäkseni miten host ja dig komento reagoivat osoitteeseen, jolle määritelty cname-tietue. Molemmat komennot näyttävät sen, että kyseessä cname-tietue sekä näyttävät giangle.fi:n osoitteen. 
+
+```
+$ dig hs.fi any
+
+; <<>> DiG 9.18.33-1~deb12u2-Debian <<>> hs.fi any
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 44547
+;; flags: qr rd ra; QUERY: 1, ANSWER: 18, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;hs.fi.				IN	ANY
+
+;; ANSWER SECTION:
+hs.fi.			51	IN	A	108.156.22.8
+hs.fi.			51	IN	A	108.156.22.61
+hs.fi.			78193	IN	NS	ns-678.awsdns-20.net.
+hs.fi.			86233	IN	MX	0 hs-fi.mail.protection.outlook.com.
+hs.fi.			52	IN	AAAA	2600:9000:2368:5e00:b:5b2c:9f40:93a1
+hs.fi.			898	IN	SOA	ns-1635.awsdns-12.co.uk. awsdns-hostmaster.amazon.com. 1 7200 900 1209600 86400
+hs.fi.			52	IN	AAAA	2600:9000:2368:da00:b:5b2c:9f40:93a1
+hs.fi.			52	IN	AAAA	2600:9000:2368:e400:b:5b2c:9f40:93a1
+hs.fi.			52	IN	AAAA	2600:9000:2368:4e00:b:5b2c:9f40:93a1
+hs.fi.			78193	IN	NS	ns-1635.awsdns-12.co.uk.
+hs.fi.			52	IN	AAAA	2600:9000:2368:ac00:b:5b2c:9f40:93a1
+hs.fi.			52	IN	AAAA	2600:9000:2368:2200:b:5b2c:9f40:93a1
+hs.fi.			51	IN	A	108.156.22.54
+hs.fi.			52	IN	AAAA	2600:9000:2368:be00:b:5b2c:9f40:93a1
+hs.fi.			78193	IN	NS	ns-1461.awsdns-54.org.
+hs.fi.			78193	IN	NS	ns-83.awsdns-10.com.
+hs.fi.			52	IN	AAAA	2600:9000:2368:ca00:b:5b2c:9f40:93a1
+hs.fi.			51	IN	A	108.156.22.97
+
+;; Query time: 3 msec
+;; SERVER: 10.0.2.3#53(10.0.2.3) (TCP)
+;; WHEN: Mon Feb 24 17:44:43 EET 2025
+;; MSG SIZE  rcvd: 568
+
+```
+
+Hain vertailuksi hs.fi:n ja hs.fi:llä huomaa useamman A-tietueen lisäksi mm. MX (mail exchage), AAAA (IPv6), NS (name server record) sekä SOA (start of authority) -tietueet. 
 
 
 ## Lähteet: 
@@ -143,3 +217,7 @@ Tehtävä b&c.
 Stackoverflow. s.a. Apache - Permissions are missing on a component of the path.    
 https://stackoverflow.com/questions/25190043/apache-permissions-are-missing-on-a-component-of-the-path/    
 Tehtävä b. 
+
+https://ioflood.com/blog/dig-linux-command/
+
+
