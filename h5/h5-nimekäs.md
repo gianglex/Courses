@@ -218,6 +218,14 @@ Stackoverflow. s.a. Apache - Permissions are missing on a component of the path.
 https://stackoverflow.com/questions/25190043/apache-permissions-are-missing-on-a-component-of-the-path/    
 Tehtävä b. 
 
-https://ioflood.com/blog/dig-linux-command/
+Nords Digital Media. s.a. Mitä ovat DNS-tietueet?    
+https://www.nords.fi/blogi/mita-ovat-dns-tietueet    
+Tehtävä e.    
 
+Ioflood. 2023. Unearth DNS Info with Dig: Linux Networking Guide    
+https://ioflood.com/blog/dig-linux-command/    
+Tehtävä e.    
 
+Cloudflare. s.a. What is a DNS SOA record?    
+https://www.cloudflare.com/learning/dns/dns-records/dns-soa-record/    
+Tehtävä e.     
