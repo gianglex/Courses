@@ -58,7 +58,7 @@ Lisäsin uuteen .conf tiedostoon alla olevat tiedot:
 <img src="https://github.com/user-attachments/assets/0ca87c0a-2275-4784-a034-279afea8339c" width="500"> <br/>
 
 
-Luotuani .conf tiedoston, loin vielä kansiot polkuun jotka .conf tiedostossa mainitsin poluksi. 
+Luotuani .conf tiedoston, loin vielä kansiot polkuun jotka .conf tiedostossa mainitsin poluksi sekä kytkin sivunn päälle ja käynnistin apachen uudelleen. 
 
 ```cd```
 
@@ -70,6 +70,11 @@ Luotuani .conf tiedoston, loin vielä kansiot polkuun jotka .conf tiedostossa ma
 
 ```cd giangle.fi```
 
+```sudo a2ensite giangle.fi.conf```
+
+```sudo a2dissite 000-default.conf```
+
+```sudo systemctl restart apache2```
 
 Tämän jälkeen loin ```index.html``` tiedoston giangle.fi-kansioon komennolla ```nano index.html```, johon lisäsin tekstiksi vain ```24.2. Testisivu``` jotta pystyin testaamaan sivun toiminnan. 
 
