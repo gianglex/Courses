@@ -115,11 +115,15 @@ Sivun toimiessa odotetusti muokkasin nykyisen index.html:n ja loin kaksi uutta a
 </html>
 ```
 
+Testasin vielä lopuksi sivujen toimivuuden menemällä osoitteeseen giangle.fi
+
 ## d) Alidomainien luonti
 
 Loin luomalle sivulleni vielä uudet alidomaimet cPanel -hallintapaneelissa. Loin alidomainit cname.giangle.fi sekä testi.giangle.fi. 
 
 <img src="https://github.com/user-attachments/assets/d5c6854a-aa57-48ea-b18d-f50169715aa7" width="500"> <br/>   
+
+Testasin vielä lopuksi menemällä selaimellani osoitteisiin cname.giangle.fi sekä testi.giangle.fi katsoakseni, että ne ohjautuvat oikealle sivulle. 
 
 ## e) host & dig
 
