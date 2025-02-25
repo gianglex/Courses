@@ -33,6 +33,8 @@ Hallintapaneelista pääsin muokkaamaan DNS-tietueet giangle.fi:lle, josta ohjas
 
 <img src="https://github.com/user-attachments/assets/90b45774-4848-4fb7-be48-57228e3f0f64" width="500"> <br/>
 
+Testasin vielä että menemällä osoitteeseen giangle.fi, ohjaa sivusto samalla sivuille kuin 164.92.200.216
+
 
 ## b & c) Name-based virtual host & alasivut
 
