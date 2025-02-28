@@ -381,7 +381,7 @@ https://www.studytonight.com/apache-guide/add-http-security-headers-in-apache-we
 Security Header.    
 
 
-Geeks for Geeks. 2024. How to Set HTTP Headers Using Apache Server?
+Geeks for Geeks. 2024. How to Set HTTP Headers Using Apache Server?    
 https://www.geeksforgeeks.org/how-to-set-http-headers-using-apache-server/    
 Security Header.    
 
