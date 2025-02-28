@@ -56,9 +56,9 @@ Käytettyäni ylläolevaa komentoa, sain virheilmoituksen:
 
 Virheilmoituksen saatuani tajusin tarkastaa antamani komennon uudelleen, ja siitä puuttuikin lopusta yksi kirjain (2). 
 
-```sudo systemctl restart apache2```
-
 <img src="https://github.com/user-attachments/assets/56aba661-21d8-4fb7-81dd-1c44fed3d7c4" width="500"> <br/>   
+
+```sudo systemctl restart apache2```
 
 Apachen uudelleenkäynnistyksen jälkeen tarkastin vielä, että verkkosivuni toimii oletetusti menemällä selaimella sivulleni giangle.fi. Varmistin vielä, että sivu ei käytä välimuistissa olevaa sivua päivittämällä sivun uudelleen pikanäppäimellä CTRL + Shift + R
 
