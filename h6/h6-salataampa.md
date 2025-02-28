@@ -248,10 +248,10 @@ SSL Labs. SSL Server Test.
 https://www.ssllabs.com/ssltest/    
 Tehtävä b. 
 
-Hostinger. What Is a Cron Job: Understanding Cron Syntax and How to Configure Cron Jobs. 
+Hostinger. What Is a Cron Job: Understanding Cron Syntax and How to Configure Cron Jobs.    
 https://www.hostinger.com/tutorials/cron-job    
-Cron. 
+Cron.    
 
-Phoenixnap. How to Create and Set Up a Cron Job in Linux. 
-https://phoenixnap.com/kb/set-up-cron-job-linux
-Cron. 
+Phoenixnap. How to Create and Set Up a Cron Job in Linux.     
+https://phoenixnap.com/kb/set-up-cron-job-linux     
+Cron.    
