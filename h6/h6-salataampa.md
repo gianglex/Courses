@@ -186,6 +186,47 @@ Kävin testaamassa vielä SSL Labsin SSL-testillä sivuani (https://www.ssllabs.
 <img src="https://github.com/user-attachments/assets/b11b194e-08ce-4672-8421-77ad2dfe31f1" width="500"> <br/>   
 
 
+## Automaattinen sertifikaatin uusiminen
+
+Kokeilin ensin että uusimiskomentoni toimii odotetusti eikä anna virhettä. 
+
+```lego --accept-tos --email="giang.le@iki.fi" --domains="giangle.fi" --domains="www.giangle.fi" --http --http.webroot="/home/giang/public-sites/giangle.fi/" --path="/home/giang/lego/" --pem renew```
+
+<img src="https://github.com/user-attachments/assets/c73ab3fe-b1e9-446b-b4ab-ae1e9e2cd8ef" width="500"> <br/>  
+
+Tämän jälkeen avasin crontab:n. 
+
+```sudo crontab -e```
+
+<img src="https://github.com/user-attachments/assets/cb7ce8b8-ddcf-4dfc-a3a0-98e80253ef71" width="500"> <br/>  
+
+Valitsin satunnaisen uusimisajan komennolle (```25 4 * * *```) eli joka päivä klo 4:25 ja lisäsin loppuun vielä ```&& systemctl restart apache2```, jotta apache käynnistyisi uudelleen aina uusimisyrityksen jälkeen. 
+
+```25 4 * * * lego --accept-tos --email="giang.le@iki.fi" --domains="giangle.fi" --domains="www.giangle.fi" --http --http.webroot="/home/giang/public-sites/giangle.fi/" --path="/home/giang/lego/" --pem renew && systemctl restart apache2```
+
+<img src="https://github.com/user-attachments/assets/b0dbc0a0-8707-4e75-a61c-7864fcea0cb6" width="500"> <br/>  
+
+Testatakseni, että asettamani komento toimii odotetustia muokkasin crontabin niin, että se alkaisi pian muokkauksen jälkeen. Kello oli 20:55, joten muokkasin crontabiin 56 * * * * ja odotin muutaman minuutin. 
+
+```56 * * * * lego --accept-tos --email="giang.le@iki.fi" --domains="giangle.fi" --domains="www.giangle.fi" --http --http.webroot="/home/giang/public-sites/giangle.fi/" --path="/home/giang/lego/" --pem renew && systemctl restart apache2```
+
+Kun muutama minuutti oli kulunut tarkastin cron:n logit ja vielä apache:n statuksen, jotta näen milloin apache käynnistynyt uudelleen. 
+
+```tail -3 /var/log/cron.log```
+
+<img src="https://github.com/user-attachments/assets/acbec994-6627-4f49-9510-e83966dd343a" width="500"> <br/>  
+
+```sudo systemctl status apache2```
+
+<img src="https://github.com/user-attachments/assets/52a2ae53-8741-473a-b0a2-edff9114723c" width="500"> <br/>  
+
+Sillä ajastus toimi odotetusti, muutin ajastuksen takaisin haluamaani uusimisaikaan. 
+
+```sudo crontab -e```
+
+```25 4 * * * lego --accept-tos --email="giang.le@iki.fi" --domains="giangle.fi" --domains="www.giangle.fi" --http --http.webroot="/home/giang/public-sites/giangle.fi/" --path="/home/giang/lego/" --pem renew && systemctl restart apache2```
+
+
 ## Lähteet: 
 Karvinen, T. 2025. Linux Palvelimet 2025 alkukevät.   
 https://terokarvinen.com/linux-palvelimet/   
@@ -206,3 +247,11 @@ Tehtävä x & a.
 SSL Labs. SSL Server Test.    
 https://www.ssllabs.com/ssltest/    
 Tehtävä b. 
+
+Hostinger. What Is a Cron Job: Understanding Cron Syntax and How to Configure Cron Jobs. 
+https://www.hostinger.com/tutorials/cron-job    
+Cron. 
+
+Phoenixnap. How to Create and Set Up a Cron Job in Linux. 
+https://phoenixnap.com/kb/set-up-cron-job-linux
+Cron. 
