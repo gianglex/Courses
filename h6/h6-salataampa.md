@@ -178,15 +178,13 @@ Lopuksi tarkastin, että sivusto toimii odotetusti menemällä selaimella sivull
 
 <img src="https://github.com/user-attachments/assets/2b069b43-5d86-4905-9477-f28f011ede89" width="500"> <br/>   
 
-
+<img src="https://github.com/user-attachments/assets/07a437df-2b6c-4968-bdce-ce786daf62ca" width="500"> <br/>   
 
 ## b) SSL Test
 
 Kävin testaamassa vielä SSL Labsin SSL-testillä sivuani (https://www.ssllabs.com/ssltest/)
 
 <img src="https://github.com/user-attachments/assets/b11b194e-08ce-4672-8421-77ad2dfe31f1" width="500"> <br/>   
-
-<img src="https://github.com/user-attachments/assets/07a437df-2b6c-4968-bdce-ce786daf62ca" width="500"> <br/>   
 
 ## Automaattinen sertifikaatin uusiminen
 
