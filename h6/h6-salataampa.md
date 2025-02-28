@@ -203,3 +203,6 @@ Apache HTTP server project. s.a. SSL/TLS Strong Encryption: How-To.
 https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html#configexample   
 Tehtävä x. 
 
+SSL Labs. SSL Server Test.    
+https://www.ssllabs.com/ssltest/    
+Tehtävä b. 
