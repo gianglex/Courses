@@ -193,15 +193,15 @@ Tehtävänanto.
 
 Let's Encrypt. How it works.    
 https://letsencrypt.org/how-it-works/   
-Tehtävä x.    
+Tehtävä x & a.    
 
 GitHub/LEGO. Obtain a certificate.    
 https://go-acme.github.io/lego/usage/cli/obtain-a-certificate/index.html#using-an-existing-running-web-server    
-Tehtävä x. 
+Tehtävä x & a. 
 
 Apache HTTP server project. s.a. SSL/TLS Strong Encryption: How-To.    
 https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html#configexample   
-Tehtävä x. 
+Tehtävä x & a. 
 
 SSL Labs. SSL Server Test.    
 https://www.ssllabs.com/ssltest/    
