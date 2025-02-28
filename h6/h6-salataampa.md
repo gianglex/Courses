@@ -226,17 +226,132 @@ Sillä ajastus toimi odotetusti, muutin ajastuksen takaisin haluamaani uusimisai
 
 ```25 4 * * * lego --accept-tos --email="giang.le@iki.fi" --domains="giangle.fi" --domains="www.giangle.fi" --http --http.webroot="/home/giang/public-sites/giangle.fi/" --path="/home/giang/lego/" --pem renew && systemctl restart apache2```
 
+## Security Headers
+
+Selatessani muita tietoturvaan liittyviä aiheita törmäsin Security headereihin, joten tein omalle sivulleni Mozillan Security Header testin. 
+
+<img src="https://github.com/user-attachments/assets/b7767362-92fc-4872-bdf4-70995d9777a9" width="500"> <br/>  
+
+Testistä tuli surkea tulos, joten lähdin selvittelemään asiaa voisi lähteä korjailemaan ja törmäsin muutamaan sivustoon joissa oli ohjeet niiden päivittämiseen (https://www.studytonight.com/apache-guide/add-http-security-headers-in-apache-web-server sekä https://www.geeksforgeeks.org/how-to-set-http-headers-using-apache-server/)
+
+```sudo a2enmod headers```
+
+```sudoedit /etc/apache2/sites-available/giangle.fi.conf```
+
+```
+<VirtualHost *:80>
+        ServerName giangle.fi
+        ServerAlias www.giangle.fi
+        DocumentRoot /home/giang/public-sites/giangle.fi
+        <Directory /home/giang/public-sites/giangle.fi>
+                Require all granted
+        </Directory>
+
+        # Security Headers
+        Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        Header always set X-Content-Type-Options "nosniff"
+        Header always set X-Frame-Options "SAMEORIGIN"
+        Header always set X-XSS-Protection "1; mode=block"
+</VirtualHost>
+
+<VirtualHost *:443>
+        ServerName giangle.fi
+        ServerAlias www.giangle.fi
+        DocumentRoot /home/giang/public-sites/giangle.fi
+        <Directory /home/giang/public-sites/giangle.fi>
+                Require all granted
+        </Directory>
+
+        SSLEngine On
+        SSLCertificateFile '/home/giang/lego/certificates/giangle.fi.crt'
+        SSLCertificateKeyFile '/home/giang/lego/certificates/giangle.fi.key'
+  
+        # Security Headers
+        Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        Header always set X-Content-Type-Options "nosniff"
+        Header always set X-Frame-Options "SAMEORIGIN"
+        Header always set X-XSS-Protection "1; mode=block"
+</VirtualHost>
+```
+
+```sudo systemctl restart apache2```
+
+Tein tämän jälkeen testin vielä uudelleen ja testistä tuli nyt tällä kertaa 55/100. Puuttuvat pisteet johtuivat Content Security Policy (CSP) ja HTTPs ohjauksen puutteesta, joten lähdin korjaamaan näitä seuraavaksi. 
+
+<img src="https://github.com/user-attachments/assets/07fcf4d6-0cba-47ad-a71c-95cbce083ddc" width="500"> <br/>  
+
+Uudelleenohjaus oli helppo korjata lisäämällä <VirtualHost *:80>:n sisälle ```Redirect permanent / https://giangle.fi/```. 
+
+CSP:n asettaminen vaati hieman hienosäätöä ja valikoin lopuksi suhteellisen tiukat CSP vaatimukset, sillä sivuillani ei käytännössä ole mitään merkittävää sisältöä. 
+
+```sudoedit /etc/apache2/sites-available/giangle.fi.conf```
+
+```
+<VirtualHost *:80>
+        ServerName giangle.fi
+        ServerAlias www.giangle.fi
+        DocumentRoot /home/giang/public-sites/giangle.fi
+        <Directory /home/giang/public-sites/giangle.fi>
+                Require all granted
+        </Directory>
+
+        # Redirect HTTP to HTTPS
+        Redirect permanent / https://giangle.fi/
+
+        # CSP
+        <IfModule mod_headers.c>
+                Header set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; object-src 'none';"
+        </IfModule>
+
+        # Security Headers
+        Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        Header always set X-Content-Type-Options "nosniff"
+        Header always set X-Frame-Options "SAMEORIGIN"
+        Header always set X-XSS-Protection "1; mode=block"
+</VirtualHost>
+
+<VirtualHost *:443>
+        ServerName giangle.fi
+        ServerAlias www.giangle.fi
+        DocumentRoot /home/giang/public-sites/giangle.fi
+        <Directory /home/giang/public-sites/giangle.fi>
+                Require all granted
+        </Directory>
+
+        SSLEngine On
+        SSLCertificateFile "/home/giang/lego/certificates/giangle.fi.crt"
+        SSLCertificateKeyFile "/home/giang/lego/certificates/giangle.fi.key"
+
+        # CSP
+        <IfModule mod_headers.c>
+                Header set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; object-src 'none';"
+        </IfModule>
+
+        # Security Headers
+        Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        Header always set X-Content-Type-Options "nosniff"
+        Header always set X-Frame-Options "SAMEORIGIN"
+        Header always set X-XSS-Protection "1; mode=block"
+</VirtualHost>
+```
+
+```sudo systemctl restart apache2```
+
+Tämän jälkeen tein testin uudelleen ja sain 100/100 pistettä testistä. 
+
+<img src="https://github.com/user-attachments/assets/f4522e08-a818-4fac-b45c-8c635435b8c1" width="500"> <br/>  
+
 
 ## Lähteet: 
 Karvinen, T. 2025. Linux Palvelimet 2025 alkukevät.   
 https://terokarvinen.com/linux-palvelimet/   
 Tehtävänanto.   
 
-Let's Encrypt. How it works.    
+Let's Encrypt. s.a. How it works.    
 https://letsencrypt.org/how-it-works/   
 Tehtävä x & a.    
 
-GitHub/LEGO. Obtain a certificate.    
+GitHub/LEGO. s.a. Obtain a certificate.    
 https://go-acme.github.io/lego/usage/cli/obtain-a-certificate/index.html#using-an-existing-running-web-server    
 Tehtävä x & a. 
 
@@ -244,14 +359,36 @@ Apache HTTP server project. s.a. SSL/TLS Strong Encryption: How-To.
 https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html#configexample   
 Tehtävä x & a. 
 
-SSL Labs. SSL Server Test.    
+SSL Labs. s.a. SSL Server Test.    
 https://www.ssllabs.com/ssltest/    
 Tehtävä b. 
 
-Hostinger. What Is a Cron Job: Understanding Cron Syntax and How to Configure Cron Jobs.    
+Hostinger. s.a. What Is a Cron Job: Understanding Cron Syntax and How to Configure Cron Jobs.    
 https://www.hostinger.com/tutorials/cron-job    
 Cron.    
 
-Phoenixnap. How to Create and Set Up a Cron Job in Linux.     
+Phoenixnap. s.a. How to Create and Set Up a Cron Job in Linux.     
 https://phoenixnap.com/kb/set-up-cron-job-linux     
 Cron.    
+
+Mozilla. s.a. HTTP Observatory.     
+https://developer.mozilla.org/en-US/observatory    
+Security Header.    
+
+
+Study Tonight. 2023. Add HTTP Security Headers in Apache Web Server.    
+https://www.studytonight.com/apache-guide/add-http-security-headers-in-apache-web-server    
+Security Header.    
+
+
+Geeks for Geeks. 2024. How to Set HTTP Headers Using Apache Server?
+https://www.geeksforgeeks.org/how-to-set-http-headers-using-apache-server/    
+Security Header.    
+
+Content Security Policy. s.a. Content Security Policy Reference.    
+https://content-security-policy.com/    
+Security Header.    
+
+Macleod, R. 2024. How to Set Up a Content Security Policy (CSP)    
+https://blog.sucuri.net/2023/04/how-to-set-up-a-content-security-policy-csp-in-3-steps.html    
+Security Header.    
