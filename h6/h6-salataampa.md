@@ -58,14 +58,132 @@ Virheilmoituksen saatuani tajusin tarkastaa antamani komennon uudelleen, ja siit
 
 ```sudo systemctl restart apache2```
 
-![a1](https://github.com/user-attachments/assets/56aba661-21d8-4fb7-81dd-1c44fed3d7c4)
+<img src="https://github.com/user-attachments/assets/56aba661-21d8-4fb7-81dd-1c44fed3d7c4" width="500"> <br/>   
 
 Apachen uudelleenkäynnistyksen jälkeen tarkastin vielä, että verkkosivuni toimii oletetusti menemällä selaimella sivulleni giangle.fi. Varmistin vielä, että sivu ei käytä välimuistissa olevaa sivua päivittämällä sivun uudelleen pikanäppäimellä CTRL + Shift + R
 
-![a2](https://github.com/user-attachments/assets/33ce1d4f-ac7a-4001-b278-e47de9a7bb82)
+<img src="https://github.com/user-attachments/assets/33ce1d4f-ac7a-4001-b278-e47de9a7bb82" width="500"> <br/>   
 
-### 
+### Lego, testisertifikaatin luonti staging -ympäristöön & toimivan sertifikaatin luonti
 
+Tämän jälkeen siirryin asentamaan lego -ohjelman ja ```lego``` -kansion ```/home/giang/```. 
+
+```sudo apt-get install lego```
+
+```cd```
+
+```mkdir lego```
+
+Asennettuani ohjelman, siirryin tekemään testisertifikaattia Let's Encryptin Staging -ympäristöön. 
+
+```lego --server=https://acme-staging-v02.api.letsencrypt.org/directory --accept-tos --email="giang.le@iki.fi" --domains="giangle.fi" --domains="www.giangle.fi" --http --http.webroot="/home/giang/public-sites/giangle.fi/" --path="/home/giang/lego/" --pem run```
+
+<img src="https://github.com/user-attachments/assets/09110fbe-3003-4306-92e9-e23bce1479ed" width="500"> <br/>   
+
+Komennon suorittamisen jälkeen näytti omaan silmääni siltä, että sertifikaatin hankinta onnistui. Tarkastin vielä find komennolla, että sertikaatin luonti tosiaan onnistui: 
+
+```find /home/giang/lego/```
+
+<img src="https://github.com/user-attachments/assets/17e28f8d-f48d-4ed9-8152-1ca8e13d6b1f" width="500"> <br/>   
+
+Sertifikaattitiedostot olivat tosiaan luotu, joten olin onnistuneesti luonut Staging ympäristöön testisertifikaatit. Sillä nämä olivat vasta Staging ympäristöä varten luodut sertifikaatit, uudelleennimesin ```lego``` -kansion ```old-lego``` ja loin uuden ```lego``` -kansion tilalle. Tarkastin myös välissä ja lopussa ```ls``` -komennolla, että muutokset tapahtuivat. 
+
+```mv -n lego oldlego```
+
+```ls```
+
+```mkdir lego```
+
+```ls```
+
+<img src="https://github.com/user-attachments/assets/09126e97-c800-4af5-b69a-4128766d7116" width="500"> <br/>   
+
+
+Tämän jälkeen ajoin saman ```lego``` -komennon kuin aiemmin, mutta ilman ```--server=https://acme-staging-v02.api.letsencrypt.org/directory``` -osaa luodakseni sertifikaatin.  
+
+```lego --accept-tos --email="giang.le@iki.fi" --domains="giangle.fi" --domains="www.giangle.fi" --http --http.webroot="/home/giang/public-sites/giangle.fi/" --path="/home/giang/lego/" --pem run```
+
+<img src="https://github.com/user-attachments/assets/d9ac6f64-b49e-4f17-84dd-64c9049cf1b3" width="500"> <br/>   
+
+Palautunut viesti näytti onnistuneelta sertifikaatin luonnilta, joten tarkastin jälleen ```find``` -komennolla, että sertifikaatti on luotuna. 
+
+```find /home/giang/lego/```
+
+<img src="https://github.com/user-attachments/assets/bf324cca-8253-4999-8d2f-14c112547d56" width="500"> <br/>   
+
+### .conf tiedoston muokkaus ja 443-portin avaus palomuuriin
+
+Sertifikaatin luonnin jälkeen vuorossa on SSL:n käyttöönotto ja sivuston .conf tiedoston muokkaus. Aloitin ottamalla käyttöön apachen SSL-moduulin ja sen jälkeen käynnistämällä apachen uudelleen. 
+
+```sudo a2enmod ssl```
+
+```sudo systemctl restart apache2```
+
+Sen jälkeen muokkasin sivuston .conf -tiedostoa ottaakseni. 
+
+```micro /etc/apache2/sites-available/giangle.fi.conf```
+
+
+Uudeksi .conf tiedoston sisällöksi muodostui: 
+
+```
+<VirtualHost *:80>
+ ServerName giangle.fi
+ ServerAlias www.giangle.fi
+ DocumentRoot /home/giang/public-sites/giangle.fi
+ <Directory /home/giang/public-sites/giangle.fi>
+   Require all granted
+ </Directory>
+</VirtualHost>
+
+<VirtualHost *:443>
+ ServerName giangle.fi
+ ServerAlias www.giangle.fi
+ DocumentRoot /home/giang/public-sites/giangle.fi
+ <Directory /home/giang/public-sites/giangle.fi>
+   Require all granted
+ </Directory>
+
+ SSLEngine On
+ SSLCertificateFile '/home/giang/lego/certificates/giangle.fi.crt'
+ SSLCertificateKeyFile '/home/giang/lego/certificates/giangle.fi.key'
+
+</VirtualHost>
+```
+
+Muokatessani .conf tiedostoa alle tuli ilmoitus, että tiedosto 'readonly' ja tallentaessa tiedostoa kysyi micro-editori vielä erikseen haluanko tallentaa käyttäen sudo-oikeuksia. 
+
+<img src="https://github.com/user-attachments/assets/51e4783e-c457-4d7e-a9a8-4f38b9166bcd" width="500"> <br/>   
+
+<img src="https://github.com/user-attachments/assets/6d48bcb8-dd05-4d7a-b3df-3a911b3d0fbf" width="500"> <br/>   
+
+
+Käynnistin tämän jälkeen apachen uudelleen ja kokeilin testasin muokattua .conf tiedostoa configtest:llä. 
+
+```sudo systemctl restart apache2```
+
+```sudo apache2ctl configtest```
+
+<img src="https://github.com/user-attachments/assets/544b4309-7ed4-4ba3-a270-7228242dd4d7" width="500"> <br/>   
+
+Tein vielä reiän palomuuriin ja tarkastin sen jälkeen vielä palomuurin statuksen. 
+
+```sudo ufw allow 443/tcp```
+
+```sudo ufw status```
+
+<img src="https://github.com/user-attachments/assets/b7b0dd7d-2662-4bc2-82a0-a4bedea29c24" width="500"> <br/>   
+
+Lopuksi tarkastin, että sivusto toimii odotetusti menemällä selaimella sivulleni https:// etuliitteen kanssa (https://giangle.fi/). Toimiva sivu ja varmenne olivatkin siellä vastassa. 
+
+<img src="https://github.com/user-attachments/assets/2b069b43-5d86-4905-9477-f28f011ede89" width="500"> <br/>   
+
+
+## b) SSL Test
+
+Kävin testaamassa vielä SSL Labsin SSL-testillä sivuani (https://www.ssllabs.com/ssltest/)
+
+<img src="https://github.com/user-attachments/assets/b11b194e-08ce-4672-8421-77ad2dfe31f1" width="500"> <br/>   
 
 
 ## Lähteet: 
