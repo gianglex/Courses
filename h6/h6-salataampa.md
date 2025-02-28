@@ -228,7 +228,7 @@ Sillä ajastus toimi odotetusti, muutin ajastuksen takaisin haluamaani uusimisai
 
 ## Security Headers
 
-Selatessani muita tietoturvaan liittyviä aiheita törmäsin Security headereihin, joten tein omalle sivulleni Mozillan Security Header testin. 
+Selatessani muita tietoturvaan liittyviä aiheita törmäsin Security headereihin, joten tein omalle sivulleni Mozillan Security Header testin (https://developer.mozilla.org/en-US/observatory). 
 
 <img src="https://github.com/user-attachments/assets/b7767362-92fc-4872-bdf4-70995d9777a9" width="500"> <br/>  
 
