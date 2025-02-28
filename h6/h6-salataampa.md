@@ -365,21 +365,19 @@ Tehtävä b.
 
 Hostinger. s.a. What Is a Cron Job: Understanding Cron Syntax and How to Configure Cron Jobs.    
 https://www.hostinger.com/tutorials/cron-job    
-Cron.    
+Cron / Automaattinen sertifikaatin uusiminen.    
 
 Phoenixnap. s.a. How to Create and Set Up a Cron Job in Linux.     
 https://phoenixnap.com/kb/set-up-cron-job-linux     
-Cron.    
+Cron / Automaattinen sertifikaatin uusiminen.    
 
 Mozilla. s.a. HTTP Observatory.     
 https://developer.mozilla.org/en-US/observatory    
 Security Header.    
 
-
 Study Tonight. 2023. Add HTTP Security Headers in Apache Web Server.    
 https://www.studytonight.com/apache-guide/add-http-security-headers-in-apache-web-server    
 Security Header.    
-
 
 Geeks for Geeks. 2024. How to Set HTTP Headers Using Apache Server?    
 https://www.geeksforgeeks.org/how-to-set-http-headers-using-apache-server/    
