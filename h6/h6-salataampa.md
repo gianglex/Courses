@@ -210,7 +210,7 @@ Testatakseni, että asettamani komento toimii odotetustia muokkasin crontabin ni
 
 ```56 * * * * lego --accept-tos --email="giang.le@iki.fi" --domains="giangle.fi" --domains="www.giangle.fi" --http --http.webroot="/home/giang/public-sites/giangle.fi/" --path="/home/giang/lego/" --pem renew && systemctl restart apache2```
 
-Kun muutama minuutti oli kulunut tarkastin cron:n logit ja vielä apache:n statuksen, jotta näen milloin apache käynnistynyt uudelleen. 
+Kun muutama minuutti oli kulunut tarkastin cron:n logit ja vielä apache:n statuksen, jotta näen milloin apache käynnistynyt uudelleen (eli tarkastaakseni että cronin ajamat komennot menneet läpi). 
 
 ```tail -3 /var/log/cron.log```
 
