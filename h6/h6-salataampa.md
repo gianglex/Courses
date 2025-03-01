@@ -186,6 +186,30 @@ Kävin testaamassa vielä SSL Labsin SSL-testillä sivuani (https://www.ssllabs.
 
 <img src="https://github.com/user-attachments/assets/b11b194e-08ce-4672-8421-77ad2dfe31f1" width="500"> <br/>   
 
+Lukuunottamatta alla olevia, läpäisi sivusto SSL-testit. 
+
+<img src="https://github.com/user-attachments/assets/4d5b3661-d4b9-4da3-933a-bc0318ee1960" width="500"> <br/> 
+
+<img src="https://github.com/user-attachments/assets/57113040-f27e-45c7-b09a-11f67fb29c84" width="500"> <br/> 
+
+<img src="https://github.com/user-attachments/assets/e67ead2c-4eb5-474c-b69b-48e9b283cb24" width="500"> <br/> 
+
+TLS 1.2:n "weak" -merkinnät johtuvat lähinnä CBC:n implementoinnin vaikeudesta, eikä niinkään sivuston puutteellisuudesta. (https://success.qualys.com/discussions/s/question/0D52L00006fVM4vSAG/inconsistent-results-on-ssl-labs)
+
+Chrome 49 / XP SP3 Handshake failure johtuu siitä, ettei sivusto tue Chrome 49 / XP SP3:n kanssa yhteensopivaa CBC:tä. Chrome 49 / XP SP3 on kuitenkin jo niin sen verran vanha, että sen tukeminen on sivuston käyttötarkoituksessa tarpeetonta. (https://stackoverflow.com/questions/54598912/server-sent-fatal-alert-handshake-failure)
+
+CAA on DNS tietue, joka määrittelee ketkä voivat antaa domainille varmenteita. (https://letsencrypt.org/fi/docs/caa/)
+
+Tämän korjaamiseksi kirjauduin cPaneeliini (hostingpalvelu.fi:n kautta) ja lisäsin DNS-tietueisiini uuden tietueen, jossa määritellään sivustolle CAA. 
+
+<img src="https://github.com/user-attachments/assets/c54eea6d-2b00-4f96-bd9a-8153e2fffbfc" width="500"> <br/> 
+
+Tein tämän jälkeen uudelleen SSL-testin, jotta pystyin vielä varmistamaan että DNS CAA toimii odotetusti. 
+
+<img src="https://github.com/user-attachments/assets/787e53c5-2633-4b92-b759-e45b2f355876" width="500"> <br/> 
+
+<img src="https://github.com/user-attachments/assets/8d32b428-deb8-4a70-a115-c14cab318b10" width="500"> <br/> 
+
 ## Automaattinen sertifikaatin uusiminen
 
 Kokeilin ensin että uusimiskomentoni toimii odotetusti eikä anna virhettä. 
@@ -362,6 +386,18 @@ Tehtävä x & a.
 SSL Labs. s.a. SSL Server Test.    
 https://www.ssllabs.com/ssltest/    
 Tehtävä b. 
+
+Shaw, K. 2022. Inconsistent Results on SSL Labs.    
+https://success.qualys.com/discussions/s/question/0D52L00006fVM4vSAG/inconsistent-results-on-ssl-labs    
+Tehtävä b.    
+
+StackOverflow. s.a. Server sent fatal alert: handshake_failure.    
+https://stackoverflow.com/questions/54598912/server-sent-fatal-alert-handshake-failure    
+Tehtävä b.    
+
+Let's Encrypt. s.a. Certificate Authority Authorization (CAA).    
+https://letsencrypt.org/fi/docs/caa/    
+Tehtävä b.    
 
 Hostinger. s.a. What Is a Cron Job: Understanding Cron Syntax and How to Configure Cron Jobs.    
 https://www.hostinger.com/tutorials/cron-job    
