@@ -207,7 +207,7 @@ Toinen käyttäjä pystyi käyttämään komentoa, joten uusi komentoni toimi ha
 
 
 
-## Vanha laboratorioharjoitus
+## d) Vanha laboratorioharjoitus
 
 ### Ei kolmea sekoseiskaa
 
@@ -234,3 +234,7 @@ Tehtävä a.
 Snapshooter. s.a. How to Create and Manage User on Linux    
 https://snapshooter.com/learn/linux/create-and-manage-users   
 Tehtävä c.    
+
+Karvinen, T. 2024. Final Lab for Linux Palvelimet 2024 Spring.     
+https://terokarvinen.com/2024/arvioitava-laboratorioharjoitus-2024-linux-palvelimet/    
+Tehtävä d.    
