@@ -207,7 +207,19 @@ Toinen käyttäjä pystyi käyttämään komentoa, joten uusi komentoni toimi ha
 
 
 
-d) Ratkaise vanha arvioitava laboratorioharjoitus soveltuvin osin.
+## Vanha laboratorioharjoitus
+
+### Ei kolmea sekoseiskaa
+
+<img src="https://github.com/user-attachments/assets/a0ef21cc-9088-4549-b1e8-9e44aeb1c8f6" width="500"> <br/>  
+
+
+### Howdy
+<img src="https://github.com/user-attachments/assets/3ec932fc-52ea-49de-8dee-6065dca4fbf4" width="500"> <br/>  
+
+
+### Salattua hallintaa
+<img src="https://github.com/user-attachments/assets/2af2188a-1936-41be-a368-1111af43047f" width="500"> <br/>  
 
 
 ## Lähteet: 
