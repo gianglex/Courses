@@ -141,12 +141,74 @@ Ajoin lopuksi ohjelman lua -komennolla ja ohjelma tulosti jälleen ```Hello Worl
 
 <img src="https://github.com/user-attachments/assets/6b3d22d4-493a-4b88-afc9-e7f7f42ece96" width="500"> <br/>  
 
+## c) Oman komento Linux
 
-a) Kirjoita ja aja "Hei maailma" kolmella kielellä.
-b) Lähdeviitteet. Tarkista ja tarvittaessa lisää lähdeviitteet kaikkiin raportteihisi h1 alkaen. Tarkista, että olet viitannut lähteisiin: tehtäväsivuun, kurssiin, muiden opiskelijoiden raportteihin, man-sivuihin, kotisivuihin ja ylipäänsä kaikkiin käyttämiisi lähteisiin. Lähdeviite tulee olla jokaisessa raportissa tai sivussa, jossa lähdettä on käytetty. Kaikki tehtävät perustuvat tämän sivun tehtävänantoihin, joten ainakin tämä viite on syytä löytyä. (Tästä alakohdasta ei tarvitse kirjoittaa vaiheittaista raporttia)
-c) Laita Linuxiin uusi, itse tekemäsi komento niin, että kaikki käyttäjät voivat ajaa sitä.
+Aloitin komennon luonnin luomalla ensin tiedoston ```timenow```
+
+```micro timenow```
+
+Lisäsin alla olevan skriptin luomaani tiedostoon, joka kertoo tämänhetkisen päivämäärän ja kellonajan.  
+
+```
+#!/usr/bin/bash
+echo Time is now:
+date +"%d-%m-%y  %T"
+```
+
+Tallennettua tiedoston kokeilin, että kirjoittamani skripti toimii halutusti ```bash``` -komennolla. 
+
+```bash timenow```
+
+<img src="https://github.com/user-attachments/assets/ba4c4c3e-e559-4158-b371-0c088ddf3bf9" width="500"> <br/>  
+
+Tämän jälkeen tarkastin komennolla ```ls -l``` komennolla luomani tiedoston oikeudet. 
+
+```ls -l```
+
+<img src="https://github.com/user-attachments/assets/cb9075f7-ea4e-4768-8a6a-7eaeebb8e27f" width="500"> <br/>  
+
+Jotta muutkin käyttäjät pystyisivät käyttää komentoa, lisäsin tiedostolle ```chmod``` -komennolla execute oikeudet käyttäjäryhmille (user, group, others). 
+
+```chmod ugo+x timenow```
+
+Tämän jälkeen tarkastin vielä uudelleen tiedoston oikeudet. 
+
+<img src="https://github.com/user-attachments/assets/bde1e8f2-51a1-40e1-bf5b-f8cfdeefc9a2" width="500"> <br/>  
+
+Tämän jälkeen kopioin komennon /usr/bin/ kansioon, jotta komentoa voidaan käyttää pelkällä komennon nimellä. Sisällytin komentoon -v (verbose), jotta näen että tiedosto on kopioitunut. 
+
+```sudo cp -v timenow /usr/local/bin/```
+
+<img src="https://github.com/user-attachments/assets/aed8e95d-94a1-4812-ad6f-3ad294bebd52" width="500"> <br/>  
+
+Lopuksi kokeilin ajaa uuden komentoni pelkällä ```timenow``` -komennolla. 
+
+```timenow```
+
+<img src="https://github.com/user-attachments/assets/46545455-a3f5-4521-82de-411093f6b002" width="500"> <br/>  
+
+Komento palautti kellonajan, joten uusi komentoni toimii halutusti. 
+
+Jotta pystyisin testaamaan komentoa toisella käyttäjällä, piti minun ensin luoda uusi käyttäjä ja vaihtaa toiselle käyttäjälle. 
+
+```sudo adduser giangtest```
+
+```su giangtest```
+
+<img src="https://github.com/user-attachments/assets/e32625a6-19d6-4260-b0a4-f6cabbcdaccd" width="500"> <br/>  
+
+Vaihdettuani käyttäjää, kokeilin uudella käyttäjällä ```timenow``` -komentoa. 
+
+```timenow```
+
+<img src="https://github.com/user-attachments/assets/e26ae842-3aa4-4647-8298-e7a73e31120b" width="500"> <br/>  
+
+Toinen käyttäjä pystyi käyttämään komentoa, joten uusi komentoni toimi haluamallani tavalla myös muilla käyttäjillä. 
+
+
+
 d) Ratkaise vanha arvioitava laboratorioharjoitus soveltuvin osin.
-e) Asenna itsellesi tyhjä virtuaalikone arvioitavaa labraa varten. Suosittelen Debian 12-Bookworm amd64, riittävästi RAM ja kovalevyä. Koneella saa olla päivitetyt ohjelmistot (apt-get dist-upgrade), tulimuuri (esim. ufw). Koneella ei saa olla mitään muita demoneja tai ohjelmia asennettuna kuin nuo ja asennuksen mukana tulevat. Virtuaalikoneella ei saa olla luottamuksellisia tiedostoja, koska opettaja saattaa tarkastella sitä. (Tästä d-osioista ei tarvitse kirjoittaa raporttia. Tavalliseen käyttöjärjestelmän asennuksen yhteydessä tulevat ohjelmat saavat olla mukana, esim. graafinen työpöytä tulee yleensä asennuksen mukana.)
+
 
 ## Lähteet: 
 Karvinen, T. 2025. Linux Palvelimet 2025 alkukevät.   
@@ -155,5 +217,8 @@ Tehtävänanto.
 
 Karvinen, T. 2018. Hello World Python3, Bash, C, C++, Go, Lua, Ruby, Java – Programming Languages on Ubuntu 18.04.    
 https://terokarvinen.com/2018/hello-python3-bash-c-c-go-lua-ruby-java-programming-languages-on-ubuntu-18-04/    
-Tehtävä a. 
+Tehtävä a.    
 
+Snapshooter. s.a. How to Create and Manage User on Linux    
+https://snapshooter.com/learn/linux/create-and-manage-users   
+Tehtävä c.    
