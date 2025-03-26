@@ -1,1 +1,6 @@
-# Palvelinten-Hallinta
+# Linux-Palvelimet
+
+## Course description
+Learn to manage your own Linux server – in 8 weeks.
+
+https://terokarvinen.com/linux-palvelimet/
