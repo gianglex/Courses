@@ -124,7 +124,7 @@ Kuten esimerkistä näkee, ensimmäisellä kerralla komento asentaa micron, mutt
 
 
 ## Ajankäyttö 
-Aktiivistä Linuxin käyttöä ~30min-1h. Raportin kirjoittamiseen ja yleiseen dokumentointiin ~2h. 
+Aktiivista Linuxin käyttöä ~30min-1h. Raportin kirjoittamiseen ja yleiseen dokumentointiin ~2h. 
 
 
 ## Lähteet: 
