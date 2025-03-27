@@ -123,6 +123,9 @@ Seuraavilla (n > 1) ajokerroilla:
 Kuten esimerkistä näkee, ensimmäisellä kerralla komento asentaa micron, mutta seuraavilla kerroilla ei muutoksia enää tapahdu riippumatta siitä kuinka monta kertaa sitä ajaa. 
 
 
+## Ajankäyttö 
+Aktiivistä Linuxin käyttöä ~30min-1h. Raportin kirjoittamiseen ja yleiseen dokumentointiin ~2h. 
+
 
 ## Lähteet: 
 Karvinen, T. 2025. Palvelinten Hallinta.   
