@@ -29,9 +29,73 @@ i) Analyysi. Sieppaa pieni määrä omaa liikennettäsi. Analysoi se, eli selit�
 
 ## b) Virtuaalikoneen internet-yhteyden katkaisu
 
+Suljin internet-yhteyden käyttöjärjestelmän yläpalkista klikkaamalla verkkoyhteyksien kuvaketta ja valitsemalla ```Disconnect```
 
 ![b1](https://github.com/user-attachments/assets/19ddc58e-47eb-436d-ac4a-c97b35756bbe)
 
+Tämän jälkeen kokeilin verkkoyhteyden toimivuutta pingaamalla CloudFlaren (1.1.1.1) ja Googlen (8.8.8.8) nimipalvelimiin. 
+
+```ping 1.1.1.1```
+```ping 8.8.8.8```
+
+![b2](https://github.com/user-attachments/assets/b2290d1e-37b1-4fce-8fed-a6c860f2c0a0)
+
+Sillä pingit osoitteisiin eivät toimineet, pystyin toteamaan että internet-yhteys oli onnistuneesti katkaistu. 
+
+## c) Wireshark & d) TCP/IP
+
+[omaliikenne.zip](https://github.com/user-attachments/files/19515728/omaliikenne.zip)
+
+Liitteenä siepattu oma liikenteeni. 
+
+TCP/IP:n neljä kerrosta ja kuvassa olevat vastineet: 
+- Application layer: Transport Layer Security (TLS)
+- Transport layer: Transmission Control Protocol (TCP)
+- Internet layer: Internet Protocol Version 4 (IPv4)
+- Link layer: Ethernet II
+
+![c1](https://github.com/user-attachments/assets/a59bf1c1-b5a6-4515-9363-876ce315cda4)
+
+## e) Surfing-secure.pcap alkuvilkaisu
+
+- Kaappauksessa 283 framea. 
+
+![e1](https://github.com/user-attachments/assets/90ac8f6b-db49-4a4b-97c8-654bd8544140)
+
+- Liikenne näyttäisi pääosin olevan DNS, TCP ja TLS protokollan liikennettä. 
+
+- Nopeasti tarkastelemalla ensimmäistä ja viimeistä framea saa selville kuinka pitkään kaappausta on tehty. 
+   - Frame 1: Mar 28, 2025 17:28:09.043495000 EET
+   - Frame 283: Mar 28, 2025 17:28:16.579175000 EET
+   - Kaappaus on siis kestänyt vain 7 sekuntia. 
+
+![e2](https://github.com/user-attachments/assets/f456dd54-f2a1-4ba1-bf55-fa6d57e66313)
+
+![e3](https://github.com/user-attachments/assets/1010d3c7-c964-4ecb-b204-4b9b585138bf)
+
+- Tutkailemalla keskusteluita voidaan myös nähdä mistä IP-osoitteista ja mihin IP-osoitteisiin on ollut liikennettä.  
+
+![e4](https://github.com/user-attachments/assets/438ce58a-4714-4130-94e1-8e9072232117)
+
+![e5](https://github.com/user-attachments/assets/4fd705d0-b0c2-459a-a8c5-bdb88581c441)
+
+- Käyttäjä näyttäisi käyneen ainakin google.com:ssa ja terokarvinen.com:ssa.
+
+![e6](https://github.com/user-attachments/assets/cbc6a7b8-bd93-415f-ace6-98327a7ae9ff)
+
+
+## f), g), h) Surfing-secure.pcap kysymykset
+
+- Mitä selainta käyttäjä käyttää?
+   - 
+
+- Minkä merkkinen verkkokortti käyttäjällä on?
+   - 
+
+- Millä weppipalvelimella käyttäjä on surffaillut?
+   - 
+
+## i) Analyysi omasta liikenteestä
 
 
 ## Lähteet
