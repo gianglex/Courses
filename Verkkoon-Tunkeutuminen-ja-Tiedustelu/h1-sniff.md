@@ -79,7 +79,7 @@ TCP/IP:n neljä kerrosta ja kuvassa olevat vastineet:
 
 ![e5](https://github.com/user-attachments/assets/4fd705d0-b0c2-459a-a8c5-bdb88581c441)
 
-- Käyttäjä näyttäisi käyneen ainakin google.com:ssa ja terokarvinen.com:ssa.
+- Käyttäjä näyttäisi käyneen ainakin google.com:ssa (frame 1) ja terokarvinen.com:ssa (frame 19).
 
 ![e6](https://github.com/user-attachments/assets/cbc6a7b8-bd93-415f-ace6-98327a7ae9ff)
 
