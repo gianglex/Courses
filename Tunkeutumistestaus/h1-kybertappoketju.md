@@ -419,7 +419,10 @@ Nopealla haulla ohjelman ```vsftpd 2.3.4``` versiossa on Backdoor Command Execut
 
 ```23/tcp    open  telnet      Linux telnetd```
 
-Telnet pisti silmään, sillä on jo pidempään pidetty tietoturvattomana vaihtoehtoja. Mm. Herrasmieshakkeri-podcastissä puhuttiin telnetistä "myrkkynä". 
+Telnet pisti silmään, sillä sitä on jo pidempään pidetty tietoturvattomana vaihtoehtoja. Telnetissä kaikki viestit liikkuvat selkokielisinä, käyttäjätunnukset ja salasanat mukaanlukien. 
+
+Mm. Herrasmieshakkeri-podcastissä puhuttiin telnetistä "myrkkynä". 
+
 
 ```
 3306/tcp  open  mysql       MySQL 5.0.51a-3ubuntu5
