@@ -250,7 +250,7 @@ Kävin osoitteet läpi vielä ```curl``` -komennolla ja ```192.168.56.102``` nä
 
 ```curl 192.168.56.102```
 
-![g3](https://github.com/user-attachments/assets/664ae313-9228-4524-8114-d1d87722b84f)
+![g3](https://github.com/user-attachments/assets/e45e1bf5-130a-4760-a0b6-0bcea9622254)
 
 ## h) Porttiskannaa Metasploitable huolellisesti ja kaikki portit (nmap -A -T4 -p-). Poimi 2-3 hyökkääjälle kiinnostavinta porttia. Analysoi ja selitä tulokset näiden porttien osalta.
 
