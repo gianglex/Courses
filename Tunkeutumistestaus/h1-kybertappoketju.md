@@ -22,11 +22,11 @@
    - Korkein oikeus ylläpiti hovioikeuden päätöksen.
 
  
-## a) Kalin asennus
+## a) Kali
 
 ![a1](https://github.com/user-attachments/assets/687940f2-a9fd-4ce8-b069-253a62c28c6e)
 
-## b) Irrota Kali-virtuaalikone verkosta. Todista testein, että kone ei saa yhteyttä Internetiin (esim. 'ping 8.8.8.8')
+## b) Irrota Kali-virtuaalikone verkosta
 
 Aloitin internetin irroittamisen netistä Kalin ylävalikon oikeasta laidasta painamalla Verkko -kuvaketta ja valitsemalla ```Disconnect```. 
 
@@ -144,16 +144,304 @@ Nmap done: 1 IP address (1 host up) scanned in 8.03 seconds
 Tällä kertaa skannauksesta selvisi aiemmasta skannauksesta poiketen mm: ssh-hostkeyt, avoimia portteja (22/tcp ja 80/tcp) sekä käyttöjärjestelmän tiedot. 
 
 ## e) Asenna Metasploitable 2 virtuaalikoneeseen
-## f) Tee koneiden välille virtuaaliverkko. Jos säätelet VirtualBoxista
-Kali saa yhteyden Internettiin, mutta sen voi laittaa pois päältä
-Kalin ja Metasploitablen välillä on host-only network, niin että porttiskannatessa ym. koneet on eristetty intenetistä, mutta ne saavat yhteyden toisiinsa
-Vaihtoehtoisesti voit tehdä molempien koneiden asennuksen ja virtuaaliverkon vagrantilla. Silloin molemmat koneet samaan Vagrantfile:n.
-## g) Etsi Metasploitable porttiskannaamalla (nmap -sn). Tarkista selaimella, että löysit oikean IP:n - Metasploitablen weppipalvelimen etusivulla lukee Metasploitable.
+
+Aloitin lataamalla Metasploitable 2 virtuaalikoneen (osoitteesta: https://www.vulnhub.com/entry/metasploitable-2,29/). 
+
+Tämän jälkeen purin metasploitable-linux-2.0.0.zip tiedoston omaan kansioonsa (C:\...\Download\Metasploitable2-Linux\). 
+
+Tämän jälkeen VirtualBoxin valikosta valitsin ```New``` -vaihtoehdon. 
+
+Alla vielä pääasialliset tiedot asennuksesta: 
+
+```
+- Name and Operating System
+   - Name: Metasploitable
+   - Folder: C:\...\VirtualBox VMs
+   - Type: Linux
+   - Subtype: Other Linux
+   - Version: Other Linux (64-bit)
+- Hardware
+   - Base memory: 512 MB
+   - Processors: 1 CPU
+- Hard Disk
+   - Use an Existing Virtual Hard Disk File
+   - Metasploitable.vmdk ((C:\...\Download\Metasploitable2-Linux\Metasploitable.vmdk)
+```
+
+
+## f) Host-only virtuaaliverkko VirtualBoxissa
+
+Menin ylävalikosta File -> Tools -> Network Manager
+
+![e1](https://github.com/user-attachments/assets/ed488198-bf34-4b29-9126-cf949e2a4225)
+
+Kävin tarkastamassa asetuksista jo olemassa olevan Host-Only verkkoadapterini. 
+
+![e2](https://github.com/user-attachments/assets/c1f91b17-5393-47e5-96ab-9c3691b3d658)
+
+Tämän jälkeen lisäsin Kalille toisen verkkoadapterin, johon liitin Host-only adapterin. 
+
+![e3](https://github.com/user-attachments/assets/3bb08637-9e4a-49d2-963d-65b0ec2977bd)
+
+Metasploitille muutin sen olemassaolevan Adapter 1:n Host-only adapteriin, sillä en tahdo päästä Metasploitilla internettiin. 
+
+![e4](https://github.com/user-attachments/assets/f5dc1ebb-f6f1-4f3f-a7ae-64b773b36cc3)
+
+Käynnistin vielä Metasploitable2:n katsoakseni, että asennus onnistui. 
+
+![e5](https://github.com/user-attachments/assets/4865a38e-8fa7-45b2-85d9-ca6ef8809dae)
+
+Ja sehän toimi odotetusti ja pääsin kirjautumaan sisään (msfadmin:msfadmin)
+
+pingeillä, että toimivatko verkkoyhteydet halutusti: Kali pääsee tarvittaessa internettiin sekä molemmat koneet saavat yhteyden toisiinsa. 
+
+Kali: ```ping 1.1.1.1```
+
+Kali: ```ping 8.8.8.8```
+
+![e6](https://github.com/user-attachments/assets/b1ba810f-6e70-4406-ae31-ae942422740b)
+
+Internet-yhteys toimi odotetusti ja tarkastin vielä verkkoadapterien tilan: Kalista löytyy AMD 79C97x (Host-only) sekä Intel 82540EM (internet) adapterit. 
+
+![e7](https://github.com/user-attachments/assets/38eaf637-8eca-44f9-9ccd-bfce95dba67d)
+
+Metasploitable2: ```ping 1.1.1.1```
+
+Metasploitable2: ```ping 8.8.8.8```
+
+![e8](https://github.com/user-attachments/assets/b126284b-03ab-49b9-9f19-4bb652b5d9a9)
+
+Kuten halusinkin, Metasploit ei saa yhteyttä internettiin. 
+
+## g) Etsi Metasploitable porttiskannaamalla (nmap -sn)
+
+Vaihdoin Kalin adapterin AMD 79C97x:ään (Host-only) ja testasin sen jälkeen jälleen ping komennolla internet-yhteyttä. 
+
+Kali: ```ping 1.1.1.1```
+
+![g1](https://github.com/user-attachments/assets/b1ef0930-2b84-401d-bb13-11ea646755b1)
+
+Tämän jälkeen ajoin komennon, kohteeksi valikoitui ```192.168.56.0```, sillä olin asettanut aiemmin Host-only verkon osoitteeksi ```192.168.56.1```.  
+
+![g2](https://github.com/user-attachments/assets/609c108e-e736-4c99-8294-bfb64c32a541)
+
+Kali: ```nmap -sn 192.168.56.0/24```
+
+```
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-03-31 06:30 EEST
+mass_dns: warning: Unable to determine any DNS servers. Reverse DNS is disabled. Try using --system-dns or specify valid servers with --dns-servers
+Nmap scan report for 192.168.56.1
+Host is up (0.00017s latency).
+MAC Address: 0A:00:27:00:00:28 (Unknown)
+Nmap scan report for 192.168.56.100
+Host is up (0.00011s latency).
+MAC Address: 08:00:27:7F:A4:8C (PCS Systemtechnik/Oracle VirtualBox virtual NIC)
+Nmap scan report for 192.168.56.102
+Host is up (0.00015s latency).
+MAC Address: 08:00:27:26:45:0B (PCS Systemtechnik/Oracle VirtualBox virtual NIC)
+Nmap scan report for 192.168.56.101
+Host is up.
+Nmap done: 256 IP addresses (4 hosts up) scanned in 1.86 seconds
+```
+
+Skannauksella näyttäisi löytyvan osoitteet 192.168.56.1, 192.168.56.100, 192.168.56.101 ja 192.168.56.102. 
+
+Kävin osoitteet läpi vielä ```curl``` -komennolla ja ```192.168.56.102``` näyttäisi olleen Metasploitablen oikea osoite. 
+
+```curl 192.168.56.102```
+
+![g3](https://github.com/user-attachments/assets/664ae313-9228-4524-8114-d1d87722b84f)
+
 ## h) Porttiskannaa Metasploitable huolellisesti ja kaikki portit (nmap -A -T4 -p-). Poimi 2-3 hyökkääjälle kiinnostavinta porttia. Analysoi ja selitä tulokset näiden porttien osalta.
+
+```nmap -A -T4 -p- 192.168.56.102```
+
+```
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-03-31 06:43 EEST
+mass_dns: warning: Unable to determine any DNS servers. Reverse DNS is disabled. Try using --system-dns or specify valid servers with --dns-servers
+Stats: 0:00:43 elapsed; 0 hosts completed (1 up), 1 undergoing Service Scan
+Service scan Timing: About 96.67% done; ETC: 06:44 (0:00:01 remaining)
+Nmap scan report for 192.168.56.102
+Host is up (0.00018s latency).
+Not shown: 65505 closed tcp ports (reset)
+PORT      STATE SERVICE     VERSION
+21/tcp    open  ftp         vsftpd 2.3.4
+| ftp-syst: 
+|   STAT: 
+| FTP server status:
+|      Connected to 192.168.56.101
+|      Logged in as ftp
+|      TYPE: ASCII
+|      No session bandwidth limit
+|      Session timeout in seconds is 300
+|      Control connection is plain text
+|      Data connections will be plain text
+|      vsFTPd 2.3.4 - secure, fast, stable
+|_End of status
+|_ftp-anon: Anonymous FTP login allowed (FTP code 230)
+22/tcp    open  ssh         OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)
+| ssh-hostkey: 
+|   1024 60:0f:cf:e1:c0:5f:6a:74:d6:90:24:fa:c4:d5:6c:cd (DSA)
+|_  2048 56:56:24:0f:21:1d:de:a7:2b:ae:61:b1:24:3d:e8:f3 (RSA)
+23/tcp    open  telnet      Linux telnetd
+25/tcp    open  smtp        Postfix smtpd
+|_ssl-date: 2025-03-31T03:46:15+00:00; -1s from scanner time.
+|_smtp-commands: metasploitable.localdomain, PIPELINING, SIZE 10240000, VRFY, ETRN, STARTTLS, ENHANCEDSTATUSCODES, 8BITMIME, DSN
+| ssl-cert: Subject: commonName=ubuntu804-base.localdomain/organizationName=OCOSA/stateOrProvinceName=There is no such thing outside US/countryName=XX
+| Not valid before: 2010-03-17T14:07:45
+|_Not valid after:  2010-04-16T14:07:45
+| sslv2: 
+|   SSLv2 supported
+|   ciphers: 
+|     SSL2_DES_192_EDE3_CBC_WITH_MD5
+|     SSL2_RC4_128_WITH_MD5
+|     SSL2_RC4_128_EXPORT40_WITH_MD5
+|     SSL2_RC2_128_CBC_EXPORT40_WITH_MD5
+|     SSL2_DES_64_CBC_WITH_MD5
+|_    SSL2_RC2_128_CBC_WITH_MD5
+53/tcp    open  domain      ISC BIND 9.4.2
+| dns-nsid: 
+|_  bind.version: 9.4.2
+80/tcp    open  http        Apache httpd 2.2.8 ((Ubuntu) DAV/2)
+|_http-server-header: Apache/2.2.8 (Ubuntu) DAV/2
+|_http-title: Metasploitable2 - Linux
+111/tcp   open  rpcbind     2 (RPC #100000)
+| rpcinfo: 
+|   program version    port/proto  service
+|   100000  2            111/tcp   rpcbind
+|   100000  2            111/udp   rpcbind
+|   100003  2,3,4       2049/tcp   nfs
+|   100003  2,3,4       2049/udp   nfs
+|   100005  1,2,3      42844/tcp   mountd
+|   100005  1,2,3      52133/udp   mountd
+|   100021  1,3,4      36492/tcp   nlockmgr
+|   100021  1,3,4      40192/udp   nlockmgr
+|   100024  1          33515/tcp   status
+|_  100024  1          42262/udp   status
+139/tcp   open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+445/tcp   open  netbios-ssn Samba smbd 3.0.20-Debian (workgroup: WORKGROUP)
+512/tcp   open  exec        netkit-rsh rexecd
+513/tcp   open  login
+514/tcp   open  shell       Netkit rshd
+1099/tcp  open  java-rmi    GNU Classpath grmiregistry
+1524/tcp  open  bindshell   Metasploitable root shell
+2049/tcp  open  nfs         2-4 (RPC #100003)
+2121/tcp  open  ftp         ProFTPD 1.3.1
+3306/tcp  open  mysql       MySQL 5.0.51a-3ubuntu5
+| mysql-info: 
+|   Protocol: 10
+|   Version: 5.0.51a-3ubuntu5
+|   Thread ID: 8
+|   Capabilities flags: 43564
+|   Some Capabilities: Support41Auth, SupportsCompression, ConnectWithDatabase, SwitchToSSLAfterHandshake, Speaks41ProtocolNew, SupportsTransactions, LongColumnFlag
+|   Status: Autocommit
+|_  Salt: H1[X)a/b##(=;Rg0YO`v
+3632/tcp  open  distccd     distccd v1 ((GNU) 4.2.4 (Ubuntu 4.2.4-1ubuntu4))
+5432/tcp  open  postgresql  PostgreSQL DB 8.3.0 - 8.3.7
+|_ssl-date: 2025-03-31T03:46:15+00:00; -1s from scanner time.
+| ssl-cert: Subject: commonName=ubuntu804-base.localdomain/organizationName=OCOSA/stateOrProvinceName=There is no such thing outside US/countryName=XX
+| Not valid before: 2010-03-17T14:07:45
+|_Not valid after:  2010-04-16T14:07:45
+5900/tcp  open  vnc         VNC (protocol 3.3)
+| vnc-info: 
+|   Protocol version: 3.3
+|   Security types: 
+|_    VNC Authentication (2)
+6000/tcp  open  X11         (access denied)
+6667/tcp  open  irc         UnrealIRCd
+6697/tcp  open  irc         UnrealIRCd
+8009/tcp  open  ajp13       Apache Jserv (Protocol v1.3)
+|_ajp-methods: Failed to get a valid response for the OPTION request
+8180/tcp  open  http        Apache Tomcat/Coyote JSP engine 1.1
+|_http-favicon: Apache Tomcat
+|_http-server-header: Apache-Coyote/1.1
+|_http-title: Apache Tomcat/5.5
+8787/tcp  open  drb         Ruby DRb RMI (Ruby 1.8; path /usr/lib/ruby/1.8/drb)
+33027/tcp open  java-rmi    GNU Classpath grmiregistry
+33515/tcp open  status      1 (RPC #100024)
+36492/tcp open  nlockmgr    1-4 (RPC #100021)
+42844/tcp open  mountd      1-3 (RPC #100005)
+MAC Address: 08:00:27:26:45:0B (PCS Systemtechnik/Oracle VirtualBox virtual NIC)
+Device type: general purpose
+Running: Linux 2.6.X
+OS CPE: cpe:/o:linux:linux_kernel:2.6
+OS details: Linux 2.6.9 - 2.6.33
+Network Distance: 1 hop
+Service Info: Hosts:  metasploitable.localdomain, irc.Metasploitable.LAN; OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Host script results:
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| smb-os-discovery: 
+|   OS: Unix (Samba 3.0.20-Debian)
+|   Computer name: metasploitable
+|   NetBIOS computer name: 
+|   Domain name: localdomain
+|   FQDN: metasploitable.localdomain
+|_  System time: 2025-03-30T23:46:06-04:00
+|_nbstat: NetBIOS name: METASPLOITABLE, NetBIOS user: <unknown>, NetBIOS MAC: <unknown> (unknown)
+|_smb2-time: Protocol negotiation failed (SMB2)
+|_clock-skew: mean: 59m58s, deviation: 2h00m00s, median: -1s
+
+TRACEROUTE
+HOP RTT     ADDRESS
+1   0.18 ms 192.168.56.102
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 139.61 seconds
+```
+
+Valitsin nämä portit hyökkääjälle mielenkiintoisiksi: ```21/tcp ftp```, ```23/tcp telnet``` ja ```3306/tcp mysql```. 
+
+```
+21/tcp    open  ftp         vsftpd 2.3.4
+| ftp-syst: 
+|   STAT: 
+| FTP server status:
+|      Connected to 192.168.56.101
+|      Logged in as ftp
+|      TYPE: ASCII
+|      No session bandwidth limit
+|      Session timeout in seconds is 300
+|      Control connection is plain text
+|      Data connections will be plain text
+|      vsFTPd 2.3.4 - secure, fast, stable
+|_End of status
+|_ftp-anon: Anonymous FTP login allowed (FTP code 230)
+```
+
+FTP pisti silmään varsinkin ```Anonymous FTP login allowed``` takia. 
+Yhteydet toimivat myös selkokielisinä (plaintext) eli niitä on helppo kaapata ja lukea. 
+Nopealla haulla ohjelman ```vsftpd 2.3.4``` versiossa on Backdoor Command Execution -exploit. 
+
+```23/tcp    open  telnet      Linux telnetd```
+
+Telnet pisti silmään, sillä on jo pidempään pidetty tietoturvattomana vaihtoehtoja. Mm. Herrasmieshakkeri-podcastissä puhuttiin telnetistä "myrkkynä". 
+
+```
+3306/tcp  open  mysql       MySQL 5.0.51a-3ubuntu5
+| mysql-info: 
+|   Protocol: 10
+|   Version: 5.0.51a-3ubuntu5
+|   Thread ID: 8
+|   Capabilities flags: 43564
+|   Some Capabilities: Support41Auth, SupportsCompression, ConnectWithDatabase, SwitchToSSLAfterHandshake, Speaks41ProtocolNew, SupportsTransactions, LongColumnFlag
+|   Status: Autocommit
+|_  Salt: H1[X)a/b##(=;Rg0YO`v
+```
+
+MySQL vaikutti kiinnostavalta, sillä SQL-injektio on yksi yleisimmistä tietoturvariskeistä. Esim. OWASP Top10 nimesi injektiot kolmanneksi vuonna 2021 ja ensimmäiseksi vuonna 2017. 
+MySQL 5.0.51a-3 haulla löytyi mm. priviledge escalation exploit. 
+
 
 ## Ajankäyttö: 
 
-
+- Materiaalien lukemiseen, kuuntelemiseen ja tiivistämiseen n. 2h. 
+- Tehtäviin n. 2h. 
+- Raportointiin ja dokumentointiin n. 2h. 
 
 ## Lähteet: 
 
@@ -179,4 +467,20 @@ Tehtävä x.
 
 Nmap. s.a. Options Summary.    
 https://nmap.org/book/man-briefoptions.html    
-Tehtävä c. 
+Tehtävä c.    
+
+VulnHub. s.a. Metasploitable 2.    
+https://www.vulnhub.com/entry/metasploitable-2,29/    
+Tehtävä e.    
+
+Rapid7. s.a. VSFTPD v2.3.4 Backdoor Command Execution.    
+https://www.rapid7.com/db/modules/exploit/unix/ftp/vsftpd_234_backdoor/    
+Tehtävä h.    
+
+OWASP. s.a. OWASP Top10.    
+https://owasp.org/Top10/    
+Tehtävä h.    
+
+Exploit Database. s.a. MySQL (Linux) - Database Privilege Escalation.    
+https://www.exploit-db.com/exploits/23077    
+Tehtävä h.    
