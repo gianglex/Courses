@@ -24,7 +24,7 @@
  
 ## a) Kali
 
-![a1](https://github.com/user-attachments/assets/687940f2-a9fd-4ce8-b069-253a62c28c6e)
+<img src="https://github.com/user-attachments/assets/687940f2-a9fd-4ce8-b069-253a62c28c6e" width="500"> <br/>
 
 ## b) Irrota Kali-virtuaalikone verkosta
 
@@ -50,7 +50,7 @@ Testi varmisti, että verkko tosiaan pois päältä.
 
 ```nmap -T4 -A localhost```
 
-![c1](https://github.com/user-attachments/assets/1532ae41-311c-4ac2-9bfe-03d020315049)
+<img src="https://github.com/user-attachments/assets/1532ae41-311c-4ac2-9bfe-03d020315049" width="500"> <br/>
 
 Parametrit ja niiden selitteet: 
 ```-T4``` Timing, säätää skannauksen ajoitusta. Vaihtoehtoina T0-5, 0 hitain ja 5 nopein. 
@@ -101,9 +101,9 @@ Lopuksi tarkastin vielä, että demonit olivat käynnissä:
 
 ```systemctl status ssh```
 
-![d1](https://github.com/user-attachments/assets/a927d7f8-15f9-4bae-9c0e-eedc547aee60)
+<img src="https://github.com/user-attachments/assets/a927d7f8-15f9-4bae-9c0e-eedc547aee60" width="500"> <br/>
 
-![d2](https://github.com/user-attachments/assets/f11fc96e-71fd-40d3-bc07-9196a5163488)
+<img src="https://github.com/user-attachments/assets/f11fc96e-71fd-40d3-bc07-9196a5163488" width="500"> <br/>
 
 Lopuksi vielä ennen nmap:n uudelleenajoa, irrotin jälleen Kalin internetistä ja varmistin että yhteys internetiin on pois päältä. 
 
@@ -139,7 +139,7 @@ OS and Service detection performed. Please report any incorrect results at https
 Nmap done: 1 IP address (1 host up) scanned in 8.03 seconds
 ```
 
-![d5](https://github.com/user-attachments/assets/cd46e6cb-ac55-4bde-8190-61d66a16055b)
+<img src="https://github.com/user-attachments/assets/cd46e6cb-ac55-4bde-8190-61d66a16055b" width="500"> <br/>
 
 Tällä kertaa skannauksesta selvisi aiemmasta skannauksesta poiketen mm: ssh-hostkeyt, avoimia portteja (22/tcp ja 80/tcp) sekä käyttöjärjestelmän tiedot. 
 
@@ -173,23 +173,23 @@ Alla vielä pääasialliset tiedot asennuksesta:
 
 Menin ylävalikosta File -> Tools -> Network Manager
 
-![e1](https://github.com/user-attachments/assets/ed488198-bf34-4b29-9126-cf949e2a4225)
+<img src="https://github.com/user-attachments/assets/ed488198-bf34-4b29-9126-cf949e2a4225" width="500"> <br/>
 
 Kävin tarkastamassa asetuksista jo olemassa olevan Host-Only verkkoadapterini. 
 
-![e2](https://github.com/user-attachments/assets/c1f91b17-5393-47e5-96ab-9c3691b3d658)
+<img src="https://github.com/user-attachments/assets/c1f91b17-5393-47e5-96ab-9c3691b3d658" width="500"> <br/>
 
 Tämän jälkeen lisäsin Kalille toisen verkkoadapterin, johon liitin Host-only adapterin. 
 
-![e3](https://github.com/user-attachments/assets/3bb08637-9e4a-49d2-963d-65b0ec2977bd)
+<img src="https://github.com/user-attachments/assets/3bb08637-9e4a-49d2-963d-65b0ec2977bd" width="500"> <br/>
 
 Metasploitille muutin sen olemassaolevan Adapter 1:n Host-only adapteriin, sillä en tahdo päästä Metasploitilla internettiin. 
 
-![e4](https://github.com/user-attachments/assets/f5dc1ebb-f6f1-4f3f-a7ae-64b773b36cc3)
+<img src="https://github.com/user-attachments/assets/f5dc1ebb-f6f1-4f3f-a7ae-64b773b36cc3" width="500"> <br/>
 
 Käynnistin vielä Metasploitable2:n katsoakseni, että asennus onnistui. 
 
-![e5](https://github.com/user-attachments/assets/4865a38e-8fa7-45b2-85d9-ca6ef8809dae)
+<img src="https://github.com/user-attachments/assets/4865a38e-8fa7-45b2-85d9-ca6ef8809dae" width="500"> <br/>
 
 Ja sehän toimi odotetusti ja pääsin kirjautumaan sisään (msfadmin:msfadmin)
 
@@ -199,7 +199,7 @@ Kali: ```ping 1.1.1.1```
 
 Kali: ```ping 8.8.8.8```
 
-![e6](https://github.com/user-attachments/assets/b1ba810f-6e70-4406-ae31-ae942422740b)
+<img src="https://github.com/user-attachments/assets/b1ba810f-6e70-4406-ae31-ae942422740b" width="500"> <br/>
 
 Internet-yhteys toimi odotetusti ja tarkastin vielä verkkoadapterien tilan: Kalista löytyy AMD 79C97x (Host-only) sekä Intel 82540EM (internet) adapterit. 
 
@@ -223,7 +223,7 @@ Kali: ```ping 1.1.1.1```
 
 Tämän jälkeen ajoin komennon, kohteeksi valikoitui ```192.168.56.0```, sillä olin asettanut aiemmin Host-only verkon osoitteeksi ```192.168.56.1```.  
 
-![g2](https://github.com/user-attachments/assets/609c108e-e736-4c99-8294-bfb64c32a541)
+<img src="https://github.com/user-attachments/assets/609c108e-e736-4c99-8294-bfb64c32a541" width="500"> <br/>
 
 Kali: ```nmap -sn 192.168.56.0/24```
 
@@ -250,7 +250,7 @@ Kävin osoitteet läpi vielä ```curl``` -komennolla ja ```192.168.56.102``` nä
 
 ```curl 192.168.56.102```
 
-![g3](https://github.com/user-attachments/assets/e45e1bf5-130a-4760-a0b6-0bcea9622254)
+<img src="https://github.com/user-attachments/assets/e45e1bf5-130a-4760-a0b6-0bcea9622254" width="500"> <br/>
 
 ## h) Porttiskannaa Metasploitable huolellisesti ja kaikki portit (nmap -A -T4 -p-). Poimi 2-3 hyökkääjälle kiinnostavinta porttia. Analysoi ja selitä tulokset näiden porttien osalta.
 
