@@ -416,6 +416,7 @@ Valitsin nämä portit hyökkääjälle mielenkiintoisiksi: ```21/tcp ftp```, ``
 FTP pisti silmään varsinkin ```Anonymous FTP login allowed``` takia. 
 Yhteydet toimivat myös selkokielisinä (plaintext) eli niitä on helppo kaapata ja lukea. 
 Nopealla haulla ohjelman ```vsftpd 2.3.4``` versiossa on Backdoor Command Execution -exploit. 
+(https://www.rapid7.com/db/modules/exploit/unix/ftp/vsftpd_234_backdoor/)
 
 ```23/tcp    open  telnet      Linux telnetd```
 
@@ -437,7 +438,7 @@ Mm. Herrasmieshakkeri-podcastissä puhuttiin telnetistä "myrkkynä".
 ```
 
 MySQL vaikutti kiinnostavalta, sillä SQL-injektio on yksi yleisimmistä tietoturvariskeistä. Esim. OWASP Top10 nimesi injektiot kolmanneksi vuonna 2021 ja ensimmäiseksi vuonna 2017. 
-MySQL 5.0.51a-3 haulla löytyi mm. priviledge escalation exploit. 
+MySQL 5.0.51a-3 haulla löytyi mm. priviledge escalation exploit. (https://www.exploit-db.com/exploits/23077)
 
 
 ## Ajankäyttö: 
