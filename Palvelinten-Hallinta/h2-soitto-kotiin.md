@@ -40,7 +40,7 @@
 Olin aiemmin jo asentanut Vagrantin sekä VirtualBoxin tietokoneelleni. Todensin Vagrantin version vielä komennolla ```vagrant --version```
 
 
-![a1](https://github.com/user-attachments/assets/45466285-c71a-4267-b223-57042a895fc7)
+<img src="https://github.com/user-attachments/assets/45466285-c71a-4267-b223-57042a895fc7" width="500"> <br/>
 
 
 ## b) Linux Vagrant. Tee Vagrantilla uusi Linux-virtuaalikone.
@@ -53,7 +53,7 @@ Tämän aloitin luomaan uutta Debian/Bookworm64 virtuaalikonetta Vagrantin avull
 
 ```vagrant init debian/bookworm64```
 
-![b1](https://github.com/user-attachments/assets/126a2173-cd48-48fa-bda5-52edfcbda1d6)
+<img src="https://github.com/user-attachments/assets/126a2173-cd48-48fa-bda5-52edfcbda1d6" width="500"> <br/>
 
 Komento loi uuden Vagrantfile -konfigurointitiedoston tiedostopolkuun, jota muokkaamalla voi säätää vagrantin luomien virtuaalikoneiden määrää ja/tai tarkempia speksejä. 
 
@@ -63,13 +63,13 @@ Kun Vagrantfile oli luotuna, käytinn ```vagrant up``` -komentoa käynnistääks
 
 ```vagrant up```
 
-![b2](https://github.com/user-attachments/assets/a6fa272e-848e-40b6-b106-401d3492f7d4)
+<img src="https://github.com/user-attachments/assets/a6fa272e-848e-40b6-b106-401d3492f7d4" width="500"> <br/>
 
 Tämän jälkeen yhdistin vielä luotuun virtuaalikoneeseen komennolla ```vagrant ssh```. 
 
 ```vagrant ssh```
 
-![b3](https://github.com/user-attachments/assets/29d97c52-5367-4c24-810a-abc9db71eeb8)
+<img src="https://github.com/user-attachments/assets/29d97c52-5367-4c24-810a-abc9db71eeb8" width="500"> <br/>
 
 Kone yhdistyi onnistuneesti uudeen virtuaalikoneeseen. Ajoin lopuksi vielä muutaman komennon todentaakseni vielä mihin koneeseen olin yhdistettynä ja mikä IP sille oli asetettu. 
 
@@ -77,26 +77,26 @@ Kone yhdistyi onnistuneesti uudeen virtuaalikoneeseen. Ajoin lopuksi vielä muut
 
 ```hostname -I```
 
-![b4](https://github.com/user-attachments/assets/4d860834-b0e2-4686-aa56-76d243849489)
+<img src="https://github.com/user-attachments/assets/4d860834-b0e2-4686-aa56-76d243849489" width="500"> <br/>
 
 Tämä jälkeen en enää tarvinnut konetta, joten poistuin ssh yhteydestä ```exit``` -komennolla ja poistin lopuksi vielä luodun (ja nyt tarpeettoman) virtuaalikoneen. 
 
 ```exit```
 
-![b5](https://github.com/user-attachments/assets/bd740852-40b0-44a9-875c-63038ca1c60d)
+<img src="https://github.com/user-attachments/assets/bd740852-40b0-44a9-875c-63038ca1c60d" width="500"> <br/>
 
 ```vagrant destroy```
 
-![b6](https://github.com/user-attachments/assets/6636f553-3a9d-4df5-8111-213e0c843c6b)
+<img src="https://github.com/user-attachments/assets/6636f553-3a9d-4df5-8111-213e0c843c6b" width="500"> <br/>
 
 
 ## c) Linux verkko Vagrantilla
 
-Muokkasin edellisessä tehtävässä luomaani Vagrantfileä luomaan useampan virtuaalikoneen. Päätin luoda suoraan tehtävässä vaadittavat verkkoyhteydet sekä Master-Minion linkitykset Vagrantfileen. 
+Muokkasin edellisessä tehtävässä luomaani Vagrantfileä luomaan useampan virtuaalikoneen. Päätin luoda suoraan tehtävässä vaadittavat verkkoyhteydet sekä Master-Minion linkityksiä Vagrantfileen + luoda muutaman ylimääräisen minion-koneen samaan hengenvetoon. 
 
 ```notepad Vagrantfile```
 
-Komento avaa ```Vagrantfile```:n notepad:lle muokattavaksi. Loin alla olevan skriptin teron esimerkkien avulla 
+Komento avaa ```Vagrantfile```:n notepad:lle muokattavaksi. Loin alla olevan skriptin Teron esimerkkien avulla 
 
 ```
 # -*- mode: ruby -*-
@@ -156,7 +156,7 @@ Yritin tämän jälkeen laittaa kokonaisuuden päälle
 
 Virtuaalikoneiden asentuessa huomasin ```Ash: E: Unable to locate package salt-master``` -viestin, joka olikin jo viime viikon tehtävistä tuttu. 
 
-![c1](https://github.com/user-attachments/assets/67c4bc12-b517-4faa-bc82-df44bc3998b4)
+<img src="https://github.com/user-attachments/assets/67c4bc12-b517-4faa-bc82-df44bc3998b4" width="500"> <br/>
 
 Viestin perusteella ymmärsin, että Vagrantfilessa olevaa asennusskriptiä täytyy vielä hieman muokata. Arvelinkin jo skriptiä tehdessä, että viime viikolla vastaan tullut ongelma todennäköisesti toistuu jälleen. Tämä johtuu siis siitä ettei Debian/Bookwormin oletuspaketinhallintaan kuulu salt. 
 
@@ -164,7 +164,7 @@ Koska tiesin etteivät juuri käynnistämäni virtuaalikoneet kuitenkaan toimi h
 
 ```vagrant destroy -f``` (-f, jottei joka virtuaalikoneen poiston yhteydessä kysytä erikseen varmistusta)
 
-![c2](https://github.com/user-attachments/assets/fe7dd52f-3fcb-4b37-b55f-7b82969210bc)
+<img src="https://github.com/user-attachments/assets/fe7dd52f-3fcb-4b37-b55f-7b82969210bc" width="500"> <br/>
 
 Tämän jälkeen lisäsin skriptiini vielä tarvittavat muutokset :
 
@@ -247,7 +247,7 @@ Ash: /tmp/vagrant-shell: line 2: curl: command not found
 Ash: /tmp/vagrant-shell: line 3: curl: command not found
 ```
 
-![c3](https://github.com/user-attachments/assets/f9069cf5-8989-4438-9c03-9fb50b2fc8d9)
+<img src="https://github.com/user-attachments/assets/f9069cf5-8989-4438-9c03-9fb50b2fc8d9" width="500"> <br/>
 
 
 Tämä siis tarkoittaa, ettei tässä ollut valmiiksi asennettuna curlia joten aiemmin lisäämäni ```curl``` -komennot eivät voineet tietenkään mennä läpi. 
@@ -257,7 +257,7 @@ Tuhosin jälleen virtuaalikoneet.
 
 ```vagrant destroy -f```
 
-Tällä kertaa lisäsin skriptien alkuun. Tämän iteroinnin yhteyteen joudun lisäämään toisen ```sudo apt-get update```, jotta curlin asennuksessa käytetään uusinta versiota. 
+Tämän iteroinnin yhteyteen jouduin lisäämään toisen ```sudo apt-get update```, jotta curlin asennuksessa käytetään uusinta versiota. 
 
 ```
 sudo apt-get update
@@ -348,7 +348,7 @@ done
 
 ```exit```
 
-![c4](https://github.com/user-attachments/assets/77b15ccf-6d89-4e71-b74f-9793bee4021d)
+<img src="https://github.com/user-attachments/assets/77b15ccf-6d89-4e71-b74f-9793bee4021d" width="500"> <br/>
 
 
 Kun tämä onnistui odotetusti, poistuin yhdeydestä ```exit```-komennolla ja toistin saman testin muilla virtuaalikoneilla. 
@@ -365,7 +365,7 @@ done
 
 ```exit```
 
-![c5](https://github.com/user-attachments/assets/e18a50c7-be49-4f43-b383-3f9b04129aaa)
+<img src="https://github.com/user-attachments/assets/e18a50c7-be49-4f43-b383-3f9b04129aaa" width="500"> <br/>
 
 
 ```vagrant ssh Charmander```
@@ -378,7 +378,7 @@ done
 
 ```exit```
 
-![c6](https://github.com/user-attachments/assets/b14ad70b-4580-4cb4-a6d5-272a0c8ff91f)
+<img src="https://github.com/user-attachments/assets/b14ad70b-4580-4cb4-a6d5-272a0c8ff91f" width="500"> <br/>
 
 
 ```vagrant ssh Squirtle```
@@ -391,7 +391,7 @@ done
 
 ```exit```
 
-![c7](https://github.com/user-attachments/assets/13a93c1d-cb5e-4f2b-b74f-685504daa70b)
+<img src="https://github.com/user-attachments/assets/13a93c1d-cb5e-4f2b-b74f-685504daa70b" width="500"> <br/>
 
 ## d) Herra-orja verkossa
 
@@ -425,6 +425,8 @@ Unaccepted Keys:
 Rejected Keys:
 ```
 
+<img src="https://github.com/user-attachments/assets/d70d9109-0a19-42e5-bf9d-288854ad4ca3" width="500"> <br/>
+
 Avaimia ei löytynyt, joten pohdiskelin voisiko johtua vaan siitä että koneet olivat olleet taustalla käynnissä jo jonkin aikaa. Päätin sammuttaa ja käynnistää koneet uudelleen, josko sillä ratkeaisi ongelma. 
 
 ```vagrant halt```
@@ -441,13 +443,13 @@ Koneen käynnistyttyä uudelleen, yhdistin jälleen masteriin (Ash) ja yritin hy
 
 Avaimet löytyvätkin tällä kertaa ja hyväksyin ne. 
 
-![d2](https://github.com/user-attachments/assets/1fe3d586-977b-4149-9944-e55371de8aae)
+<img src="https://github.com/user-attachments/assets/1fe3d586-977b-4149-9944-e55371de8aae" width="500"> <br/>
 
 Lopuksi kokeilin vielä 
 
 ```sudo salt '*' test.ping```
 
-![d3](https://github.com/user-attachments/assets/f7bc44c8-dd71-4a01-887d-b0653ecb40a7)
+<img src="https://github.com/user-attachments/assets/f7bc44c8-dd71-4a01-887d-b0653ecb40a7" width="500"> <br/>
 
 
 ## e) Kokeile vähintään kahta tilaa verkon yli (viisikosta: pkg, file, service, user, cmd)
@@ -456,15 +458,15 @@ Kokeilin lopuksi vielä muutamaa komentoa testatakseni tilojen toimivuutta.
 
 ```sudo salt '*' cmd.run 'whoami'```
 
-![ee1](https://github.com/user-attachments/assets/76ddb663-4db8-4874-a0c7-126ab03f17f5)
+<img src="https://github.com/user-attachments/assets/76ddb663-4db8-4874-a0c7-126ab03f17f5" width="500"> <br/>
 
 ```sudo salt '*' service.status salt-minion```
 
-![ee2](https://github.com/user-attachments/assets/5a5d004d-bb4d-45e1-a958-a4f21a37ad62)
+<img src="https://github.com/user-attachments/assets/5a5d004d-bb4d-45e1-a958-a4f21a37ad62" width="500"> <br/>
 
 ```sudo salt '*' state.single pkg.installed curl```
 
-![ee3](https://github.com/user-attachments/assets/30238c51-9a9c-464d-b880-2515dfb4917d)
+<img src="https://github.com/user-attachments/assets/30238c51-9a9c-464d-b880-2515dfb4917d" width="500"> <br/>
 
 ## init.sls
 
@@ -508,11 +510,14 @@ Lopuksi ajoin luomani tilan.
 
 ```sudo salt '*' state.apply oma```
 
-![f1](https://github.com/user-attachments/assets/b31079ad-cb70-4ec4-9db1-6f8207d9a3fc)
+<img src="https://github.com/user-attachments/assets/b31079ad-cb70-4ec4-9db1-6f8207d9a3fc" width="500"> <br/>
 
 
 ## Ajankäyttö 
-
+Aikaa kului: 
+- ~30min tiivistelmiin.
+- ~2-3h Salt-Minion säätämiseen, varsinkin tuohan omaan Vagrantfile säätämiseen meni hieman enemmän aikaa. 
+- ~2h dokumentointiin ja raportointiin
 
 ## Lähteet: 
 Karvinen, T. 2025. Palvelinten Hallinta.   
