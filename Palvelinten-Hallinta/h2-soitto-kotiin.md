@@ -395,7 +395,7 @@ done
 
 ## d) Herra-orja verkossa
 
-Kun olin testannut, että kaikki koneet saavat pingattua toisiansa (ja lisäksi itseänsä). Kirjauduin takaisinn masteriin (Ash), jotta voin hyväksyä Minion-avaimet. Nämä minioneihin nämä asetettiin jo Vagrantfilen alustuksessa, joten ei tarvinnut enää erikseen käydä jokaiselle minion-koneelle käydä näitä asettamassa. 
+Kun olin testannut, että kaikki koneet saavat pingattua toisiansa (ja lisäksi itseänsä). Kirjauduin takaisinn masteriin (Ash), jotta voin hyväksyä Minion-avaimet. Nämä minioneihin asetettiin jo Vagrantfilen alustuksessa, joten ei tarvinnut enää erikseen käydä jokaiselle minion-koneelle käydä näitä asettamassa. 
 
 Jos kuitenkin haluaisi niin tehdä niin sen voisi alla olevasti: 
 
