@@ -124,6 +124,10 @@ Asettamalla display filteriin ```dns.qry.name``` saadaan suodatettua esille pelk
 - Raporttiin ~2h. 
 
 ## Lähteet
+Karvinen, T. 2025. Verkkoon tunkeutuminen ja tiedustelu.    
+https://terokarvinen.com/verkkoon-tunkeutuminen-ja-tiedustelu/    
+Tehtävänanto.    
+
 Karvinen, T. 2025. Wireshark - Getting Started.    
 https://terokarvinen.com/wireshark-getting-started/    
 Tehtävät x ja b.    
