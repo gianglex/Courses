@@ -467,7 +467,7 @@ Karvinen, T. 2025. Verkkoon tunkeutuminen ja tiedustelu.
 https://terokarvinen.com/verkkoon-tunkeutuminen-ja-tiedustelu/    
 Tehtävänanto.    
 
-Bianca, DJ. 2014. Pyramid of Pain. 
+Bianco, D.J. 2014. Pyramid of Pain.    
 https://detect-respond.blogspot.com/2013/03/the-pyramid-of-pain.html    
 Tehtävä x.    
 
