@@ -24,7 +24,7 @@ Tämän jälkeen menin selaimella osoitteeseen ```localhost```, jonka tämän j�
 127.0.0.1 - - [06/Apr/2025:22:49:37 +0300] "GET /favicon.ico HTTP/1.1" 404 487 "http://localhost/" "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
 ```
 
-![a1](https://github.com/user-attachments/assets/80245e3f-d01d-46f5-99db-8efffd2fca22)
+<img src="https://github.com/user-attachments/assets/80245e3f-d01d-46f5-99db-8efffd2fca22" width="500"> <br/>
 
 ```127.0.0.1```: Pyynnön lähettäjän IP-osoite. 
 
@@ -222,11 +222,11 @@ Kun skannaus oli ohi, palasin takaisin Wiresharkkiin ja lopetin sieppauksen.
 
 Hakeakseni kohtia, joissa on sama ```nmap``` laitoin sen Wiresharkin display filteriksi ```frame contains "nmap"```
 
-![e1](https://github.com/user-attachments/assets/aa387f4b-fd77-49c3-b5e8-5d56ef5fdcab)
+<img src="https://github.com/user-attachments/assets/aa387f4b-fd77-49c3-b5e8-5d56ef5fdcab" width="500"> <br/>
 
 Tarkastelin hetken aikaa frameja Wiresharkissa ja huomasin, että pääosin ```nmap``` oli frameissa User Agentin sisällä. 
 
-![e2](https://github.com/user-attachments/assets/ad048ac8-b59a-4b9f-a16d-18e6f9a63bbc)
+<img src="https://github.com/user-attachments/assets/ad048ac8-b59a-4b9f-a16d-18e6f9a63bbc" width="500"> <br/>
 
 Halusin vielä saada hieman selkeämmän ja helposti luettavamman kokonaiskuvan, joten tallensin sieppauksen (nimellä nmap.pcapng) ja asensin vielä tsharkin (Wiresharkin CLI-version).  
 
@@ -234,7 +234,7 @@ Halusin vielä saada hieman selkeämmän ja helposti luettavamman kokonaiskuvan,
 
 ```tshark -r nmap.pcapng -Y 'frame contains "nmap"'```
 
-![e3](https://github.com/user-attachments/assets/e16542fe-8752-4b1d-8107-6a1305448643)
+<img src="https://github.com/user-attachments/assets/e16542fe-8752-4b1d-8107-6a1305448643" width="500"> <br/>
 
 ```
 $ tshark -r nmap.pcapng -Y 'frame contains "nmap"'
@@ -401,7 +401,7 @@ Aloitin user-agentin muokkaamisen avaamalla tiedoston ```http.lua```
 
 Tämän jälkeen ensin kopioin olemassaolevan rivin ja lisäsin sen eteen ```--```, jotta voin palauttaa myöhemmin halutessani oletusasetukset. Sen jälkeen lisäsin haluamani User-agentin uudeksi oletus user-agentiksi. 
 
-![g1](https://github.com/user-attachments/assets/03b6394e-a7a9-4e38-893e-4763dc19093a)
+<img src="https://github.com/user-attachments/assets/03b6394e-a7a9-4e38-893e-4763dc19093a" width="500"> <br/>
 
 ## h) Pienemmät jäljet. Porttiskannaa weppipalvelimesi uudelleen localhost-osoitteella. Tarkastele sekä Apachen lokia että siepattua verkkoliikennettä. Mikä on muuttunut, kun vaihdoit user-agent:n? Löytyykö lokista edelleen tekstijono "nmap"?
 
@@ -429,7 +429,7 @@ Häivyttääkseni viimeisenkin ```nmap``` -tekstin, menin polkuun ```/usr/share/
 
 ```grep -ir "nmaplowercheck"```
 
-![i1](https://github.com/user-attachments/assets/0542de2a-8752-42d4-8ef5-0bf38a1aa1d6)
+<img src="https://github.com/user-attachments/assets/0542de2a-8752-42d4-8ef5-0bf38a1aa1d6" width="500"> <br/>
 
 Haku tuotti tulosta: ```nselib/http.lua```, eli kansiossa ```nselib``` on tiedosto ```http.lua```, jonka sisällä on viimeinen maininta ```nmap```:sta
 
@@ -437,9 +437,9 @@ Haku tuotti tulosta: ```nselib/http.lua```, eli kansiossa ```nselib``` on tiedos
 
 Tiedostosta löytyi ```nmap``` maininnat vielä, joten muokkasin niistä maininnat pois. 
 
-![i2](https://github.com/user-attachments/assets/2cf68179-bb7b-4608-9efc-abaa5f2919fd)
+<img src="https://github.com/user-attachments/assets/2cf68179-bb7b-4608-9efc-abaa5f2919fd" width="500"> <br/>
 
-![i3](https://github.com/user-attachments/assets/206c3a92-3006-4a71-8194-d36edcb38977)
+<img src="https://github.com/user-attachments/assets/206c3a92-3006-4a71-8194-d36edcb38977" width="500"> <br/>
 
 Tämän jälkeen käynnistin uudelleen porttiskannauksen. 
 
@@ -447,13 +447,13 @@ Tämän jälkeen käynnistin uudelleen porttiskannauksen.
 
 Tarkastelin lopuksi uudelleen vielä ngrep:n sekä apache2:n lokit, joista ei kummastakaan enää löytynyt uusia ilmoituksia. 
 
-![i4](https://github.com/user-attachments/assets/4fa61273-47d5-44d0-b1d2-49f2530e406b)
+<img src="https://github.com/user-attachments/assets/4fa61273-47d5-44d0-b1d2-49f2530e406b" width="500"> <br/>
 
 Putkitin Apache2:n lokien tarkastelun loppuun ```| tail -1```, sillä jos onnistuin niin uusimmassa porttiskannauksesta ei pitäisi olla jäänyt jälkiä ja siellä näkyvä loki on edellisistä skannauksista. 
 
 ```sudo cat /var/log/apache2/access.log | grep nmap | tail -1```
 
-![i5](https://github.com/user-attachments/assets/738f9264-7887-40d7-a169-4930c6f64d07)
+<img src="https://github.com/user-attachments/assets/738f9264-7887-40d7-a169-4930c6f64d07" width="500"> <br/>
 
 Lokista näkyvä merkintä oli jo tullut aiemmista skannauksista, joten olin onnistunut piilottamaan viimeiseinkin ```nmap``` tekstin. 
 
