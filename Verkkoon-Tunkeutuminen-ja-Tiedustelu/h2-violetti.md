@@ -421,7 +421,7 @@ Myöskin apache2:n lokeissa ainoa teoreempi ```nmap``` on sama GET pyyntö.
 127.0.0.1 - - [07/Apr/2025:01:38:03 +0300] "GET /nmaplowercheck1743979083 HTTP/1.1" 404 451 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.10 Safari/605.1.1"
 ```
 
-## i) Hieman vaikeampi: LoWeR ChEcK. Poista skritiskannauksesta viimeinenkin "nmap" -teksti. Etsi löytämääsi tekstiä /usr/share/nmap -hakemistosta ja korvaa se toisella. Tee porttiskannaus ja tarkista, että "nmap" ei näy isolla eikä pienellä kirjoitettuna Apachen lokissa eikä siepatussa verkkoliikenteessä. (Tässä tehtävässä voit muokata suoraan lua-skriptejä /usr/share/nmap alta, 'sudoedit'. Muokatun version paketoiminen siis rajataan ulos tehtävästä.)
+## i) Hieman vaikeampi: LoWeR ChEcK. Poista skritiskannauksesta viimeinenkin "nmap" -teksti. Etsi löytämääsi tekstiä /usr/share/nmap -hakemistosta ja korvaa se toisella. Tee porttiskannaus ja tarkista, että "nmap" ei näy isolla eikä pienellä kirjoitettuna Apachen lokissa eikä siepatussa verkkoliikenteessä. + j) Invisible, invincible. 
 
 Häivyttääkseni viimeisenkin ```nmap``` -tekstin, menin polkuun ```/usr/share/nmap``` ja etsin tiedostoa, jossa voisi olla maininta ```nmaplowercheck```
 
