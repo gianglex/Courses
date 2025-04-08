@@ -45,3 +45,22 @@ Tehtävä x.
 OWASP. 2021. A01:2021 – Broken Access Control.    
 https://owasp.org/Top10/A10_2021-Server-Side_Request_Forgery_%28SSRF%29/    
 Tehtävä x.    
+
+PortSwigger. s.a. Insecure direct object references (IDOR).    
+https://portswigger.net/web-security/access-control/idor    
+Tehtävä x.    
+
+PortSwigger. s.a. Path traversal.    
+https://portswigger.net/web-security/file-path-traversal    
+
+PortSwigger. s.a. Server-side request forgery (SSRF).    
+https://portswigger.net/web-security/ssrf    
+Tehtävä x.    
+
+PortSwigger. s.a. Cross-site scripting.    
+https://portswigger.net/web-security/cross-site-scripting
+Tehtävä x.    
+
+PortSwigger. s.a. Server-side template injection.    
+https://portswigger.net/web-security/server-side-template-injection    
+Tehtävä x.    
