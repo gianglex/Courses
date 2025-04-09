@@ -37,7 +37,7 @@ Tämän jälkeen ajoin Zaproxyn
 
 ```zaproxy```
 
-![a1](https://github.com/user-attachments/assets/bac2b615-c2e8-4636-911a-231edde2f47a)
+<img src="https://github.com/user-attachments/assets/bac2b615-c2e8-4636-911a-231edde2f47a" width="500"> <br/>
 
 Loin tämän jälkeen CA-sertifikaatin itselleni 
 
@@ -47,25 +47,25 @@ Tämän jälkeen generoin uuden sertifikaatin ja tallensin sen.
 
 ```Generate``` --> ```Save```
 
-![a2](https://github.com/user-attachments/assets/00852da3-d93d-44eb-8336-5e6bb54d1bcb)
+<img src="https://github.com/user-attachments/assets/00852da3-d93d-44eb-8336-5e6bb54d1bcb" width="500"> <br/>
 
 Muokkasin tämän jälkeen Zaproxyn sieppaamaan myös kuvat. 
 
 ```Display``` --> ```Process images in HTTP requests/responses ✅```
 
-![a3](https://github.com/user-attachments/assets/b1332c09-f365-42a1-bee1-59003a2e07a3)
+<img src="https://github.com/user-attachments/assets/b1332c09-f365-42a1-bee1-59003a2e07a3" width="500"> <br/>
 
 Tämän jälkeen avasin Firefoxin ja menin lisäämään tallennettua sertifikaattia Firefoxiin. 
 
 Yläpalkista (saa esille painamalla ```Alt``` -näppäintä kerran) ```Settings``` --> ```Privacy & Security``` --> ```View Certificates``` --> ```Import```
 
-![a4](https://github.com/user-attachments/assets/9acde85f-3735-47cc-9661-ca626bfe5c9d)
+<img src="https://github.com/user-attachments/assets/9acde85f-3735-47cc-9661-ca626bfe5c9d" width="500"> <br/>
 
 Seuraavaksi asensin Firefoxiin Foxyproxy lisäosan. 
 
 Yläpalkista ```Tools``` --> ```Add-ons and Themes``` --> ```Extensions``` --> Hakupalkkiin ```Foxyproxy``` --> ```FoxyProxy Standard``` --> ```Add to Firefox```
 
-![a5](https://github.com/user-attachments/assets/eda6381e-bd46-417f-bd30-ab12ec0de52c)
+<img src="https://github.com/user-attachments/assets/eda6381e-bd46-417f-bd30-ab12ec0de52c" width="500"> <br/>
 
 Ponnahdusikkunasta valitsin vielä ```Add``` ja sitä seuraavasta ```Okay```
 
@@ -93,11 +93,11 @@ Proxy by Patterns: All | giangle.fi
 
 Huom. lisäsin oman sivuni, sillä en ole tekemässä hyökkäyksiä sivulleni. Se on lisättynä vain ZaProxyn sieppauksen testaamiseksi. 
 
-![a9](https://github.com/user-attachments/assets/77970353-996c-41ad-acda-4b85728e4bd6)
+<img src="https://github.com/user-attachments/assets/77970353-996c-41ad-acda-4b85728e4bd6" width="500"> <br/>
 
 Tämän jälkeen menin selaimella sivulleni ```giangle.fi``` ja tarkastin ZaProxysta, onko HTTP pyyntöjä siepattu. 
 
-![a10](https://github.com/user-attachments/assets/0c1f0615-bf88-4716-96d3-14e2e3c8ff26)
+<img src="https://github.com/user-attachments/assets/0c1f0615-bf88-4716-96d3-14e2e3c8ff26" width="500"> <br/>
 
 Sieppaus näyttäisi toimivan odotetusti, sillä ZaProxyyn ilmestyi GET -pyyntö. 
 
@@ -109,19 +109,19 @@ Lähdin alkuun kokeilemaan yksinkertaisinta ratkaisua eli syöttämällä yksink
 
 ```<script>alert()</script>```
 
-![c1](https://github.com/user-attachments/assets/6d280e21-8e44-4b45-9e24-f0c8922d1727)
+<img src="https://github.com/user-attachments/assets/6d280e21-8e44-4b45-9e24-f0c8922d1727" width="500"> <br/>
 
 Painettuani ```Search``` nappulaa, ilmestyi ponnahdusikkuna näytölleni joten arvelin jo siitä onnistuin tehtävässä. 
 
-![c2](https://github.com/user-attachments/assets/37a64e78-5124-4f70-89bc-b37fd25ddf55)
+<img src="https://github.com/user-attachments/assets/37a64e78-5124-4f70-89bc-b37fd25ddf55" width="500"> <br/>
 
 Painettua OK ilmestyikin jo ilmoitus, että tehtävä on ratkaistu. 
 
-![c3](https://github.com/user-attachments/assets/89bbb3c3-578c-41cd-b73f-5f7e5e3dc4aa)
+<img src="https://github.com/user-attachments/assets/89bbb3c3-578c-41cd-b73f-5f7e5e3dc4aa" width="500"> <br/>
 
 Halusin vielä selvittää missä kohtaa sivua skripti ajetaan, joten hain vielä sanalla ```testi```. 
 
-![c4](https://github.com/user-attachments/assets/b1598b16-c73a-41f2-a954-a137bc30a852)
+<img src="https://github.com/user-attachments/assets/b1598b16-c73a-41f2-a954-a137bc30a852" width="500"> <br/>
 
 Hakuun syötetty teksti ilmestyy siis sivulle ```0 search results for``` jälkeen, josta sivu lukee ja ajaa skriptin sellaisenaan. 
 
@@ -133,7 +133,7 @@ Aloitin selaamalla aloitussivua, jossa ei ollut mitään kommenttikenttää jote
 
 Oletin että samalla yksinkertaisella skriptillä onnistuu tämäkin tehtävä, joten syötin kommenttikenttään skriptini ja lisäsin kommentin. 
 
-![d1](https://github.com/user-attachments/assets/d0c0ba3a-9356-476e-bb6a-476870a7e52b)
+<img src="https://github.com/user-attachments/assets/d0c0ba3a-9356-476e-bb6a-476870a7e52b" width="500"> <br/>
 
 ```
 Comment: <script>alert()</script>
@@ -141,13 +141,15 @@ Name: testi
 Email: test@test.com
 ```
 
+<img src="https://github.com/user-attachments/assets/2f3f3526-b4c5-48ed-ad29-d5da1bb622a4" width="500"> <br/>
+
 Lähetettyäni kommentin tulikin jo vastaus, että tehtävä on ratkaistu. Arvelin jo tässä vaiheessa, että tulevilla kerroilla ladattaessa blogisivua lähetetty skripti suoritetaan. Päätin kuitenkin vielä palata blogisivulle klikkaamalla ```< Back to blog```. 
 
-![d3](https://github.com/user-attachments/assets/ec214285-330e-4884-b43d-fd756c1c698e)
+<img src="https://github.com/user-attachments/assets/ec214285-330e-4884-b43d-fd756c1c698e" width="500"> <br/>
 
 Skripti lähti käyntiin sivua ladattaessa. 
 
-![d4](https://github.com/user-attachments/assets/93a5cdb7-89e6-4e4a-8896-67dbc8212fa1)
+<img src="https://github.com/user-attachments/assets/93a5cdb7-89e6-4e4a-8896-67dbc8212fa1" width="500"> <br/>
 
 Kommentti löytyi vielä sivulta ilman "sisältöä". Hyökkääjän kantilta olisi voinut luultavasti lisätä kommenttiin muutakin tekstiä, jolloin kommentti ei pistäisi niin paljon silmään. 
 
@@ -158,7 +160,7 @@ Tehtävässä tarkoituksena oli päästä käsiksi palvelimella olevaan ```/etc/
 
 Aloitin jälleen selaamalla sivua ja miettimällä missä voisi olla hakupyyntöjä palvelimen tiedostoille. Kuvat olivat selkein kohde sivulla, joten klikkasin oikealla näppäimellä kuvaa ja painoin ```Copy Image Link```. 
 
-![e1](https://github.com/user-attachments/assets/aa292068-f046-485b-a170-2b3df18e0974)
+<img src="https://github.com/user-attachments/assets/aa292068-f046-485b-a170-2b3df18e0974" width="500"> <br/>
 
 ```https://0a5f00ed048f7a608065adbd00a800ac.web-security-academy.net/image?filename=20.jpg```
 
@@ -168,27 +170,27 @@ Kopioitu linkki oli muodossa ```filename=20jpg```, joten muokkasin sen tilalle t
 
 Mennessäni linkkiin sain virheilmoituksen, sillä selain ei osaa lukea ```passwd``` -tiedostoa, koska sillä ei ole tiedostopäätettä. 
 
-![e2](https://github.com/user-attachments/assets/beeb352f-c5b4-43b4-a1d2-48bbe2a57fd5)
+<img src="https://github.com/user-attachments/assets/beeb352f-c5b4-43b4-a1d2-48bbe2a57fd5" width="500"> <br/>
 
 Palatessani sivulle, sivu ilmoitti kuitenkin tehtävän onnistuneen. 
 
-![e3](https://github.com/user-attachments/assets/607daf34-a0c6-4c7e-847f-96c314a9d930)
+<img src="https://github.com/user-attachments/assets/607daf34-a0c6-4c7e-847f-96c314a9d930" width="500"> <br/>
 
 Tämän olisi voinut saada ladattua myös ZaProxylla, mutta päätin tällä kertaa ladata tiedoston vain terminaalista ```curl``` -komennolla tehtävän suorittamisen demonstroimiseksi. 
 
 ```curl https://0a5f00ed048f7a608065adbd00a800ac.web-security-academy.net/image?filename=/../../../../../etc/passwd```
 
-![e4](https://github.com/user-attachments/assets/8c2fb1cd-269e-4c0b-bb68-04ae4ad12bfe)
+<img src="https://github.com/user-attachments/assets/8c2fb1cd-269e-4c0b-bb68-04ae4ad12bfe" width="500"> <br/>
 
 Testasin vielä mieleskiinnosta vaihtoehtoista tapaa (ilman ylimääräisiä työkaluja) saada ladattua tiedosto Firefox Developer Toolsin avulla: 
 
 ```F12``` (Firefox Developer Tools) --> ```F5``` (sivun päivitys) --> Oikea klikkaus ```GET``` pyynnöstä --> ```Save response as``` --> ```test``` (tiedoston nimi)
 
-![e5](https://github.com/user-attachments/assets/87fee2f3-0247-4c54-b5ba-11c56ec44b6e)
+<img src="https://github.com/user-attachments/assets/87fee2f3-0247-4c54-b5ba-11c56ec44b6e" width="500"> <br/>
 
 ```cat test```
 
-![e6](https://github.com/user-attachments/assets/6b6c1bf4-e280-478b-96c3-3dce87498efa)
+<img src="https://github.com/user-attachments/assets/6b6c1bf4-e280-478b-96c3-3dce87498efa" width="500"> <br/>
 
 
 ## f) File path traversal, traversal sequences blocked with absolute path bypass
@@ -197,7 +199,7 @@ Jälleen toinen tehtävä, jossa tavoitteena päästä ```/etc/passwd```.
 
 Aloitin jälleen hakemalla kuvan tiedostopolun. 
 
-![f1](https://github.com/user-attachments/assets/63b0cd46-3304-40a8-806d-bb09cf7287b7)
+<img src="https://github.com/user-attachments/assets/63b0cd46-3304-40a8-806d-bb09cf7287b7" width="500"> <br/>
 
 Alkuperäinen linkki. 
 
@@ -209,29 +211,29 @@ Kokeilin ensimmäisenä yksinkertaisinta ratkaisua.
 
 Tämä kuitenkin palautti "No such file". Joten kokeilin seuraavaksi muokata GET pyyntöä Developer Toolsin avulla. 
 
-![f2](https://github.com/user-attachments/assets/f67676c0-373b-45eb-a3f5-6a0e7936b370)
+<img src="https://github.com/user-attachments/assets/f67676c0-373b-45eb-a3f5-6a0e7936b370" width="500"> <br/>
 
 Tutkailin hetken GET-pyyntöä ja kokeilin erityyppisiä yhdistelmiä, jotta pääsisin ```passwd``` -tiedostoon käsiksi. 
 
-![f3](https://github.com/user-attachments/assets/350b2cbd-a08a-49aa-9bef-def180ba438d)
+<img src="https://github.com/user-attachments/assets/350b2cbd-a08a-49aa-9bef-def180ba438d" width="500"> <br/>
 
-![f4](https://github.com/user-attachments/assets/61b7376f-266a-4b7e-ac30-973c0820a884)
+<img src="https://github.com/user-attachments/assets/61b7376f-266a-4b7e-ac30-973c0820a884" width="500"> <br/>
 
-![f5](https://github.com/user-attachments/assets/3a98a549-1f83-41c6-a822-1e6a4ad4d2eb)
+<img src="https://github.com/user-attachments/assets/3a98a549-1f83-41c6-a822-1e6a4ad4d2eb" width="500"> <br/>
 
 Useamman epäonnistuneen yrityksen jälkeen onnistuin vihdoin saamaan GET -pyynnön läpi. Tämän jälkeen tallensin onnistuneen GET pyynnön ```Oikea klikkaus``` --> ```Save Response As``` --> ```path2``` (tiedostonimi)
 
-![f6](https://github.com/user-attachments/assets/016afd08-c064-437c-9492-139480ebd493)
+<img src="https://github.com/user-attachments/assets/016afd08-c064-437c-9492-139480ebd493" width="500"> <br/>
 
 Palasin terminaaliin avaamaan tiedoston. 
 
 ```cat path2```
 
-![f7](https://github.com/user-attachments/assets/3f00f9dc-7adc-446c-a4df-1fdc5af14724)
+<img src="https://github.com/user-attachments/assets/3f00f9dc-7adc-446c-a4df-1fdc5af14724" width="500"> <br/>
 
 Myös sivusto ilmoitti onnistuneesta ratkaisusta. 
 
-![f8](https://github.com/user-attachments/assets/9d5c75ed-173c-4690-a03b-7941cdeb66af)
+<img src="https://github.com/user-attachments/assets/9d5c75ed-173c-4690-a03b-7941cdeb66af" width="500"> <br/>
 
 
 ## g) File path traversal, traversal sequences stripped non-recursively
@@ -240,32 +242,33 @@ Tehtävässä tarkoituksena jälleen päästä käsiksi ```/etc/passwd``` -tiedo
 
 Aloitin jälleen kopioimalla kuvan linkin. 
 
-![g1](https://github.com/user-attachments/assets/6dd6040c-0e3c-4f52-9c31-44e73f099f02)
+<img src="https://github.com/user-attachments/assets/6dd6040c-0e3c-4f52-9c31-44e73f099f02" width="500"> <br/>
 
 ```https://0a3800350499a26a8193c0a9001e00db.web-security-academy.net/image?filename=1.jpg```
 
 Tämän jälkeen menin taas muokkaamaan GET pyyntöä ja kokeilemaan muutamaa eri vaihtoehtoa. 
 
+<img src="https://github.com/user-attachments/assets/91e07bb4-a4b8-4323-8b80-8083055cfa19" width="500"> <br/>
 
-![g3](https://github.com/user-attachments/assets/30f13939-32ea-400f-a403-18261a76f5e8)
+<img src="https://github.com/user-attachments/assets/30f13939-32ea-400f-a403-18261a76f5e8" width="500"> <br/>
 
-![g4](https://github.com/user-attachments/assets/739f34ae-324d-418e-810e-a84f8f4f8d4e)
+<img src="https://github.com/user-attachments/assets/739f34ae-324d-418e-810e-a84f8f4f8d4e" width="500"> <br/>
 
 Tässä vaiheessa kävin kurkkaamassa vinkkiä PortsWiggerin sivuilta ja löysinkin sieltä ehdotuksen mitä kokeilla. 
 
-![g5](https://github.com/user-attachments/assets/11162e28-b1c6-4b4e-980a-4d83cddc84e8)
+<img src="https://github.com/user-attachments/assets/11162e28-b1c6-4b4e-980a-4d83cddc84e8" width="500"> <br/>
 
 Sivusto siis karsii käynnäjän antamasta tiedostonimistä tyypillisen path traversal ```../```-osion pois, mutta sen saa kierrettyä käyttämällä ```....//```, joka on karsittuna ```../```. 
 
 Tallensin oikean ratkaisun jälleen ```Save Response As``` --> ```path3``` (tiedostonimi)
 
-![g6](https://github.com/user-attachments/assets/3198d781-5730-4059-9f6d-960873162e86)
+<img src="https://github.com/user-attachments/assets/3198d781-5730-4059-9f6d-960873162e86" width="500"> <br/>
 
 ```cat path3```
 
-![g7](https://github.com/user-attachments/assets/00f5993d-b3c7-49ef-a555-af70bc09569a)
+<img src="https://github.com/user-attachments/assets/00f5993d-b3c7-49ef-a555-af70bc09569a" width="500"> <br/>
 
-![g8](https://github.com/user-attachments/assets/ebe85733-fd08-46e6-8a0f-03eff584d9ba)
+<img src="https://github.com/user-attachments/assets/ebe85733-fd08-46e6-8a0f-03eff584d9ba" width="500"> <br/>
 
 
 
@@ -277,7 +280,7 @@ Aloitin avaamalla sivun ja menemällä ```Live chat```:iin.
 
 ```Live chat```-sivulla näkyy ```View transcript```, joka tehtävänannon perusteella hakee palvelimelta staattisella URL-osoitteella chatlokin. Laitoin Developer Toolsin päälle ja painoin View transkriptiä, joka latasi tiedoston ```3.txt```. 
 
-![h1](https://github.com/user-attachments/assets/4d06d4f2-f9c7-4c1f-8577-bd8acfcd420e)
+<img src="https://github.com/user-attachments/assets/4d06d4f2-f9c7-4c1f-8577-bd8acfcd420e" width="500"> <br/>
 
 Tämän jälkeen tutkailin vielä GET-pyyntöä ja sieltä löytyi linkki. 
 
@@ -285,9 +288,9 @@ Tämän jälkeen tutkailin vielä GET-pyyntöä ja sieltä löytyi linkki.
 
 Oletettavasti tehtävässä pitää lukea aikaisempia lokeja, ja jos palvelimella lokin numerojärjestyksessä niin lokit ovat nimellä ```1.txt``` ja ```2.txt```. Tarkkaillaan ensin ladattua tiedostoa ja verrataan sitä nykyiseen chattiin. 
 
-![h2](https://github.com/user-attachments/assets/43a55e92-b8c7-431a-b1ca-878f2e69270c)
+<img src="https://github.com/user-attachments/assets/43a55e92-b8c7-431a-b1ca-878f2e69270c" width="500"> <br/>
 
-![h3](https://github.com/user-attachments/assets/29c6ac6b-6505-45f1-8257-54e7add8946e)
+<img src="https://github.com/user-attachments/assets/29c6ac6b-6505-45f1-8257-54e7add8946e" width="500"> <br/>
 
 Tämän jälkeen kävin lataamassa oletetut aiemmat lokitiedostot muokkaamalla aiemmin löydettyä linkkiä. 
 
@@ -295,7 +298,7 @@ Tämän jälkeen kävin lataamassa oletetut aiemmat lokitiedostot muokkaamalla a
 
 ```https://0a5400b703f542a381a5c0f000a60024.web-security-academy.net/download-transcript/2.txt```
 
-![h4](https://github.com/user-attachments/assets/166569d9-52a5-43ce-bc74-8641ffbe6a21)
+<img src="https://github.com/user-attachments/assets/166569d9-52a5-43ce-bc74-8641ffbe6a21" width="500"> <br/>
 
 Sitten tarkastellaan aiempia lokitiedostoja. 
 
@@ -303,18 +306,18 @@ Sitten tarkastellaan aiempia lokitiedostoja.
 
 ```cat 2.txt```
 
-![h5](https://github.com/user-attachments/assets/2f3addd7-d75b-414c-b0a7-f6c6a8596cd9)
+<img src="https://github.com/user-attachments/assets/2f3addd7-d75b-414c-b0a7-f6c6a8596cd9" width="500"> <br/>
 
 Ja sieltä löytyikin carloksen salasana, jota voi kokeilla kirjautumissivulla ```My account```. 
 
-![h6](https://github.com/user-attachments/assets/8f8e46c3-320e-45f5-a093-437b88c948c7)
+<img src="https://github.com/user-attachments/assets/8f8e46c3-320e-45f5-a093-437b88c948c7" width="500"> <br/>
 
 ```
 username: carlos
 password: 6ispdmkr8770igj142iy
 ```
 
-![h7](https://github.com/user-attachments/assets/cb215950-ea0f-425d-90d5-1c913429b51b)
+<img src="https://github.com/user-attachments/assets/cb215950-ea0f-425d-90d5-1c913429b51b" width="500"> <br/>
 
 ## i) Basic SSRF against the local server
 
@@ -322,21 +325,21 @@ Tehtävässä pitää saada pääsy ```http://localhost/admin``` -sivulle muutta
 
 Kokeilin ensin mennä suoraan ```/admin``` -sivulle. 
 
-![i1](https://github.com/user-attachments/assets/5d3acb33-fe62-4bf8-93ed-2d454990dd0d)
+<img src="https://github.com/user-attachments/assets/5d3acb33-fe62-4bf8-93ed-2d454990dd0d" width="500"> <br/>
 
 Tämä ei odotetusti onnistunut, joten menin tuotesivulle tutkailemaan mitä tapahtuu Check Stockia painaessa. 
 
-![i2](https://github.com/user-attachments/assets/c6670e4b-ae77-4ba0-acca-1f1403828fa7)
+<img src="https://github.com/user-attachments/assets/c6670e4b-ae77-4ba0-acca-1f1403828fa7" width="500"> <br/>
 
 Check Stockia painaessa muodostuu GET pyyntöjen lisäksi POST pyyntö, jota kokeilin muokata ohjaamaan minut ```/admin``` sivulle. 
 
-![i3](https://github.com/user-attachments/assets/0b755d31-e86c-4ed1-bcaa-1ddfe997639a)
+<img src="https://github.com/user-attachments/assets/0b755d31-e86c-4ed1-bcaa-1ddfe997639a" width="500"> <br/>
 
 Muutin POST -pyynnön haluttuun osoitteeseen. 
 
 ```https://0a7700c603c1eb7b80ef2be900ab00b5.web-security-academy.net/admin```
 
-![i4](https://github.com/user-attachments/assets/6dbf320f-7d97-467e-a95c-b5d663ecaec3)
+<img src="https://github.com/user-attachments/assets/6dbf320f-7d97-467e-a95c-b5d663ecaec3" width="500"> <br/>
 
 Tämä ei antoi vastaukseksi takaisin HTTP statuskoodin 401 ([Unauthorized](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/401))
 
@@ -344,31 +347,31 @@ Tutkailin uudelleen POST pyyntöä vielä tarkemmin ja huomasin alla Body kohdas
 
 ```stockApi=http%3A%2F%2Fstock.weliketoshop.net%3A8080%2Fproduct%2Fstock%2Fcheck%3FproductId%3D1%26storeId%3D1```
 
-![i5](https://github.com/user-attachments/assets/4038376b-c78b-421c-8e4f-73dbe6909cc5)
+<img src="https://github.com/user-attachments/assets/4038376b-c78b-421c-8e4f-73dbe6909cc5" width="500"> <br/>
 
 Muokkasin tämän tilalle haluamani sivun eli /admin -sivun ja lähetin POST -pyynnön uudelleen. 
 
 ```stockApi=https://0a7700c603c1eb7b80ef2be900ab00b5.web-security-academy.net/admin```
 
-![i6](https://github.com/user-attachments/assets/db2d2720-585c-4221-8eae-73f8440f0e22)
+<img src="https://github.com/user-attachments/assets/db2d2720-585c-4221-8eae-73f8440f0e22" width="500"> <br/>
 
 Tämäkään ei toiminut, joten kokeilin seuraavaksi muokata tilalle 
 
 ```stockApi=http://localhost/admin```
 
-![i7](https://github.com/user-attachments/assets/43e88579-707f-4a9c-b3d0-9d1c7fec7ffc)
+<img src="https://github.com/user-attachments/assets/43e88579-707f-4a9c-b3d0-9d1c7fec7ffc" width="500"> <br/>
 
 Tämä palautti onnistuneen POST pyynnön, joten avasin sen uuteen ikkunaan. 
 
-![i8](https://github.com/user-attachments/assets/4737245c-047a-40f2-8e87-a62fee123200)
+<img src="https://github.com/user-attachments/assets/4737245c-047a-40f2-8e87-a62fee123200" width="500"> <br/>
 
-![i9](https://github.com/user-attachments/assets/27a98b9b-12c9-40d4-b851-f20e4e5055ac)
+<img src="https://github.com/user-attachments/assets/27a98b9b-12c9-40d4-b851-f20e4e5055ac" width="500"> <br/>
 
 Yrittäessäni poistaa käyttäjän carlos, antoi sivu kuitenkin virheen
 
 ```Admin interface only available if logged in as an administrator, or if requested from loopback```
 
-![i10](https://github.com/user-attachments/assets/8056fc0f-e15a-456a-b468-2a1d8b966d25)
+<img src="https://github.com/user-attachments/assets/8056fc0f-e15a-456a-b468-2a1d8b966d25" width="500"> <br/>
 
 Tästä kuitenkin sain linkin, joka toimiessaan poistaa käyttäjän ```carlos```
 
@@ -376,9 +379,9 @@ Tästä kuitenkin sain linkin, joka toimiessaan poistaa käyttäjän ```carlos``
 
 Palasin tämän jälkeen POST pyyntöön ja muokkasin ```stockAPI```:n linkkiä. 
 
-![i11](https://github.com/user-attachments/assets/9e175979-2671-4679-9a60-77dd74c81449)
+<img src="https://github.com/user-attachments/assets/9e175979-2671-4679-9a60-77dd74c81449" width="500"> <br/>
 
-![i12](https://github.com/user-attachments/assets/a8b5407f-a353-4fea-93c5-431f972c63dc)
+<img src="https://github.com/user-attachments/assets/a8b5407f-a353-4fea-93c5-431f972c63dc" width="500"> <br/>
 
 ## j) Vapaaehtoinen: Server-side template injection with information disclosure via user-supplied objects
 
@@ -395,7 +398,7 @@ Password: C0nt3ntM4n4g3r
 
 Tämän jälkeen siirryin tuotteen sivuille muokkaamaan pohjaa: ```Edit template```
 
-![j1](https://github.com/user-attachments/assets/e6a68c1a-5b62-4a8b-97a7-aef39d8ee9a9)
+<img src="https://github.com/user-attachments/assets/e6a68c1a-5b62-4a8b-97a7-aef39d8ee9a9" width="500"> <br/>
 
 Vertailemalla mallin koodia ja lopullista sivua, voidaan huomata että malli kutsuu palvelimelta lukuja. 
 
@@ -412,9 +415,9 @@ Muokkasin mallia testataksena millä saisi mahdollisesti kutsuttua avainta.
 <p> {{secret.key}} </p>
 ```
 
-![j2](https://github.com/user-attachments/assets/b6c2896b-2db7-402d-8c8f-a973db5f9073)
+<img src="https://github.com/user-attachments/assets/b6c2896b-2db7-402d-8c8f-a973db5f9073" width="500"> <br/>
 
-![j3](https://github.com/user-attachments/assets/5e70670b-1cb7-438e-8817-0ec5148252cd)
+<img src="https://github.com/user-attachments/assets/5e70670b-1cb7-438e-8817-0ec5148252cd" width="500"> <br/>
 
 Painoin save, enkä preview joten kyseinen sivu hajosi eikä sinne pääse enää takaisin. Onnekseni sivu antoi kuitenkin virhekoodin, josta selviää että kyseessä on django. 
 
@@ -424,7 +427,7 @@ Tässä vaiheessa jäin jumiin enkä keksinyt ratkaisua päästä eteenpäin ja 
 
 ```{% debug %}```
 
-![j4](https://github.com/user-attachments/assets/3c3b4200-72c7-4e8d-aaf9-4e2f4ba791aa)
+<img src="https://github.com/user-attachments/assets/3c3b4200-72c7-4e8d-aaf9-4e2f4ba791aa" width="500"> <br/>
 
 Painaessani Preview (jottei sivu menisi taas täysin rikki jos tämä ei toimikaan), sain alle listan komennoista ja moduuleista. 
 
@@ -436,17 +439,17 @@ Yksi näistä komennnoista oli settings, jonka avulla saa salaisen avaimen tulos
 
 ```{{settings.SECRET_KEY}}```
 
-![j5](https://github.com/user-attachments/assets/5da9c35e-ddcf-4168-a3bd-02bc1ef537ea)
+<img src="https://github.com/user-attachments/assets/5da9c35e-ddcf-4168-a3bd-02bc1ef537ea" width="500"> <br/>
 
-![j6](https://github.com/user-attachments/assets/f113824c-81e7-4e8b-811b-88456f192701)
+<img src="https://github.com/user-attachments/assets/f113824c-81e7-4e8b-811b-88456f192701" width="500"> <br/>
 
 Sivuille ilmestyikin }}```o0ufa5j7zm2y973rh2i4w0beroyo0p5k``` joka on oletettavassti salainen avain. Tämän jälkeen menin sivulla olevaan ```Submit solution``` -sivulle ja syötin siihen avaimen. 
 
 ```o0ufa5j7zm2y973rh2i4w0beroyo0p5k```
 
-![j7](https://github.com/user-attachments/assets/00b0bd6f-366e-4ee0-9acd-636851f1347c)
+<img src="https://github.com/user-attachments/assets/00b0bd6f-366e-4ee0-9acd-636851f1347c" width="500"> <br/>
 
-![j8](https://github.com/user-attachments/assets/ace8328e-f685-4a0c-993c-59ffaa82b935)
+<img src="https://github.com/user-attachments/assets/ace8328e-f685-4a0c-993c-59ffaa82b935" width="500"> <br/>
 
 ## k) Vapaaehtoinen, helppo: Asenna pencode ja muunna sillä jokin merkkijono (encode a string).
 
@@ -460,7 +463,7 @@ Tätä ei kuitenkaan löytynyt, joten yritin hakea sitä vielä paketinhallinnas
 
 ```apt-cache search pencode```
 
-![k2](https://github.com/user-attachments/assets/b482a9e4-836d-4931-b6a8-07a99644a403)
+<img src="https://github.com/user-attachments/assets/b482a9e4-836d-4931-b6a8-07a99644a403" width="500"> <br/>
 
 ```sudo apt-get install golang-github-ffuf-pencode-dev```
 
