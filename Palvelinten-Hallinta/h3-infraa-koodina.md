@@ -205,10 +205,14 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-Vagrantfilen sisällä toistuvat saltin asennukseen tarvittavien ```salt-archive-keyring.pgp``` ja ```salt.sources``` -tiedostojen luontilitanjat tekevät tiedoston lukemisesta liian sekavaa, joten yhdistin niiden luonnin omaan komentoonsa. 
-Tämä ei tässä vielä haittaisi, mutta mikäli luotavia konetyyppejä olisi enemmän kuin kaksi (trainer ja mon) niin toisto olisi liian sekavaa luettavaksi. 
+Vagrantfilen sisällä toistuvat saltin asennukseen tarvittavien ```salt-archive-keyring.pgp``` ja ```salt.sources``` -tiedostojen luontilitanjat tekevät tiedoston lukemisesta liian sekavaa, joten yhdistin niiden luonnin omaan komentoonsa. Tämän toteuttaminen vaati heredoc:n käyttöä. 
+Tämä ei tässä tiedostossa vielä haittaisi, mutta mikäli luotavia konetyyppejä olisi enemmän kuin kaksi (trainer ja mon) niin toisto olisi liian sekavaa luettavaksi. 
 
-Näiden lisäksi lisätty muutamia statusviestejä lisätty väliin skriptin seuraamisen helpottamiseksi. 
+Muutokset: 
+
+- Eriytetty saltin dependenssiens (```salt-archive-keyring.pgp``` ja ```salt.sources```) luonti omaksi ```$salt``` -skriptiksi.
+- Lisätty luotu ```$salt``` -skripti ajettavaksi ennen ```$mon``` tai ```$trainer``` -skriptejä. 
+- Lisätty muutamia statusviestejä väliin skriptin seuraamisen helpottamiseksi. 
 
 Lopullinen Vagrantfile:
 
