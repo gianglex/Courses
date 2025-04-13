@@ -1,0 +1,12 @@
+## H2
+Ylimääräisenä: Verkon luonti Vagrantfilen avulla sekä mm. for looppi ip-tarkastukseen
+https://github.com/gianglex/Courses/blob/main/Palvelinten-Hallinta/h2-soitto-kotiin.md#c-linux-verkko-vagrantilla
+
+Ylimääräisenä Infraa koodina/Init.sls
+https://github.com/gianglex/Courses/blob/main/Palvelinten-Hallinta/h2-soitto-kotiin.md#initsls
+
+## H3
+
+Vagrantfilen päivitys + dochere + salt dependenssit turvallisemmin
+https://github.com/gianglex/Courses/blob/main/Palvelinten-Hallinta/h3-infraa-koodina.md#vagrantfilen-p%C3%A4ivitys
+
