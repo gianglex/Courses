@@ -205,7 +205,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-Vagrantfilen sisällä toistuvat saltin asennukseen tarvittavien ```salt-archive-keyring.pgp``` ja ```salt.sources``` -tiedostojen luontilitanjat tekevät tiedoston lukemisesta liian sekavaa, joten yhdistin niiden luonnin omaan komentoonsa. 
+Vagrantfilen sisällä toistuvat saltin asennukseen tarvittavien ```salt-archive-keyring.pgp``` ja ```salt.sources``` -tiedostojen luontilitanjat tekevät tiedoston lukemisesta liian sekavaa, joten yhdistin niiden luonnin omaan skriptiinsä. 
 Tämä ei tässä tiedostossa vielä haittaisi, mutta mikäli luotavia konetyyppejä olisi enemmän kuin kaksi (trainer ja mon) niin toisto olisi liian sekavaa luettavaksi. 
 
 Muutokset: 
