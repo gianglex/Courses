@@ -1,6 +1,18 @@
 # h3 Infraa koodina
 
-x) 
+## x) Lue ja tiivistä.
+- ```/srv/salt/``` on kansio, joka jaetaan kaikille orjille.
+- Init.sls tiedosto luodaan esimerkiksi ```/srv/salt/hello/``` -kansioon
+- Komennolla ```sudo salt-call --local state.apply hello``` voidaan ajaa ```/srv/salt/hello/init.sls``` -tiedoston komennot
+- Oletuskieli saltilla on YAML.
+- YAML perussääntöjä:
+   - Data on strukturoitu ```key: value``` -pareina.
+   - Kaikki key:t ja ominaisuudet ovat merkkikokoriippuvaisia.
+   - Tabulaattori on kielletty, vain välilyönnit käyvät.
+   - Kommentit alkavat #-merkillä
+- YAML on organisoitu blokkirakenteeseen.
+- Sisennykset asettavat kontekstin, joten ominaisuudet ja listat pitää sisentää.
+- Kaksi välilyöntiä on standardi. 
 
 ## Vagrantfilen päivitys 
 
@@ -336,16 +348,149 @@ Aloitin virtuaalikoneiden luonnin tämän jälkeen ja tarkastin vielä, että av
 
 Koneet näyttäisivät asentuneen halutulla tavalla ja avaimet tulivat automaattisesti hyväksytyksi. 
 
-a) Hei infrakoodi! Kokeile paikallisesti (esim 'sudo salt-call --local') infraa koodina. Kirjota sls-tiedosto, joka tekee esimerkkitiedoston /tmp/ -kansioon.
+Käytin Vagrantfilen muokkaamiseen hyödyksi mm. : 
+- [Hashicorp / Vagrant / Shell Provisioner v2.4.3](https://developer.hashicorp.com/vagrant/docs/provisioning/shell)
+- [Wikipedia / Here Document](https://en.wikipedia.org/wiki/Here_document)
+- [The Linux Documentation Project / Here Documents](https://tldp.org/LDP/abs/html/here-docs.html)
 
+## a) Hei infrakoodi! Kokeile paikallisesti (esim 'sudo salt-call --local') infraa koodina. Kirjota sls-tiedosto, joka tekee esimerkkitiedoston /tmp/ -kansioon.
 
-b) Aja esimerkki sls-tiedostosi verkon yli orjalla.
-c) Tee sls-tiedosto, joka käyttää vähintään kahta eri tilafunktiota näistä: package, file, service, user. Tarkista eri ohjelmalla, että lopputulos on oikea. Osoita useammalla ajolla, että sls-tiedostosi on idempotentti.
+Jatkoin tehtäviin jo kirjautuneena masteriin (ketchup). 
+
+Sillä kyseiseen tuoreeseen virtuaalikoneeseen ei oltu vielä asennettu salt-minionia, aloitin asentamalla sen. Tämän pitäisi toimia suoraan sillä salt-dependenssit ovat jo asennettuna valmiiksi (ks. Vagrantfile). 
+
+Tein jo edellisen tehtävän aikana init.sls tiedoston (ks. [gianglex/h2-soitto-kotiin](https://github.com/gianglex/Courses/blob/main/Palvelinten-Hallinta/h2-soitto-kotiin.md#initsls)), joten seurasin samaa kaavaa tälläkin kertaa. 
+
+```sudo apt-get install salt-minion```
+
+```sudo mkdir /srv/salt/```
+
+```sudo mkdir /srv/salt/examplefile/```
+
+```sudoedit /srv/salt/examplefile/init.sls```
+
+Init.sls
+
+```
+create_example_file:
+  file.managed:
+    - name: /tmp/example
+    - contents: example content
+```
+
+<img src="https://github.com/user-attachments/assets/b8ad3ae9-f82c-415c-8b73-0b71cc30d7d4" width="500"> <br/>
+
+Sitten tarkastin ensin, ettei tiedostoa ole olemassa. 
+
+```cat /tmp/example```
+
+<img src="https://github.com/user-attachments/assets/ecefd87f-51d2-48dc-b1a7-38bac96fd0d5" width="500"> <br/>
+
+```sudo salt-call --local state.apply examplefile```
+
+<img src="https://github.com/user-attachments/assets/7eb59ce4-7c85-4c84-b8bd-d98e9a7e8332" width="500"> <br/>
+
+Lopuksi vielä tarkastin, että tiedosto oli nyt luotuna. 
+
+```cat /tmp/example```
+
+<img src="https://github.com/user-attachments/assets/b8fbaf1b-b606-401d-aae6-62ebc8856702" width="500"> <br/>
+
+Komento oli odotetusti luonut tiedoston. 
+
+## b) Aja esimerkki sls-tiedostosi verkon yli orjalla.
+
+Päätin ajaa komennon ```lettuce``` -minionilla. 
+
+Ketchup: ```sudo salt 'lettuce' state.apply examplefile```
+
+<img src="https://github.com/user-attachments/assets/42ea5423-8ed9-4489-b387-98319d79a0c0" width="500"> <br/>
+
+Tämän jälkeen kävin tarkastamassa eri ikkunalla onko tiedosto luotuna. 
+
+Lettuce: ```vagrant ssh lettuce```
+
+Lettuce: ```cat /tmp/example```
+
+<img src="https://github.com/user-attachments/assets/3b95b5b8-1caa-40bc-8b15-86d49d6c722d" width="500"> <br/>
+
+Tiedosto löytyi minionin päästä, joten päätin lopuksi ajaa vielä masterilla komennon uudelleen kaikille minioneille
+
+Ketchup: ```sudo salt '*' state.apply examplefile```
+
+<img src="https://github.com/user-attachments/assets/ece4d416-8957-49f3-a9b0-2d1002bc32b5" width="500"> <br/>
+
+<img src="https://github.com/user-attachments/assets/3de077c5-71b4-4d7a-a386-f4fcc790b3d2" width="500"> <br/>
+
+Homma rullasi odotetusta ja muistakin koneista löytyi haluttu tiedosto. 
+
+## c) Tee sls-tiedosto, joka käyttää vähintään kahta eri tilafunktiota näistä: package, file, service, user. Tarkista eri ohjelmalla, että lopputulos on oikea. Osoita useammalla ajolla, että sls-tiedostosi on idempotentti.
+
+Palasin masterille (Ketchup) luomaan uutta .sls tiedostoa tehtävää varten (Salt documentaatio: [salt.states.file](https://docs.saltproject.io/en/3006/ref/states/all/salt.states.file.html), [salt.states.user](https://docs.saltproject.io/en/3006/ref/states/all/salt.states.user.html), [salt.states.pkg](https://docs.saltproject.io/en/3006/ref/states/all/salt.states.pkg.html)): 
+
+Ketchup: ```sudo mkdir /srv/salt/yessir```
+
+Ketchup: ```sudoedit /srv/salt/yessir/init.sls```
+
+```
+install_curl:
+  pkg.installed:
+    - name: curl
+
+create_example_user:
+  user.present:
+    - name: exampleuser
+    - shell: /bin/bash
+    - home: /home/exampleuser
+    - createhome: True
+
+create_example_file:
+  file.managed:
+    - name: /tmp/captainsorders
+    - contents: |
+        Yes sir!
+```
+
+<img src="https://github.com/user-attachments/assets/0a06030a-2984-4c02-952e-6bb65b2c40b9" width="500"> <br/>
+
+Tämän jälkeen ajoin jälleen luodun ```init.sls``` tiedoston. 
+
+Ketchup: ```sudo salt 'lettuce' state.apply yessir```
+
+<img src="https://github.com/user-attachments/assets/c4cec276-d490-4594-b2f9-cc093b1f78cf" width="500"> <br/>
+
+Komento näytti onnistuneen odotetusti, mutta kävin vielä tarkastamassa. 
+
+Lettuce: ```curl google.com```
+
+<img src="https://github.com/user-attachments/assets/6bb515d5-00bd-45f1-aa26-4186b24f57f4" width="500"> <br/>
+
+Lettuce: ```ls -la /home/exampleuser/```
+
+<img src="https://github.com/user-attachments/assets/916f2c1d-eb15-40bf-bab6-153f5fcbf1f3" width="500"> <br/>
+
+Lettuce: ```cat /tmp/captainsorders```
+
+<img src="https://github.com/user-attachments/assets/e03b3764-0f81-4a8b-9563-acb545c8cee0" width="500"> <br/>
+
+Kaikki näyttivät menneen init.sls tiedoston mukaisesti. 
+
+Palasin vielä masterille (Ketchup) ajamaan saman komennon muutaman kerran todetakseni, että tiedosto on idempotentti. 
+
+Ketchup: ```sudo salt 'lettuce' state.apply yessir```
+
+Ketchup: ```sudo salt 'lettuce' state.apply yessir```
+
+<img src="https://github.com/user-attachments/assets/f0ffe1ad-5398-4680-8118-9488baa62d8f" width="500"> <br/>
+
 
 
 ## Ajankäyttö 
 Aikaa kului: 
-
+- Tiivistelmään ~30min
+- Vagrantfile informaation haku, päivitys ja dokumentaatio ~2h
+- Varsinaiseen tekemiseen ~30min
+- Dokumentointiin ja raportointiin ~1h
 
 
 ## Lähteet: 
@@ -353,3 +498,38 @@ Karvinen, T. 2025. Palvelinten Hallinta.
 https://terokarvinen.com/palvelinten-hallinta/   
 Tehtävänanto.   
 
+Karvinen, T. 2024. Hello Salt Infra-as-Code.    
+https://terokarvinen.com/2024/hello-salt-infra-as-code/    
+Tehtävä x.    
+
+Salt Project. s.a. Rules of YAML.    
+https://docs.saltproject.io/salt/user-guide/en/latest/topics/overview.html#rules-of-yaml    
+Tehtävä x.    
+
+Hashicorp. s.a. Shell Provisioner v2.4.3.    
+https://developer.hashicorp.com/vagrant/docs/provisioning/shell    
+Vagrantfile.    
+
+Wikipedia. s.a. Here document.    
+https://en.wikipedia.org/wiki/Here_document    
+Vagrantfile.    
+
+The Linux Documentation Project. s.a. Here Documents.    
+https://tldp.org/LDP/abs/html/here-docs.html    
+Vagrantfile.    
+
+Salt Project. s.a. How Do I Use Salt States?    
+https://docs.saltproject.io/en/3006/topics/tutorials/starting_states.html    
+Tehtävä a-c.    
+
+Salt Project. s.a. salt.states.file    
+https://docs.saltproject.io/en/3006/ref/states/all/salt.states.file.html    
+Tehtävä a-c.    
+
+Salt Project. s.a. salt.states.user    
+https://docs.saltproject.io/en/3006/ref/states/all/salt.states.user.html    
+Tehtävä a-c.    
+
+Salt Project. s.a. salt.states.pkg    
+https://docs.saltproject.io/en/3006/ref/states/all/salt.states.pkg.html    
+Tehtävä a-c.    
