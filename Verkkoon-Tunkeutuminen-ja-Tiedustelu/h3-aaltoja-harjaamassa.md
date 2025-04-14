@@ -230,35 +230,42 @@ Sillä Proove-Security ja Nexa-Security olivat sisällöltään identtisiä seli
 
 ## d) Too complex 16? Olet nauhoittanut näytteen 'urh' -ohjelmalla .complex16s-muodossa. Muunna näyte rtl_433-yhteensopivaan muotoon ja analysoi se. Näyte Recorded-HackRF-20250411_183354-433_92MHz-2MSps-2MHz.complex16s
 
-Käydessäni läpi rtl433:n githubissa olevaa dokumentaatiota, luin [rtl_433/IQ_FORMATS.md](https://github.com/merbanan/rtl_433/blob/master/docs/IQ_FORMATS.md) jossa oli selostusta rtl433:n kyvystä konvertoida tiedostomuotoja. 
+Lähdin uudelleennimeämään ladattua tiedostoa oikeaan formaattiin: 
 
-Lähdin kokeilemaan konvertointia ohjeiden pohjalta: 
+```mv Recorded-HackRF-20250411_183354-433_92MHz-2MSps-2MHz.complex16s RF_433.92M_2000k.cs16```
 
-```./rtl_433 -w Converted.cu8 Recorded-HackRF-20250411_183354-433_92MHz-2MSps-2MHz.complex16s```
+Lähdin tämän jälkeen kokeilemaan tiedoston analysoimista. 
 
-![d1](https://github.com/user-attachments/assets/623fc8dc-b4a5-4328-a573-ea093316aa0d)
+```./rtl_433 RF_433.92M_2000k.cs16 ```
 
-Konvertointi näytti menneen läpi, joten kokeilin seuraavaksi analysoida konversion tulosta ```Converted.cu8```
+![d1](https://github.com/user-attachments/assets/96f6b8c7-dcc3-4cd9-be33-ed2fbbc68325)
 
-```./rtl_433 -r Converted.cu8```
+Tämä ei lähtenyt vielä toimimaan, joten aloitin lukemaan rtl433:n dokumentaatiota. Sivulla IQ_Formats (https://github.com/merbanan/rtl_433/blob/master/docs/IQ_FORMATS.md) löytyi esimerkki, jossa oli sama frekvenssi mutta eri sample rate. Muutin tämän perusteella tiedostonimeä vielä uudelleen ja kokeilin uudelleen ajaa rtl433:n analysointia. 
 
-![d2](https://github.com/user-attachments/assets/3f42264e-d060-4ab6-b1ce-99c19cb66092)
+```mv RF_433.92M_2000k.cs16 RF_433.92M_1000k.cs16```
 
-Tämä ei lähtenytkään rullaamaan odotetusti, joten olin hetken aikaa jumissa tässä vaiheessa kunnes luin tehtävässä olleita vinkkejä uudelleen. 
+```./rtl_433 RF_433.92M_1000k.cs16```
 
-Kokeilin tällä seuraavaksi suoraan uudelleennimetä tiedoston .cu8 muotoon. 
+![d2](https://github.com/user-attachments/assets/f4b19f0c-5036-4d0d-8ce8-5383ea7bf3a6)
 
-```cp Recorded-HackRF-20250411_183354-433_92MHz-2MSps-2MHz.complex16s 183354-433_92MHz-2MSps-2MHz.cu8```
+```
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+time      : @0.242955s
+model     : KlikAanKlikUit-Switch                  id        : 8785315
+Unit      : 0            Group Call: No            Command   : Off           Dim       : No            Dim Value : 0
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+time      : @0.242955s
+model     : Proove-Security                        House Code: 8785315
+Channel   : 3            State     : OFF           Unit      : 3             Group     : 0
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+time      : @0.242955s
+model     : Nexa-Security House Code: 8785315
+Channel   : 3            State     : OFF           Unit      : 3             Group     : 0
+```
 
-```./rtl_433 -r 183354-433_92MHz-2MSps-2MHz.cu8```
+Kyseessä näyttäisivät olevan samat lähettimet kuin viimeksikin. 
 
-Ei lähtenyt vieläkään toimimaan, joten yritin vielä hieman hieroa tiedostonimeä. 
-
-```mv 183354-433_92MHz-2MSps-2MHz.cu8 183354_433.92M_2000k.cu8```
-
-```./rtl_433 -r 183354_433.92M_2000k.cu8```
-
-Tämäkään ei antanut mitään ulosantia. Luovutin tämän aiemman idean suhteen ja lähdin kokeilemaan URH:n avulla. 
+## e) Ultimate. Asenna URH, the Ultimate Radio Hacker.
 
 ```sudo apt-get -y install pipx```
 
@@ -269,10 +276,6 @@ Tämäkään ei antanut mitään ulosantia. Luovutin tämän aiemman idean suhte
 Tämän jälkeen suljin ja avasin terminaalin. 
 
 ```urh```
-
-## e) Ultimate. Asenna URH, the Ultimate Radio Hacker.
-
-
 
 ## f) Yleiskuva. Kuvaile näytettä yleisesti: kuinka pitkä, millä taajuudella, milloin nauhoitettu? Miltä näyte silmämääräisesti näyttää?
 
