@@ -21,23 +21,272 @@
   - Käytä analysointi-välilehteä signaalin dekoodaamiseen ja muuta signaali heksadesimaaliin
   - Hyödynnä aiemmin kerättyä tietoa signaalin dekoodaamiseen rtl_433:n avulla
 
-## a) WebSDR. Etäkäytä WebSDR-ohjelmaradiota, joka on kaukana sinusta ja kuuntele radioliikennettä. Radioliikenne tulee siepata niin, että radiovastaanotin on joko eri maassa tai vähintään 400 km paikasta, jossa teet tätä tehtävää. Käytä esimerkkinä julkista, suurelle yleisölle tarkoitettua viestiä, esimerkiksi yleisradiolähetystä. Kerro löytämäsi taajuus, aallonpituus ja modulaatio. Kuvaile askeleet ja ota ruutukaappaus. (Tehtävässä ei saa ilmaista sellaisen viestin sisältöä tai olemassaoloa, joka ei ole tarkoitettu julkiseksi. Voit sen sijaan kuvailla, miten sait julkisen radiolähetyksen kuulumaan kaiuttimistasi. Julkisten, esimerkiksi yleisradiolähetysten sisältöä saa tietysti kuvailla.)
+## a) WebSDR. Etäkäytä WebSDR-ohjelmaradiota, joka on kaukana sinusta ja kuuntele radioliikennettä. 
 
-b) rtl_433. Asenna rtl_433 automaattista analyysia varten. Kokeile, että voit ajaa sitä. './rtl_433' vastaa "rtl_433 version 25.02 branch..."
+Aloitin menemällä osoitteeseen WebSDR:n sivuille (http://websdr.org/). Selaimena käytin Chromea (```Version 135.0.7049.85 (Official Build) (64-bit)```) Valitsin ensimmäisenä kanavan Kreikassa olevaan kanavaan: ```SDR Station by SV3YY in RIO GREECE```.
 
-c) Automaattinen analyysi. Mitä tässä näytteessä tapahtuu? Mitä tunnisteita (id yms) löydät? Converted_433.92M_2000k.cs8. Analysoi näyte 'rtl_433' ohjelmalla.
+![a1](https://github.com/user-attachments/assets/4747c7fb-fd4d-4844-b33a-5c4c51e2e2e0)
 
-d) Too compex 16? Olet nauhoittanut näytteen 'urh' -ohjelmalla .complex16s-muodossa. Muunna näyte rtl_433-yhteensopivaan muotoon ja analysoi se. Näyte Recorded-HackRF-20250411_183354-433_92MHz-2MSps-2MHz.complex16s
+Sivuille mentyäni tuli esille ponnahdusikkuna, jota painamalla äänet lähtivät kuulumaan. Nappulan painamisen tarve johtuu siitä, että selain estää sivustoja laittamasta ääniä automaattisesti päälle. 
 
-e) Ultimate. Asenna URH, the Ultimate Radio Hacker.
+![a2](https://github.com/user-attachments/assets/dcdb70fa-0f92-4334-9334-008a15eae4a8)
 
-f) Yleiskuva. Kuvaile näytettä yleisesti: kuinka pitkä, millä taajuudella, milloin nauhoitettu? Miltä näyte silmämääräisesti näyttää?
+Alkuun kuului vain kohinaa. 
 
-g) Bittistä. Demoduloi signaali niin, että saat raakabittejä. Mikä on oikea modulaatio? Miten pitkä yksi raakabitti on ajassa? Kuvaile tätä aikaa vertaamalla sitä johonkin. (Monissa singaaleissa on line encoding, eli lopullisia bittejä varten näitä "raakabittejä" on vielä käsiteltävä)
+![a3](https://github.com/user-attachments/assets/1b4edb9c-ea92-4539-bbaf-fe19e0d129c0)
 
-h) Vapaaehtoinen: Sdr++. Kokeile sdr++ -sovellusta ja esittele sillä jokin "hei maailma" -tyyppinen esimerkki.
+Siirsin tämän jälkeen valintaani (klikkaamalla) toiselle frekvenssille, jossa näkyi enemmän aktiivisuutta (punaista): 
 
-i) Vapaaehtoinen, vaikeahko: GNU Radio. Asenne GNU Radio ja tee sillä yksinkertainen "Hei maailma".
+![a4](https://github.com/user-attachments/assets/25aa6b62-cd24-4f8d-943d-6183908f878c)
+
+Frekvenssi: ```7175,21kHz``` 
+
+Modulaatio: ```LSB```
+
+Aallonpituus: ```40m```
+
+Nyt alkoikin kuulumaan jo puhetta, vaikka siitä saikin hieman huonosti selvää. Yritin hienosäätää frekvenssiä, mutta puhe oli edelleen epäselvää. Selkeästi radiolla puhuivat englantia aksentilla sekä jotain mahdollisesti kreikankielistä kieltä. Radiosta kuului jonkin verran ```Thank you thank you sir``` ja ```thank you mister and madam XX, my friend``` sekä oletettavasti saneltiin radioon laivan tunnusta tai vastaavaa: ```Alpha```, ```Tango```, ```Charlie```, ym. 
+
+Päätin tämän jälkeen vielä vaihtaa toiseen maahan. Tällä kertaa Utahissa olevaan asemaan: ```Northern Utah WebSDR, Corinne, Utah, U.S.A.```
+
+![aa1](https://github.com/user-attachments/assets/e46bd46c-39d5-4f25-a57d-0c820d30bd1e)
+
+Avautui sivu, jossa pystyi valita eri antenneista. Päätin valita ensimmäisen ```WebSDR1 ("Yellow") - Covers the 2200, 630, 160, 80/75, 60 and 40 meter amateur bands, AM broadcast, the 120, and 60 meter shortwave broadcast bands and the 1750 meter LowFER band```.
+
+![aa2](https://github.com/user-attachments/assets/1c35ee72-1ced-4519-b5a1-0c5cdeecf285)
+
+Täytyi ensin jälleen aktivoida sivulle äänet. 
+
+![aa3](https://github.com/user-attachments/assets/6c2b7097-58ae-4dd1-a1a8-c0bd07dd7398)
+
+Säädin jälleen hieman aikaa frekvenssiä kunnes sain selvästi äänen kuuluviin. 
+
+![aa4](https://github.com/user-attachments/assets/2da8649e-cb6a-4a9b-ac7b-cbb53569f7ba)
+
+Frekvenssi: ```1160,00kHz``` 
+
+Modulaatio: ```AM```
+
+Aallonpituus: ```AM-160M-120M```
+
+Kanava oli kuului hyvin, eikä siellä ollut juurikaan kohinaa. Kanava oli selkeästi jokin Utahin julkinen radiokanava, jossa uutisissa oli jokin haastattelu menossa (ja hetki sen jälkeen pitkä liuta mainoksia). Radiossa myöhemmin mainittiin myös radiokanavan nimi: Utah KSL. 
+
+Kävin vielä lopuksi googlaamassa ja kuulemani kanava varmistuikin KSL:ksi. 
+
+![aa5](https://github.com/user-attachments/assets/ec80fc96-2832-4bc4-bab3-6a44bc9297f9)
+
+## b) rtl_433. Asenna rtl_433 automaattista analyysia varten. 
+
+Aloitin asentamalla rtl_433:n. Vinkkien perusteella ajattelin, että asennus täytyy tehdä manuaalisesti mutta sivuilla (https://github.com/merbanan/rtl_433) olikin maininta Debianille asentamisesta apt-getin avulla. 
+
+```apt-get install rtl-433```
+
+Rtl_433 asentuikin hyvin ilman ylimääräistä säätöä. 
+
+Kokeilin ensin ajaa vinkkien perusteella komennolla ```./rtl_433```, mutta ajattelinkin ettei se toimi silloin kun rtl_433 asennetaan apt-getin kautta. 
+
+```./rtl_433```
+
+```./rtl-433```
+
+```rtl-433```
+
+```rtl_433```
+
+Lähdin sitten kokeilemaan vaihtoehtoisia (ja todennäisimpiä) komentoja kunnes oikea löytyi: ```rtl_433```. 
+
+![b1](https://github.com/user-attachments/assets/947c5139-e805-4c10-99b3-89395c81cba1)
+
+```rtl_433 version 22.11 (2022-11-19) inputs file rtl_tcp RTL-SDR SoapySDR```
+
+Paketinhallinnasta löytynyt versio olikin vanhempi, joten kävin loppujen lopuksi kuitenkin lataamassa uudemman version GitHubista (https://github.com/merbanan/rtl_433/releases). 
+
+Versioksi valikoitui: ```rtl_433-soapysdr-openssl3-Linux-amd64-25.02.zip```
+
+Ladattuani tiedoston jatkoin purkamaan ```.zip``` -tiedoston. 
+
+```cd Downloads/```
+
+```unzip rtl_433-soapysdr-openssl3-Linux-amd64-25.02.zip ```
+
+Siirsin sen vielä kotihakemistoon helpottaakseni sen käyttöä tulevaisuudessa. 
+
+```mv rtl_433 /home/vtunk/rtl_433```
+
+Ajoin lopuksi ohjelman nähdäkseni sen version. Tällä kertaa arvelin jo ennakkoon että ./tiedostonimi toimii. 
+
+```./rtl_433```
+
+![b2](https://github.com/user-attachments/assets/b57479b4-13c1-4eb8-986d-c875a8345aab)
+
+Versio täsmää uusimpaan. 
+
+## c) Automaattinen analyysi. Mitä tässä näytteessä tapahtuu? Mitä tunnisteita (id yms) löydät? Converted_433.92M_2000k.cs8. Analysoi näyte 'rtl_433' ohjelmalla.
+
+Tein automaattisen analyysin rtl_433:lla. 
+
+```./rtl_433 -r Converted_433.92M_2000k.cs8```
+
+![c1](https://github.com/user-attachments/assets/53f69bf3-408d-4073-a68f-5e246e9751ef)
+
+Tulostus oli pitempi, joten alla vielä automaattisen analyysin tulos:
+
+```
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+time      : @0.083284s
+model     : KlikAanKlikUit-Switch                  id        : 8785315
+Unit      : 0            Group Call: No            Command   : Off           Dim       : No
+Dim Value : 0
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+time      : @0.083284s
+model     : Proove-Security                        House Code: 8785315
+Channel   : 3            State     : OFF           Unit      : 3             Group     : 0
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+time      : @0.083284s
+model     : Nexa-Security House Code: 8785315
+Channel   : 3            State     : OFF           Unit      : 3             Group     : 0
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+time      : @0.163125s
+model     : KlikAanKlikUit-Switch                  id        : 8785315
+Unit      : 0            Group Call: No            Command   : Off           Dim       : No
+Dim Value : 0
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+time      : @0.163125s
+model     : Proove-Security                        House Code: 8785315
+Channel   : 3            State     : OFF           Unit      : 3             Group     : 0
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+time      : @0.163125s
+model     : Nexa-Security House Code: 8785315
+Channel   : 3            State     : OFF           Unit      : 3             Group     : 0
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+time      : @0.242956s
+model     : KlikAanKlikUit-Switch                  id        : 8785315
+Unit      : 0            Group Call: No            Command   : Off           Dim       : No
+Dim Value : 0
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+time      : @0.242956s
+model     : Proove-Security                        House Code: 8785315
+Channel   : 3            State     : OFF           Unit      : 3             Group     : 0
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+time      : @0.242956s
+model     : Nexa-Security House Code: 8785315
+Channel   : 3            State     : OFF           Unit      : 3             Group     : 0
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+time      : @0.383568s
+model     : KlikAanKlikUit-Switch                  id        : 8785315
+Unit      : 0            Group Call: No            Command   : Off           Dim       : No
+Dim Value : 0
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+time      : @0.383568s
+model     : Proove-Security                        House Code: 8785315
+Channel   : 3            State     : OFF           Unit      : 3             Group     : 0
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+time      : @0.383568s
+model     : Nexa-Security House Code: 8785315
+Channel   : 3            State     : OFF           Unit      : 3             Group     : 0
+```
+
+Näytteessä näyttäisi olevan kolme eri signaalia: ```KlikAanKlikUit-Switch```, ```Proove-Security``` ja ```Nexa-Security```. Nämä kaikki näyttäisivät olleen lähetettyinä samanaikaisesti yhdessä nipussa, joten tutkaillaan yhtä nippua. 
+
+```
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+time      : @0.083284s
+model     : KlikAanKlikUit-Switch                  id        : 8785315
+Unit      : 0            Group Call: No            Command   : Off           Dim       : No
+Dim Value : 0
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+time      : @0.083284s
+model     : Proove-Security                        House Code: 8785315
+Channel   : 3            State     : OFF           Unit      : 3             Group     : 0
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+time      : @0.083284s
+model     : Nexa-Security House Code: 8785315
+Channel   : 3            State     : OFF           Unit      : 3             Group     : 0
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+```
+
+```KlikAanKlikUit-Switch```    
+```time      : @0.083284s```: Aikaleima nauhoituksen aloituksesta    
+```model     : KlikAanKlikUit-Switch```: rtl433:n tunnistama laitteen malli    
+```id        : 8785315```: Kohdelaitteen tunniste/ID    
+```Unit      : 0```: Mihin laitteeseen kohdistettu    
+```Group Call: No```: Lähetetty vain kohdelaitteelle    
+```Command   : Off```: Käsky sammuttaa laite    
+```Dim       : No```: Ei himmennystä    
+```Dim Value : 0```: Himmennyksen voimakkuus (0, sillä himmennys ei käytössä)    
+
+Sillä Proove-Security ja Nexa-Security olivat sisällöltään identtisiä selitän vain toisen. 
+
+```Proove-Security```
+
+```time      : @0.083284s```: Aikaleima
+```model     : Proove-Security```: Laitteen malli
+```House Code: 8785315```: Kohdelaitteen tunniste/ID. Kyseessä nimen perusteella kodin turvajärjestelmä, joten ID = House Code. 
+```Channel   : 3```: Mihin kanavaan kohdistettu    
+```State     : OFF```: Laitteen nykyinen tila
+```Unit      : 3```: Mihin laitteeseen kohdistettu    
+```Group     : 0```: Mihin ryhmään kohdistettu
+
+
+## d) Too complex 16? Olet nauhoittanut näytteen 'urh' -ohjelmalla .complex16s-muodossa. Muunna näyte rtl_433-yhteensopivaan muotoon ja analysoi se. Näyte Recorded-HackRF-20250411_183354-433_92MHz-2MSps-2MHz.complex16s
+
+Käydessäni läpi rtl433:n githubissa olevaa dokumentaatiota, luin [rtl_433/IQ_FORMATS.md](https://github.com/merbanan/rtl_433/blob/master/docs/IQ_FORMATS.md) jossa oli selostusta rtl433:n kyvystä konvertoida tiedostomuotoja. 
+
+Lähdin kokeilemaan konvertointia ohjeiden pohjalta: 
+
+```./rtl_433 -w Converted.cu8 Recorded-HackRF-20250411_183354-433_92MHz-2MSps-2MHz.complex16s```
+
+![d1](https://github.com/user-attachments/assets/623fc8dc-b4a5-4328-a573-ea093316aa0d)
+
+Konvertointi näytti menneen läpi, joten kokeilin seuraavaksi analysoida konversion tulosta ```Converted.cu8```
+
+```./rtl_433 -r Converted.cu8```
+
+![d2](https://github.com/user-attachments/assets/3f42264e-d060-4ab6-b1ce-99c19cb66092)
+
+Tämä ei lähtenytkään rullaamaan odotetusti, joten olin hetken aikaa jumissa tässä vaiheessa kunnes luin tehtävässä olleita vinkkejä uudelleen. 
+
+Kokeilin tällä seuraavaksi suoraan uudelleennimetä tiedoston .cu8 muotoon. 
+
+```cp Recorded-HackRF-20250411_183354-433_92MHz-2MSps-2MHz.complex16s 183354-433_92MHz-2MSps-2MHz.cu8```
+
+```./rtl_433 -r 183354-433_92MHz-2MSps-2MHz.cu8```
+
+Ei lähtenyt vieläkään toimimaan, joten yritin vielä hieman hieroa tiedostonimeä. 
+
+```mv 183354-433_92MHz-2MSps-2MHz.cu8 183354_433.92M_2000k.cu8```
+
+```./rtl_433 -r 183354_433.92M_2000k.cu8```
+
+Tämäkään ei antanut mitään ulosantia. Luovutin tämän aiemman idean suhteen ja lähdin kokeilemaan URH:n avulla. 
+
+```sudo apt-get -y install pipx```
+
+```pipx install urh```
+
+```pipx ensurepath```
+
+Tämän jälkeen suljin ja avasin terminaalin. 
+
+```urh```
+
+## e) Ultimate. Asenna URH, the Ultimate Radio Hacker.
+
+
+
+## f) Yleiskuva. Kuvaile näytettä yleisesti: kuinka pitkä, millä taajuudella, milloin nauhoitettu? Miltä näyte silmämääräisesti näyttää?
+
+
+
+## g) Bittistä. Demoduloi signaali niin, että saat raakabittejä. Mikä on oikea modulaatio? Miten pitkä yksi raakabitti on ajassa? Kuvaile tätä aikaa vertaamalla sitä johonkin. (Monissa singaaleissa on line encoding, eli lopullisia bittejä varten näitä "raakabittejä" on vielä käsiteltävä)
+
+
+
+## h) Vapaaehtoinen: Sdr++. Kokeile sdr++ -sovellusta ja esittele sillä jokin "hei maailma" -tyyppinen esimerkki.
+
+
+
+## i) Vapaaehtoinen, vaikeahko: GNU Radio. Asenne GNU Radio ja tee sillä yksinkertainen "Hei maailma".
 
 
 
@@ -54,6 +303,15 @@ i) Vapaaehtoinen, vaikeahko: GNU Radio. Asenne GNU Radio ja tee sillä yksinkert
 - Raportointiin ja dokumentointiin n. 
 
 ## Lähteet
+
 Karvinen, T. 2025. Verkkoon tunkeutuminen ja tiedustelu.    
 https://terokarvinen.com/verkkoon-tunkeutuminen-ja-tiedustelu/    
 Tehtävänanto.    
+
+GitHub. s.a. Merbanan/rtl_433    
+https://github.com/merbanan/rtl_433/
+Tehtävä b.    
+
+GitHub. s.a. Merbanan/rtl_433/IQ Formats  
+https://github.com/merbanan/rtl_433/blob/master/docs/IQ_FORMATS.md
+Tehtävä d.    
