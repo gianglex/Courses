@@ -1,4 +1,4 @@
-# H2 Fuzzy
+# H3 Fuzzy
 
 ## x) Lue & Tiivistä
 - Asennus:
