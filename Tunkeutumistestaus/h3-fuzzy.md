@@ -44,7 +44,7 @@ Tämän jälkeen latasin ```dirfuzt-0``` -ohjeiden pohjalta jo ennakkoon [Seclis
 
 ```wget https://terokarvinen.com/2023/fuzz-urls-find-hidden-directories/dirfuzt-1```
 
-![a2](https://github.com/user-attachments/assets/f77a46f8-4ec8-4ea1-87f9-678c246c88c2)
+<img src="https://github.com/user-attachments/assets/f77a46f8-4ec8-4ea1-87f9-678c246c88c2" width="500"> <br/>
 
 Loupksi käynnistin ```dirfuzt-1``` -binäärin. 
 
@@ -56,7 +56,7 @@ Loupksi käynnistin ```dirfuzt-1``` -binäärin.
 
 Binääri antoi urlikseen ```http://127.0.0.2:8000```, jonka kävin vielä katsomassa firefoxin avulla. 
 
-![a4](https://github.com/user-attachments/assets/94470936-47a2-4202-8bfe-ddb8f4655a9d)
+<img src="https://github.com/user-attachments/assets/94470936-47a2-4202-8bfe-ddb8f4655a9d" width="500"> <br/>
 
 Sillä binääri jää pyörimään terminaaliin jossa se käynnistettiin, avaan uuden terminaalin toiseen työpöytään. 
 
@@ -65,13 +65,13 @@ Ohjeissa oli jo maininta, että binääristä pitäisi löytyä kaksi sivua: ```
 
 ```ffuf -w common.txt -u http://127.0.0.2:8000/FUZZ```
 
-![a5](https://github.com/user-attachments/assets/993b425b-fbe8-42cb-85ed-fdcdb63c2c33)
+<img src="https://github.com/user-attachments/assets/993b425b-fbe8-42cb-85ed-fdcdb63c2c33" width="500"> <br/>
 
 Näyttäisi tämän perusteella, että ns. väärä polkukin antaa vastauksena takaisin HTTP statuskoodin 200 (= OK). Sillä nämä sivut olivat pääosin samankokoisia ```Size: 154```, päätin lähteä suodattamaan pois sivukoon perusteella. 
 
 ```ffuf -w common.txt -u http://127.0.0.2:8000/FUZZ -fs 154```
 
-![a6](https://github.com/user-attachments/assets/0a1d63b8-2b8c-494b-ac23-43b1d49980c7)
+<img src="https://github.com/user-attachments/assets/0a1d63b8-2b8c-494b-ac23-43b1d49980c7" width="500"> <br/>
 
 ```
 .git/config             [Status: 200, Size: 178, Words: 6, Lines: 11, Duration: 0ms]
@@ -93,7 +93,7 @@ Admin:
 
 Flag: **FLAG{tero-wpadmin-3364c855a2ac87341fc7bcbda955b580}**
 
-![a7](https://github.com/user-attachments/assets/02ca4814-4d16-441d-a14a-057066ed0df9)
+<img src="https://github.com/user-attachments/assets/02ca4814-4d16-441d-a14a-057066ed0df9" width="500"> <br/>
 
 .git (kaikki näistä antavat saman lipun):
 
@@ -109,7 +109,7 @@ Flag: **FLAG{tero-wpadmin-3364c855a2ac87341fc7bcbda955b580}**
 
 Flag: **FLAG{tero-git-3cc87212bcd411686a3b9e547d47fc51}**
 
-![a8](https://github.com/user-attachments/assets/d7934ea1-1131-4c5f-afb0-a85de1e08402)
+<img src="https://github.com/user-attachments/assets/d7934ea1-1131-4c5f-afb0-a85de1e08402" width="500"> <br/>
 
 Kävin lopuksi vielä sammuttamassa binäärin, joka oli toisessa terminaalissa vielä pyörimässä. 
 
@@ -131,21 +131,21 @@ Aloitin FuffMe-harjoitusmaalin asennuksen hieman soveltaen [ohjeita](https://ter
 
 ```curl localhost```
 
-![b1](https://github.com/user-attachments/assets/343babf9-cb1e-4cc2-8a94-f96c2a31486a)
+<img src="https://github.com/user-attachments/assets/343babf9-cb1e-4cc2-8a94-f96c2a31486a" width="500"> <br/>
 
 Sillä curl palautti vastauksen, tiesin että docker konttini oli toimii kuten pitääkin. Kävin kuitenkin vielä katsomassa selaimella osoitteesta ```localhost``` miltä se näyttää sitä uteliaisuudesta. 
 
-![b2](https://github.com/user-attachments/assets/3fbb4c5c-c5aa-4fe9-aba5-aac1de4809cd)
+<img src="https://github.com/user-attachments/assets/3fbb4c5c-c5aa-4fe9-aba5-aac1de4809cd" width="500"> <br/>
 
 ## c) Basic Content Discovery
 
 Tämän jälkeen aloitin käymään tehtäviä läpi ohjeiden perusteella. 
 
-![c1](https://github.com/user-attachments/assets/e7475ccb-adf2-43fb-a6aa-28e4d4d7ad96)
+<img src="https://github.com/user-attachments/assets/e7475ccb-adf2-43fb-a6aa-28e4d4d7ad96" width="500"> <br/>
 
 ```ffuf -w common.txt -u http://localhost/cd/basic/FUZZ```
 
-![c2](https://github.com/user-attachments/assets/3f679d81-eec5-480d-8d08-2699231524e4)
+<img src="https://github.com/user-attachments/assets/3f679d81-eec5-480d-8d08-2699231524e4" width="500"> <br/>
 
 Sieltä ne halutut ```class``` ja ```development.log``` löytyivätkin. 
 
@@ -153,106 +153,106 @@ Sieltä ne halutut ```class``` ja ```development.log``` löytyivätkin.
 
 ```curl http://localhost/cd/basic/development.log```
 
-![c3](https://github.com/user-attachments/assets/ddf1bb5b-581b-4b42-91b4-3bd624828b0e)
+<img src="https://github.com/user-attachments/assets/ddf1bb5b-581b-4b42-91b4-3bd624828b0e" width="500"> <br/>
 
 ## d) Content Discovery With Recursion
 
-![d1](https://github.com/user-attachments/assets/7400f72c-ce33-4983-96ca-aa69734cdb04)
+<img src="https://github.com/user-attachments/assets/7400f72c-ce33-4983-96ca-aa69734cdb04" width="500"> <br/>
 
 ```ffuf -w common.txt -recursion -u http://localhost/cd/recursion/FUZZ```
 
-![d2](https://github.com/user-attachments/assets/2e414d41-a905-44b8-9a02-be1fecddd6c1)
+<img src="https://github.com/user-attachments/assets/2e414d41-a905-44b8-9a02-be1fecddd6c1" width="500"> <br/>
 
 Haluttu polku löytyi ```http://localhost/cd/recursion/admin/users/``` sekä siellä oleva tiedosto ```96```
 
 ```curl http://localhost/cd/recursion/admin/users/96```
 
-![d3](https://github.com/user-attachments/assets/3d455ff6-e689-4667-9490-5c5f14c3a00a)
+<img src="https://github.com/user-attachments/assets/3d455ff6-e689-4667-9490-5c5f14c3a00a" width="500"> <br/>
 
 
 ## e) Content Discovery With File Extensions
 
-![e1](https://github.com/user-attachments/assets/749d45a7-2fb1-4a5e-8df2-085fd15686cc)
+<img src="https://github.com/user-attachments/assets/749d45a7-2fb1-4a5e-8df2-085fd15686cc" width="500"> <br/>
 
 ```ffuf -w common.txt -e .log -u http://localhost/cd/ext/logs/FUZZ```
 
-![e2](https://github.com/user-attachments/assets/9e950423-a2d8-40cd-8c1d-a2c5839a9221)
+<img src="https://github.com/user-attachments/assets/9e950423-a2d8-40cd-8c1d-a2c5839a9221" width="500"> <br/>
 
 Haluttu tiedosto: ```users.log```
 
 ```curl http://localhost/cd/ext/logs/users.log```
 
-![e3](https://github.com/user-attachments/assets/03300d38-902e-4e5a-9167-200465eea612)
+<img src="https://github.com/user-attachments/assets/03300d38-902e-4e5a-9167-200465eea612" width="500"> <br/>
 
 ## f) No 404 Status
 
-![f1](https://github.com/user-attachments/assets/17ed8e17-e80c-4f56-a772-8ffe4b362ffd)
+<img src="https://github.com/user-attachments/assets/17ed8e17-e80c-4f56-a772-8ffe4b362ffd" width="500"> <br/>
 
 ```ffuf -w common.txt -u http://localhost/cd/no404/FUZZ```
 
-![f2](https://github.com/user-attachments/assets/ad638a87-ec64-41b0-81ed-fe2eb7f87149)
+<img src="https://github.com/user-attachments/assets/ad638a87-ec64-41b0-81ed-fe2eb7f87149" width="500"> <br/>
 
 ```ffuf -w common.txt -u http://localhost/cd/no404/FUZZ -fs 669```
 
-![f3](https://github.com/user-attachments/assets/67ff5381-7de9-42a3-8fdc-a683449f253b)
+<img src="https://github.com/user-attachments/assets/67ff5381-7de9-42a3-8fdc-a683449f253b" width="500"> <br/>
 
 Haluttu tiedosto: ```secret```
 
 ```curl http://localhost/cd/ext/no404/secret```
 
-![f4](https://github.com/user-attachments/assets/d7abcbd4-32a0-48ac-9e1c-78a555bc77e9)
+<img src="https://github.com/user-attachments/assets/d7abcbd4-32a0-48ac-9e1c-78a555bc77e9" width="500"> <br/>
 
 ## g) Param Mining
 
-![g1](https://github.com/user-attachments/assets/71b9934f-37ff-4279-9222-a91c7d4d4e1d)
+<img src="https://github.com/user-attachments/assets/71b9934f-37ff-4279-9222-a91c7d4d4e1d" width="500"> <br/>
 
 Tätä tehtävää varten kävin lataamasssa SecLististä [parametreille oman listan burp-parameter-names.txt](https://github.com/danielmiessler/SecLists/blob/master/Discovery/Web-Content/burp-parameter-names.txt).  
 
 ```ffuf -w burp-parameter-names.txt -u http://localhost/cd/param/data?FUZZ=1```
 
-![g2](https://github.com/user-attachments/assets/a10dfd29-5834-4a4a-82d7-0f91b909e0a2)
+<img src="https://github.com/user-attachments/assets/a10dfd29-5834-4a4a-82d7-0f91b909e0a2" width="500"> <br/>
 
 Haluttu parametri: ```debug```
 
 ```curl http://localhost/cd/param/data?debug=1```
 
-![g3](https://github.com/user-attachments/assets/fa1645a8-4340-4ddf-9a8f-f1cd0821fa92)
+<img src="https://github.com/user-attachments/assets/fa1645a8-4340-4ddf-9a8f-f1cd0821fa92" width="500"> <br/>
 
 ## h) Rate Limited
 
-![h1](https://github.com/user-attachments/assets/93569a58-48bf-4141-8bdd-f54506b364b4)
+<img src="https://github.com/user-attachments/assets/93569a58-48bf-4141-8bdd-f54506b364b4" width="500"> <br/>
 
 ```ffuf -w common.txt -u http://localhost/cd/rate/FUZZ -mc 200,429```
 
-![h2](https://github.com/user-attachments/assets/b9138bb0-eebd-48e3-a760-71e4c126ebfa)
+<img src="https://github.com/user-attachments/assets/b9138bb0-eebd-48e3-a760-71e4c126ebfa" width="500"> <br/>
 
 Odotetusti erroria tuli
 
 ```ffuf -w common.txt -t 5 -p 0.1 -u http://localhost/cd/rate/FUZZ -mc 200,429```
 
-![h3](https://github.com/user-attachments/assets/6e204650-36b6-4e07-b53b-05202dc8c967)
+<img src="https://github.com/user-attachments/assets/6e204650-36b6-4e07-b53b-05202dc8c967" width="500"> <br/>
 
 Haluttu tiedosto: oracle
 
 curl http://localhost/cd/rate/oracle
 
-![h4](https://github.com/user-attachments/assets/a00838ff-b847-40ab-8870-a881faad75fd)
+<img src="https://github.com/user-attachments/assets/a00838ff-b847-40ab-8870-a881faad75fd" width="500"> <br/>
 
 ## i) Subdomains - Virtual Host Enumeration
 
-![i1](https://github.com/user-attachments/assets/8be81722-fbff-4203-9af4-a03560718a2e)
+<img src="https://github.com/user-attachments/assets/8be81722-fbff-4203-9af4-a03560718a2e" width="500"> <br/>
 
 Latasin jälleen uuden listan[combined_subdomains.txt](https://github.com/danielmiessler/SecLists/blob/master/Discovery/DNS/combined_subdomains.txt) tätä varten
 
 ```ffuf -w combined_subdomains.txt -H "Host: FUZZ.ffuf.me" -u http://localhost```
 
-![i2](https://github.com/user-attachments/assets/c7408e55-db74-45df-8f3c-94fb1268fb36)
+<img src="https://github.com/user-attachments/assets/c7408e55-db74-45df-8f3c-94fb1268fb36" width="500"> <br/>
 
 Tässä tuli jälleen älytön määrä ilmoituksia, joten filtteröinti käyttöön. 
 
 ```ffuf -w combined_subdomains.txt -H "Host: FUZZ.ffuf.me" -u http://localhost -fs 1495```
 
-![i3](https://github.com/user-attachments/assets/09db1a43-202a-4bff-9f5e-5f40eef83207)
+<img src="https://github.com/user-attachments/assets/09db1a43-202a-4bff-9f5e-5f40eef83207" width="500"> <br/>
 
 Haluttu subdomainin nimi: redhat
 
@@ -288,7 +288,3 @@ Tehtävä b.
 danielmiessler. s.a. GitHub/SecLists.    
 https://github.com/danielmiessler/SecLists/    
 Tehtävät c-i.  
-
-
-
-Tehtävä k.    
