@@ -155,6 +155,8 @@ Sieltä ne halutut ```class``` ja ```development.log``` löytyivätkin.
 
 <img src="https://github.com/user-attachments/assets/ddf1bb5b-581b-4b42-91b4-3bd624828b0e" width="500"> <br/>
 
+Tehtävän tavoite lyhyesti: Tehtävässä oli tavoitteena oppia ffuf:n peruskäyttö ja ymmärtää mitä ffuf tekee. 
+
 ## d) Content Discovery With Recursion
 
 <img src="https://github.com/user-attachments/assets/7400f72c-ce33-4983-96ca-aa69734cdb04" width="500"> <br/>
@@ -169,6 +171,7 @@ Haluttu polku löytyi ```http://localhost/cd/recursion/admin/users/``` sekä sie
 
 <img src="https://github.com/user-attachments/assets/3d455ff6-e689-4667-9490-5c5f14c3a00a" width="500"> <br/>
 
+Tehtävän tavoite lyhyesti: Tehtävän tavoitteena oppia käyttämään rekursiota, eli käskeä ffufia fuzzaamaan myös löytämänsä polut. 
 
 ## e) Content Discovery With File Extensions
 
@@ -183,6 +186,8 @@ Haluttu tiedosto: ```users.log```
 ```curl http://localhost/cd/ext/logs/users.log```
 
 <img src="https://github.com/user-attachments/assets/03300d38-902e-4e5a-9167-200465eea612" width="500"> <br/>
+
+Tehtävän tavoite lyhyesti: Oppia fuzzaamaan silloin, kun voidaan olettaa tietyn tiedostopäätteen olevan käytössä. 
 
 ## f) No 404 Status
 
@@ -202,6 +207,8 @@ Haluttu tiedosto: ```secret```
 
 <img src="https://github.com/user-attachments/assets/d7abcbd4-32a0-48ac-9e1c-78a555bc77e9" width="500"> <br/>
 
+Tehtävän tavoite lyhyesti: Tehtävän tavoitteena oppia filtteröimään, esim. silloin kun sivusto palauttaa aina 200 OK statusta. 
+
 ## g) Param Mining
 
 <img src="https://github.com/user-attachments/assets/71b9934f-37ff-4279-9222-a91c7d4d4e1d" width="500"> <br/>
@@ -217,6 +224,8 @@ Haluttu parametri: ```debug```
 ```curl http://localhost/cd/param/data?debug=1```
 
 <img src="https://github.com/user-attachments/assets/fa1645a8-4340-4ddf-9a8f-f1cd0821fa92" width="500"> <br/>
+
+Tehtävän tavoite lyhyesti: Tavoitteena oppia etsimään parametreja ffuffin avulla. 
 
 ## h) Rate Limited
 
@@ -238,6 +247,8 @@ curl http://localhost/cd/rate/oracle
 
 <img src="https://github.com/user-attachments/assets/a00838ff-b847-40ab-8870-a881faad75fd" width="500"> <br/>
 
+Tehtävän tavoite lyhyesti: Tavoitteena oppia hidastamaan ffuffia, esim. siinä tapauksessa kun vastaanottava pääty rajoittaa kyselyiden määrää. 
+
 ## i) Subdomains - Virtual Host Enumeration
 
 <img src="https://github.com/user-attachments/assets/8be81722-fbff-4203-9af4-a03560718a2e" width="500"> <br/>
@@ -256,6 +267,7 @@ Tässä tuli jälleen älytön määrä ilmoituksia, joten filtteröinti käytt�
 
 Haluttu subdomainin nimi: redhat
 
+Tehtävän tavoite lyhyesti: Tavoitteena oppia etsimään alidomaineja ffuffin avulla. 
 
 ## Ajankäyttö: 
 
