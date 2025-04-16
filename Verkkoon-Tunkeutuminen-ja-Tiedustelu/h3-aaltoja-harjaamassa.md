@@ -346,11 +346,11 @@ https://terokarvinen.com/verkkoon-tunkeutuminen-ja-tiedustelu/
 Tehtävänanto.    
 
 GitHub. s.a. Merbanan/rtl_433    
-https://github.com/merbanan/rtl_433/
+https://github.com/merbanan/rtl_433/    
 Tehtävä b.    
 
-GitHub. s.a. Merbanan/rtl_433/IQ Formats  
-https://github.com/merbanan/rtl_433/blob/master/docs/IQ_FORMATS.md
+GitHub. s.a. Merbanan/rtl_433/IQ Formats    
+https://github.com/merbanan/rtl_433/blob/master/docs/IQ_FORMATS.md    
 Tehtävä d.    
 
 Wikipedia. s.a. Amplitude-shift keying.    
