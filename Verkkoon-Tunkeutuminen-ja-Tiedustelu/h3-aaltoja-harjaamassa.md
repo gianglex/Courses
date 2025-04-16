@@ -25,19 +25,19 @@
 
 Aloitin menemällä osoitteeseen WebSDR:n sivuille (http://websdr.org/). Selaimena käytin Chromea (```Version 135.0.7049.85 (Official Build) (64-bit)```) Valitsin ensimmäisenä kanavan Kreikassa olevaan kanavaan: ```SDR Station by SV3YY in RIO GREECE```.
 
-![a1](https://github.com/user-attachments/assets/4747c7fb-fd4d-4844-b33a-5c4c51e2e2e0)
+<img src="https://github.com/user-attachments/assets/4747c7fb-fd4d-4844-b33a-5c4c51e2e2e0" width="500"> <br/>
 
 Sivuille mentyäni tuli esille ponnahdusikkuna, jota painamalla äänet lähtivät kuulumaan. Nappulan painamisen tarve johtuu siitä, että selain estää sivustoja laittamasta ääniä automaattisesti päälle. 
 
-![a2](https://github.com/user-attachments/assets/dcdb70fa-0f92-4334-9334-008a15eae4a8)
+<img src="https://github.com/user-attachments/assets/dcdb70fa-0f92-4334-9334-008a15eae4a8" width="500"> <br/>
 
 Alkuun kuului vain kohinaa. 
 
-![a3](https://github.com/user-attachments/assets/1b4edb9c-ea92-4539-bbaf-fe19e0d129c0)
+<img src="https://github.com/user-attachments/assets/1b4edb9c-ea92-4539-bbaf-fe19e0d129c0" width="500"> <br/>
 
 Siirsin tämän jälkeen valintaani (klikkaamalla) toiselle frekvenssille, jossa näkyi enemmän aktiivisuutta (punaista): 
 
-![a4](https://github.com/user-attachments/assets/25aa6b62-cd24-4f8d-943d-6183908f878c)
+<img src="https://github.com/user-attachments/assets/25aa6b62-cd24-4f8d-943d-6183908f878c" width="500"> <br/>
 
 Frekvenssi: ```7175,21kHz``` 
 
@@ -49,19 +49,19 @@ Nyt alkoikin kuulumaan jo puhetta, vaikka siitä saikin hieman huonosti selvää
 
 Päätin tämän jälkeen vielä vaihtaa toiseen maahan. Tällä kertaa Utahissa olevaan asemaan: ```Northern Utah WebSDR, Corinne, Utah, U.S.A.```
 
-![aa1](https://github.com/user-attachments/assets/e46bd46c-39d5-4f25-a57d-0c820d30bd1e)
+<img src="https://github.com/user-attachments/assets/e46bd46c-39d5-4f25-a57d-0c820d30bd1e" width="500"> <br/>
 
 Avautui sivu, jossa pystyi valita eri antenneista. Päätin valita ensimmäisen ```WebSDR1 ("Yellow") - Covers the 2200, 630, 160, 80/75, 60 and 40 meter amateur bands, AM broadcast, the 120, and 60 meter shortwave broadcast bands and the 1750 meter LowFER band```.
 
-![aa2](https://github.com/user-attachments/assets/1c35ee72-1ced-4519-b5a1-0c5cdeecf285)
+<img src="https://github.com/user-attachments/assets/1c35ee72-1ced-4519-b5a1-0c5cdeecf285" width="500"> <br/>
 
 Täytyi ensin jälleen aktivoida sivulle äänet. 
 
-![aa3](https://github.com/user-attachments/assets/6c2b7097-58ae-4dd1-a1a8-c0bd07dd7398)
+<img src="https://github.com/user-attachments/assets/6c2b7097-58ae-4dd1-a1a8-c0bd07dd7398" width="500"> <br/>
 
 Säädin jälleen hieman aikaa frekvenssiä kunnes sain selvästi äänen kuuluviin. 
 
-![aa4](https://github.com/user-attachments/assets/2da8649e-cb6a-4a9b-ac7b-cbb53569f7ba)
+<img src="https://github.com/user-attachments/assets/2da8649e-cb6a-4a9b-ac7b-cbb53569f7ba" width="500"> <br/>
 
 Frekvenssi: ```1160,00kHz``` 
 
@@ -73,7 +73,7 @@ Kanava oli kuului hyvin, eikä siellä ollut juurikaan kohinaa. Kanava oli selke
 
 Kävin vielä lopuksi googlaamassa ja kuulemani kanava varmistuikin KSL:ksi. 
 
-![aa5](https://github.com/user-attachments/assets/ec80fc96-2832-4bc4-bab3-6a44bc9297f9)
+<img src="https://github.com/user-attachments/assets/ec80fc96-2832-4bc4-bab3-6a44bc9297f9" width="500"> <br/>
 
 ## b) rtl_433. Asenna rtl_433 automaattista analyysia varten. 
 
@@ -95,7 +95,7 @@ Kokeilin ensin ajaa vinkkien perusteella komennolla ```./rtl_433```, mutta ajatt
 
 Lähdin sitten kokeilemaan vaihtoehtoisia (ja todennäisimpiä) komentoja kunnes oikea löytyi: ```rtl_433```. 
 
-![b1](https://github.com/user-attachments/assets/947c5139-e805-4c10-99b3-89395c81cba1)
+<img src="https://github.com/user-attachments/assets/947c5139-e805-4c10-99b3-89395c81cba1" width="500"> <br/>
 
 ```rtl_433 version 22.11 (2022-11-19) inputs file rtl_tcp RTL-SDR SoapySDR```
 
@@ -117,7 +117,7 @@ Ajoin lopuksi ohjelman nähdäkseni sen version. Tällä kertaa arvelin jo ennak
 
 ```./rtl_433```
 
-![b2](https://github.com/user-attachments/assets/b57479b4-13c1-4eb8-986d-c875a8345aab)
+<img src="https://github.com/user-attachments/assets/b57479b4-13c1-4eb8-986d-c875a8345aab" width="500"> <br/>
 
 Versio täsmää uusimpaan. 
 
@@ -127,7 +127,7 @@ Tein automaattisen analyysin rtl_433:lla.
 
 ```./rtl_433 -r Converted_433.92M_2000k.cs8```
 
-![c1](https://github.com/user-attachments/assets/53f69bf3-408d-4073-a68f-5e246e9751ef)
+<img src="https://github.com/user-attachments/assets/53f69bf3-408d-4073-a68f-5e246e9751ef" width="500"> <br/>
 
 Tulostus oli pitempi, joten alla vielä automaattisen analyysin tulos:
 
@@ -217,15 +217,14 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
 Sillä Proove-Security ja Nexa-Security olivat sisällöltään identtisiä selitän vain toisen. 
 
-```Proove-Security```
-
-```time      : @0.083284s```: Aikaleima
-```model     : Proove-Security```: Laitteen malli
-```House Code: 8785315```: Kohdelaitteen tunniste/ID. Kyseessä nimen perusteella kodin turvajärjestelmä, joten ID = House Code. 
+```Proove-Security```    
+```time      : @0.083284s```: Aikaleima    
+```model     : Proove-Security```: Laitteen malli    
+```House Code: 8785315```: Kohdelaitteen tunniste/ID. Kyseessä nimen perusteella kodin turvajärjestelmä.    
 ```Channel   : 3```: Mihin kanavaan kohdistettu    
-```State     : OFF```: Laitteen nykyinen tila
+```State     : OFF```: Laitteen nykyinen tila    
 ```Unit      : 3```: Mihin laitteeseen kohdistettu    
-```Group     : 0```: Mihin ryhmään kohdistettu
+```Group     : 0```: Mihin ryhmään kohdistettu    
 
 
 ## d) Too complex 16? Olet nauhoittanut näytteen 'urh' -ohjelmalla .complex16s-muodossa. Muunna näyte rtl_433-yhteensopivaan muotoon ja analysoi se. Näyte Recorded-HackRF-20250411_183354-433_92MHz-2MSps-2MHz.complex16s
@@ -238,7 +237,7 @@ Lähdin tämän jälkeen kokeilemaan tiedoston analysoimista.
 
 ```./rtl_433 RF_433.92M_2000k.cs16 ```
 
-![d1](https://github.com/user-attachments/assets/96f6b8c7-dcc3-4cd9-be33-ed2fbbc68325)
+<img src="https://github.com/user-attachments/assets/96f6b8c7-dcc3-4cd9-be33-ed2fbbc68325" width="500"> <br/>
 
 Tämä ei lähtenyt vielä toimimaan, joten aloitin lukemaan rtl433:n dokumentaatiota. Sivulla IQ_Formats (https://github.com/merbanan/rtl_433/blob/master/docs/IQ_FORMATS.md) löytyi esimerkki, jossa oli sama frekvenssi mutta eri sample rate. Muutin tämän perusteella tiedostonimeä vielä uudelleen ja kokeilin uudelleen ajaa rtl433:n analysointia. 
 
@@ -246,7 +245,7 @@ Tämä ei lähtenyt vielä toimimaan, joten aloitin lukemaan rtl433:n dokumentaa
 
 ```./rtl_433 RF_433.92M_1000k.cs16```
 
-![d2](https://github.com/user-attachments/assets/f4b19f0c-5036-4d0d-8ce8-5383ea7bf3a6)
+<img src="https://github.com/user-attachments/assets/f4b19f0c-5036-4d0d-8ce8-5383ea7bf3a6" width="500"> <br/>
 
 ```
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
@@ -273,37 +272,72 @@ Kyseessä näyttäisivät olevan samat lähettimet kuin viimeksikin.
 
 ```pipx ensurepath```
 
-Tämän jälkeen suljin ja avasin terminaalin. 
+Tämän jälkeen suljin ja avasin uudelleen terminaalin. 
 
-```urh```
+```urh --version```
+
+<img src="https://github.com/user-attachments/assets/9efc862f-afea-4f59-b4ad-d19f98e1ab8d" width="500"> <br/>
 
 ## f) Yleiskuva. Kuvaile näytettä yleisesti: kuinka pitkä, millä taajuudella, milloin nauhoitettu? Miltä näyte silmämääräisesti näyttää?
 
+Aloitin lataamalla näytteen [1-on-on-on-HackRF-20250412_113805-433_912MHz-2MSps-2MHz.complex16s](https://terokarvinen.com/verkkoon-tunkeutuminen-ja-tiedustelu/samples/1-on-on-on-HackRF-20250412_113805-433_912MHz-2MSps-2MHz.complex16s).
+
+Nimen perusteellä näyte nauhoitettu 12.4.2025 kello 11:38:05. Näyte tallennettu 433,912 Mhz frekvenssillä, kahden megasamplen (MSps) nopeudella ja 2Mhz taajuudella. Käynnistin tämän jälkeen URH:n tarkastellakseni 
+
+```urh```
+
+File -> Open -> 1-on-on-on-HackRF-20250412_113805-433_912MHz-2MSps-2MHz.complex16s
+
+```Autodetect parameters```
+
+<img src="https://github.com/user-attachments/assets/02e80d39-29ee-4b54-8d85-564ef4c6ecda" width="500"> <br/>
+
+Näytteellä näyttäisi olevan kuvauksen mukaisesti kolme signaalia. Tämän jälkeen valitsin koko näytteen klikkaamalla ensin kuvaajaa ja sitten ```CTRL + A```
+
+<img src="https://github.com/user-attachments/assets/3461bf05-af23-422a-b979-e5f3f62051ff" width="500"> <br/>
+
+```5491580 selected | 5,49 s | -15,2dBm```
+
+Tämä tarkoittaa, että 5491580 yksikköä valittuna, joiden kesto ollut 5,49 sekuntia ja keskimääräinen voimakkuus ollut -15,2dBm
+
+Maalasin tämän jälkeen yhden signaalin ja tarkastelin siitä saatua dataa. 
+
+<img src="https://github.com/user-attachments/assets/4e1ec034-eba5-4401-8940-ada0dd3e2fab" width="500"> <br/>
+
+```773952 selected | 773,95ms | -11,41 dBm```
+
+Yksittäinen signaali näyttäisi kestävän siis 773,95ms. 
 
 
 ## g) Bittistä. Demoduloi signaali niin, että saat raakabittejä. Mikä on oikea modulaatio? Miten pitkä yksi raakabitti on ajassa? Kuvaile tätä aikaa vertaamalla sitä johonkin. (Monissa singaaleissa on line encoding, eli lopullisia bittejä varten näitä "raakabittejä" on vielä käsiteltävä)
 
+Demoduloinki signaalin jo aiemmassa tehtävässä painamalla ```Autodetect parameters```. 
 
+Asetukset asettuivat näihin: 
+- Noise: 0,0000
+- Center: 0,1439
+- Samples/Symbol: 500
+- Error tolerance: 2
+- Modulation: ASK
+- Bits/Symbol: 1
 
-## h) Vapaaehtoinen: Sdr++. Kokeile sdr++ -sovellusta ja esittele sillä jokin "hei maailma" -tyyppinen esimerkki.
+Oikea modulaatio näytäisi olevan ASK eli [Amplitude-shift keying](https://en.wikipedia.org/wiki/Amplitude-shift_keying). 
 
+Maalasin tämän jälkeen yhden bitin alla olevasta ikkunasta ja zoomasin lähemmäs hiiren keskirullalla nähdääkseni yksittäisen bitin selkeämmin. 
 
+<img src="https://github.com/user-attachments/assets/15ca37c6-276e-401c-af64-7d6a0fe4f2b6" width="500"> <br/>
 
-## i) Vapaaehtoinen, vaikeahko: GNU Radio. Asenne GNU Radio ja tee sillä yksinkertainen "Hei maailma".
+```522 selected | 522,00 µs | -4,52 dBm```
 
+Poiketen asetuksista, tämä yksittäinen bitti näyttäisi olevan 522 samplea ja 522 mikrosekuntia (µs). 522 mikrosekuntia on 0,000522 sekuntia. 
 
-
-```
-```
-
-<img src="
-" width="500"> <br/>
+[Yksi silmänräpäys kestää noin 0,1 - 0,4 sekuntia](https://bionumbers.hms.harvard.edu/bionumber.aspx?&id=100706&ver=4) eli yhden silmänräpäyken aikana voitaisiin lähettää ~191-766 bittiä. 
 
 
 ## Ajankäyttö
 - Tiivistelmiin n. 1h.
-- Tehtäviin n. 
-- Raportointiin ja dokumentointiin n. 
+- Tehtäviin n. 5h
+- Raportointiin ja dokumentointiin n. 2h 
 
 ## Lähteet
 
@@ -318,3 +352,11 @@ Tehtävä b.
 GitHub. s.a. Merbanan/rtl_433/IQ Formats  
 https://github.com/merbanan/rtl_433/blob/master/docs/IQ_FORMATS.md
 Tehtävä d.    
+
+Wikipedia. s.a. Amplitude-shift keying.    
+https://en.wikipedia.org/wiki/Amplitude-shift_keying    
+Tehtävä g.    
+
+Bionumbers. s.a. Average duration of a single eye blink.    
+https://bionumbers.hms.harvard.edu/bionumber.aspx?&id=100706&ver=4    
+Tehtävä g.    
