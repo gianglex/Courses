@@ -10,3 +10,7 @@ https://github.com/gianglex/Courses/blob/main/Palvelinten-Hallinta/h2-soitto-kot
 Vagrantfilen päivitys + dochere + salt dependenssit turvallisemmin
 https://github.com/gianglex/Courses/blob/main/Palvelinten-Hallinta/h3-infraa-koodina.md#vagrantfilen-p%C3%A4ivitys
 
+## H4
+
+Vapaaehtoinen tehtävä c) Apache ja Name Based Virtual Host init.sls:llä. 
+https://github.com/gianglex/Courses/blob/main/Palvelinten-Hallinta/h4-pkg-file-service.md
