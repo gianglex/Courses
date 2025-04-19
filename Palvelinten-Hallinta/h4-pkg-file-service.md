@@ -583,5 +583,5 @@ https://docs.saltproject.io/en/3006/ref/states/all/salt.states.service.html
 Tehtävä c.    
 
 Salt Project. s.a. salt.states.cmd.    
-https://docs.saltproject.io/en/3006/ref/states/all/salt.states.cmd.html 
+https://docs.saltproject.io/en/3006/ref/states/all/salt.states.cmd.html    
 Tehtävä c.    
