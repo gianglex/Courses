@@ -449,19 +449,12 @@ apache2_service:
 
 giangtesti.fi-enabled:
   cmd.run:
-    - name: a
+    - name: a2ensite giangtesti.fi.conf
     - unless: "a2query -s giangtesti.fi"
     - require:
       - file: /etc/apache2/sites-available/giangtesti.fi.conf
     - watch_in:
       - service: apache2_service
-
-disable-default:
-  cmd.run:
-    - name: a2dissite 000-default.conf
-    - unless: "! a2query -s 000-default"
-    - require:
-      - pkg: apache2
 
 /home/vagrant/public-sites:
   file.directory:
