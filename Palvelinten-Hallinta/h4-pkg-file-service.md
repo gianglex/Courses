@@ -362,7 +362,7 @@ Viimeiseksi kokeilin vielä yhteyttä portin 8888 avulla.
 
 <img src="https://github.com/user-attachments/assets/b9a6b913-f6e0-4f20-98ad-7e04be9e6e9b" width="500"> <br/>
 
-Vaikka avaimesta kieltäydyttiinkin, muodostui kuitenkin yhteys (toisin kuin alkutilanteessa) eli pystyin toteamaan portin auenneen. 
+Vaikka avaimesta kieltäydyttiinkin, muodostui kuitenkin yhteys (toisin kuin alkutilanteessa) eli pystyin toteamaan portin olevan auki. 
 
 ## c) Vapaaehtoinen, haastavahko tässä vaiheessa: Asenna ja konfiguroi Apache ja Name Based Virtual Host. Sen tulee näyttää palvelimen etusivulla weppisivua. Weppisivun tulee olla muokattavissa käyttäjän oikeuksin, ilman sudoa.
 
