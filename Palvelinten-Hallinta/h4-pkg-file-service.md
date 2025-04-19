@@ -520,7 +520,7 @@ Homma näytti menevän onnistuneesti maaliin.
 
 <img src="https://github.com/user-attachments/assets/1678a7e2-995b-4973-9a59-a2335f06b4f6" width="500"> <br/>
 
-sudo salt '*' cmd.run 'curl giangtesti.fi'
+```sudo salt '*' cmd.run 'curl giangtesti.fi'```
 
 <img src="https://github.com/user-attachments/assets/1cb395c1-0d6e-404c-8a1e-595cc8c7b637" width="500"> <br/>
 
@@ -569,4 +569,12 @@ Tehtävä c.
 
 Salt Project. s.a. salt.states.file.    
 https://docs.saltproject.io/en/3006/ref/states/all/salt.states.file.html    
+Tehtävä c.    
+
+Salt Project. s.a. salt.states.service.    
+https://docs.saltproject.io/en/3006/ref/states/all/salt.states.service.html    
+Tehtävä c.    
+
+Salt Project. s.a. salt.states.cmd.    
+https://docs.saltproject.io/en/3006/ref/states/all/salt.states.cmd.html 
 Tehtävä c.    
