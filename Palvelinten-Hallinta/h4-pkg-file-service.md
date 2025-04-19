@@ -364,6 +364,12 @@ Viimeiseksi kokeilin vielä yhteyttä portin 8888 avulla.
 
 Vaikka avaimesta kieltäydyttiinkin, muodostui kuitenkin yhteys (toisin kuin alkutilanteessa) eli pystyin toteamaan portin olevan auki. 
 
+Vielä toinen testi: 
+
+```sudo salt '*' cmd.run 'nc -vz localhost 8888'```
+
+<img src="https://github.com/user-attachments/assets/83bb3c36-7e49-4855-bcee-67196a6881b8" width="500"> <br/>
+
 ## c) Vapaaehtoinen, haastavahko tässä vaiheessa: Asenna ja konfiguroi Apache ja Name Based Virtual Host. Sen tulee näyttää palvelimen etusivulla weppisivua. Weppisivun tulee olla muokattavissa käyttäjän oikeuksin, ilman sudoa.
 
 a) tehtävässä oltiinkin asennettu jo apache, joten jatkoin siitä mihin jäätiin. Tarkoituksena saada nyt giangtesti.fi toimimaan, ensin masterilla sitten minioneilla. Käytin tässäkin hyödykseni [aiempaa raporttiani](https://github.com/gianglex/Courses/blob/main/Linux-Palvelimet/h3-hello-web-server.md). 
