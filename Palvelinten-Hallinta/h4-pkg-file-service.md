@@ -257,7 +257,13 @@ Kokeilin vielä lopuksi yhdellä koneista erikseen varmistuakseni toiminnan.
 
 ## b) SSHouto. Lisää uusi portti, jossa SSHd kuuntelee.
 
-Aloitin ensin tarkastelemalla mitkä asetukset ovat aktiivisena masterissa (ja että hihat tyhjät) ja sen jälkeen muokkaamalla sshd:n konffitiedostoa sen perusteella. 
+Testasin alkuun, että portilla 8888 ei saa yhteyttä minionilla. 
+
+```ssh -p 8888 vagrant@192.168.33.101```
+
+<img src="https://github.com/user-attachments/assets/93494dab-0c98-4eab-b73e-ebe9a8bbc671" width="500"> <br/>
+
+Sillä yhteydestä kieltäydyttiin, totesin että portti oli pois käytöstä. Tämän jälkeen tarkastelin mitkä asetukset ovat aktiivisena masterissa ja sen jälkeen muokkasin sshd:n konffitiedostoa sen perusteella. 
 
 ```grep -vE '^\s*#|^\s*$' /etc/ssh/sshd_config```
 
@@ -349,6 +355,14 @@ Komento näyttäisi tehneen haluama muutokset. Seuraavaksi vielä tarkastan yksi
 <img src="https://github.com/user-attachments/assets/1aeefe00-30bd-4cce-93d4-120e04185144" width="500"> <br/>
 
 Muutokset olivat siis onnistuneesti tulleet läpi. 
+
+Viimeiseksi kokeilin vielä yhteyttä portin 8888 avulla. 
+
+```ssh -p 8888 vagrant@192.168.33.101```
+
+<img src="https://github.com/user-attachments/assets/b9a6b913-f6e0-4f20-98ad-7e04be9e6e9b" width="500"> <br/>
+
+Vaikka avaimesta kieltäydyttiinkin, muodostui kuitenkin yhteys (toisin kuin alkutilanteessa) eli pystyin toteamaan portin auenneen. 
 
 ## c) Vapaaehtoinen, haastavahko tässä vaiheessa: Asenna ja konfiguroi Apache ja Name Based Virtual Host. Sen tulee näyttää palvelimen etusivulla weppisivua. Weppisivun tulee olla muokattavissa käyttäjän oikeuksin, ilman sudoa.
 
