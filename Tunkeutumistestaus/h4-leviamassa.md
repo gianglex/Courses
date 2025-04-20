@@ -40,7 +40,7 @@
 
 ## Ajankäyttö: 
 
-- Materiaalien lukemiseen ja tiivistämiseen n. 
+- Materiaalien lukemiseen ja tiivistämiseen n. 2h
 - Tehtäviin n. h. 
 - Raportointiin ja dokumentointiin n. h. 
 
