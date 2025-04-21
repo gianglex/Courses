@@ -78,7 +78,7 @@ Lisäsin tehtävän loppuun lyhyen selityksen awk:sta ja tarkemman selityksen k�
 Seuraavaksi tunnistetaan mitä moodia pitää käyttää hashin purkamiseksi
 
 ```bash
-hashid -m 82eeba1f2783a67ccb954e1fe51e2ee863084784
+hashid -m '82eeba1f2783a67ccb954e1fe51e2ee863084784'
 ```
 
 ![a3](https://github.com/user-attachments/assets/d958e05b-2b5f-46fe-9637-77a987ff668a)
@@ -226,23 +226,85 @@ John the Ripper näyttäisi antaneen oikean salasanan ```katelynn```.
 
 ## e) Tiedosto. Tee itse tai etsi verkosta jokin salakirjoitettu tiedosto, jonka saat auki. Murra sen salaus. (Jokin muu formaatti kuin aiemmissa alakohdissa kokeilemasi).
 
-
+Löysin esimerkkitiedoston Openwallin GitHubista ([john-samples/PDF/pdf_samples
+/PDF-Example-Password.pdf](https://raw.githubusercontent.com/openwall/john-samples/main/PDF/pdf_samples/PDF-Example-Password.pdf)
 
 ```bash
+wget https://raw.githubusercontent.com/openwall/john-samples/main/PDF/pdf_samples/PDF-Example-Password.pdf
+```
 
+Salasanasuojatun PDF-tiedoston ladattuani, pitää siitä saada hash jota aiotaan murtaa. Tämä onnistuu pdf2john:nin avulla. 
+
+```bash
+pdf2john PDF-Example-Password.pdf > pdf.hash
 ```
 
 ```bash
-
+cat pdf.hash
 ```
+
+![e1](https://github.com/user-attachments/assets/f7ecbdaa-ed44-4197-87f0-32a2aa4e0a1e)
+
+Tämän jälkeen voi aloittaa John the Ripperillä murtamisen jälleen
 
 ```bash
-
+john pdf.hash
 ```
+
+![e2](https://github.com/user-attachments/assets/197f85f2-b908-415e-a87e-0ba57703b250)
+
+Salasana olisi John the Ripperin mukaan ```test```. avasin vielä PDF:n ja kokeilin salasanaa todentaakseni sen oikeellisuuden. 
+
+![e3](https://github.com/user-attachments/assets/38c588ab-5389-4ad9-8166-af474f588c60)
+
+![e4](https://github.com/user-attachments/assets/024350db-a5f1-49e8-ada1-6c72591aa468)
+
+Tiedosto aukesi salasanalla ```test```, joten voidaan todeta löydetyn salasanan olleen oikea. 
 
 ## f) Tiiviste. Tee itse tai etsi verkosta salasanan tiiviste, jonka saat auki. Murra sen salaus. (Jokin muu formaatti kuin aiemmissa alakohdissa kokeilemasi. Voit esim. tehdä käyttäjän Linuxiin ja murtaa sen salasanan.)
 
+Otin esimerkkihashin ```e4fa1555ad877bf0ec455483371867200eee89550a93eff2f95a6198``` [hashcatin dokumentaatiosta](https://hashcat.net/wiki/doku.php?id=example_hashes) 
 
+Aloitetaan tunnistamalla hash. 
+
+```bash
+hashid -m 'e4fa1555ad877bf0ec455483371867200eee89550a93eff2f95a6198'
+```
+
+![f1](https://github.com/user-attachments/assets/06d33b93-a836-4567-9528-b884c656b392)
+
+Sillä hashid ei kertonut mitä moodia kannattaa käyttää, hain listauksen moodeista ```hashcat --help```:llä ja suodatin listauksesta ylimääräiset ```grep```:llä. 
+
+```bash
+hashcat --help | grep '224'
+```
+
+![f2](https://github.com/user-attachments/assets/33eef6a4-d847-489c-9c64-91453f6ca277)
+
+SHA-224:lle löytyi kaksi hyvää vaihtoehtoa ```1300 | SHA2-224``` ja ```17300 | SHA3-224```. Lähdetään kokeilemaan onnistuuko kummallakaan näistä moodeista murtaminen. 
+
+```bash
+hashcat -m 1300 'e4fa1555ad877bf0ec455483371867200eee89550a93eff2f95a6198' rockyou.txt -o tulos2 
+```
+
+Kun hashcat oli ajanut loppuun, katsoin vielä selvitetyn salasanan
+
+```bash
+cat tulos2
+```
+
+![f3](https://github.com/user-attachments/assets/6226e06c-64d6-4491-9b5b-f9e938b4f666)
+
+Salasana oli siis ```hashcat```. 
+
+Tarkastetaan vielä luomalla salasanasta hash aiemmin todetulla hash-funktiolla. 
+
+```bash
+echo -n "hashcat" | sha224sum
+e4fa1555ad877bf0ec455483371867200eee89550a93eff2f95a6198
+```
+
+Hashit näyttäisivät täsmäävän. 
 
 ## g) Tee msfvenom-työkalulla haittaohjelma, joka soittaa kotiin (reverse shell). Ota yhteys vastaan metasploitin multi/handler -työkalulla.
 Haittaohjelma ei saa olla automaattisesti leviävä. Msfvenom tekee tyypillisillä asetuksilla ohjelman, joka avaa reverse shellin, kun sen ajaa, mutta joka ei leviä eikä tee muutenkaan mitään itsestään.
@@ -293,3 +355,7 @@ Tehtävä x.
 GitHub. s.a. SecLists/Passwords/Leaked-Databases/rockyou.txt.tar.gz    
 https://github.com/danielmiessler/SecLists/blob/master/Passwords/Leaked-Databases/rockyou.txt.tar.gz    
 Tehtävät a, c.    
+
+GitHub. s.a. openwall/john-samples/blob/main/PDF/pdf_samples/PDF-Example-Password.pdf    
+https://github.com/openwall/john-samples/blob/main/PDF/pdf_samples/PDF-Example-Password.pdf    
+Tehtävä e.    
