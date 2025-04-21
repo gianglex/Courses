@@ -116,7 +116,7 @@ hashcat näyttäisi selvittäneen oikean salasanan onnistuneesti.
 
 ### awk
 
-Awk on tekstin prosessointiin ja suodatukseen käytetty työkalu. Sen avulla tekstiä voidaan suodattaa/prosessoida tavalla, mihin grep ei tyypillisesti sovellu (esim. suodattamaan määrireltyä aikaväliä tai muuttamaan suodatettua tietoa)
+Awk on tekstin prosessointiin ja suodatukseen käytetty työkalu. Sen avulla tekstiä voidaan suodattaa/prosessoida tavalla, mihin grep ei tyypillisesti sovellu (esim. suodattamaan määriteltyä aikaväliä tai muuttamaan suodatettua tietoa)
 
 Lyhyt selitys vielä, jos ```awk``` -komento ei ole tuttu:     
 ```awk``` = työkalun nimi    
