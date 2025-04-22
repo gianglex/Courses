@@ -40,7 +40,8 @@ Respond APDU:n datakentät ovat:
 Suurin osa löytämistäni uutisista liittyivät kulkukortteihin. Varsinkin hotellien avainkorttien murtamisesta löytyi useampikin uutinen, mikä johtunee siitä että ne ovat huonosti suojattuja jos ovat ylipäätänsäkään suojattuja. 
 Yksi mielenkiintoisista uutisista liittyi F-Securen löydökseen, jossa he olivat saaneet luotua master-keyn ovien avaamiseen. 
 
-Mm. 
+Löysin mm. nämä uutiset:
+
 Hackers build a 'Master Key' that unlocks millions of Hotel rooms    
 https://thehackernews.com/2018/04/hacking-hotel-master-key.html    
 
