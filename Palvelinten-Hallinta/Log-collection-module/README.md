@@ -13,6 +13,7 @@ file_recv_size_max: 1000
 
 - Download and move the ```logcollection``` Salt state folder into ```/srv/salt/logcollection/``` on your salt-master. 
 - Run ```salt '*' state.apply logcollection``` to collect logs from minions.
+- All logs should now be found as a compressed archive file on your salt-master ```/var/cache/salt/master/minions/MINIONID/logcollection/```
 
 
 ## Using the provided test environment
