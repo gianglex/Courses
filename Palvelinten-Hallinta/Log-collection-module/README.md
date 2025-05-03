@@ -22,10 +22,10 @@ Lastly it imports ```logcollection``` and ```testenvironment``` salt state folde
 
 1. Prequisites: 
     - Working Vagrant installation
-    - Files from this repository
+    - Vagrantfile from this repository
 2. Setup Vagrant environment with the provided Vagrantfile
     - Create folder for your Vagrant and move the Vagrantfile there
-    - Navigate to the path Vagrantfile is in
+    - Navigate to the path Vagrantfile is in within terminal
     - Create the virtual machines with command ```vagrant up```
 3. Connect into your master ```vagrant ssh boss```
 4. Run ```salt '*' state.apply testenvironment``` to setup test environment into minions
