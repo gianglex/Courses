@@ -56,13 +56,13 @@ Lastly it imports ```logcollection``` and ```testenvironment``` salt state folde
 ## Further setup
 You might want to modify the /logcollection/init.sls to fit your log collection needs as it searches for logs everywhere. Most things you'd likely want to edit are set as variables. 
 
-```{% set working_dir = '/logcollection' %}``` = Main directory the salt state will be using
-```{% set log_dir = working_dir + '/logs' %}``` = Directory you want logs to be collected into on your minion
-```{% set search_dir = '/' %}``` = What directory logs will be searched in. Currently ```/``` which searches everything
-```{% set minion_id = grains['id'] %}``` = Self-explanatory. Used to identify tar file. 
-```{% set log_time = salt['cmd.run']('date +%Y%m%d_%H%M%S') %}``` = Self-explanatory. Used to identify tar file. 
-```{% set tar_filename = minion_id ~ '_' ~ log_time ~ '.tar.gz' %}``` = Self-explanatory. Actual variable used to name tar file. 
-```{% set tar_path = working_dir ~ '/' ~ tar_filename %}``` = Path tar file will be created into. 
+```{% set working_dir = '/logcollection' %}``` = Main directory the salt state will be using.    
+```{% set log_dir = working_dir + '/logs' %}``` = Directory you want logs to be collected into on your minion.    
+```{% set search_dir = '/' %}``` = What directory logs will be searched in. Currently ```/``` which searches everything.    
+```{% set minion_id = grains['id'] %}``` = Self-explanatory. Used to identify tar file.     
+```{% set log_time = salt['cmd.run']('date +%Y%m%d_%H%M%S') %}``` = Self-explanatory. Used to identify tar file.     
+```{% set tar_filename = minion_id ~ '_' ~ log_time ~ '.tar.gz' %}``` = Self-explanatory. Actual variable used to name tar file.     
+```{% set tar_path = working_dir ~ '/' ~ tar_filename %}``` = Path tar file will be created into.     
 
 ## License
 This project is licensed under the GNU General Public License v3.0.  
