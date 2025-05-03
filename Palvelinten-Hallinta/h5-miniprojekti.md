@@ -16,10 +16,10 @@ Lokienkeräys:
 - Poistaa kansion X. 
 
 Ympäristö: 
-- Vagrantfile, jolla testiympäristön koneet luodaan. 
-  - Ympäristö asentaa valmiiksi masteriin ja minioneihin saltit. 
+- Vagrantfile, jolla testiympäristön koneet luodaan.
+- Vagrantfile asentaa valmiiksi masteriin ja minioneihin saltit. 
 - Salt-state, joka asentaa lokeja luovan ohjelman. 
-- Käynnistää palvelut ja tarvittaessa ajaa muutaman komennon ohjelmilla, jotta lokitiedostot muodostuvat. 
+- Salt-state käynnistää palvelut ja tarvittaessa ajaa muutaman komennon ohjelmilla, jotta lokitiedostot muodostuvat. 
 
 ## Lokienkeräys
 
@@ -130,8 +130,60 @@ Lokienkeräys:
 - Etsii ja kerää halutut lokitiedostot kansioon X. 
 - Pakkaa kansion X tiedostoksi. 
 - Lähettää paketoidun kansion masterille.
-- Poistaa kansion X. 
+- Poistaa kansion X.
 
+Kerätään käytetyt komennot ja luodaan niiden pohjalta .sls tiedosto:    
+Kansion luonti: ```mkdir testtmp``` --> file.directory    
+Tiedostojen haku ja kopiointi: ```sudo find / -type f -name "*.log" -exec cp --parents {} /home/phallinta/testtmp/ \; 2>/dev/null``` --> cmd.run    
+Pakkaus: ```tar -czf /home/phallinta/testtmp.tar.gz -C /home/phallinta/testtmp/``` --> cmd.run    
+Tiedostojen lähetys: ```sudo salt 'lettuce' cmd.run 'salt-call cp.push /home/vagrant/test.txt'``` --> cmd.run    
+Kansion poisto: ```sudo rm -rf /home/phallinta/testtmp/``` --> file.absent    
+
+Näiden perusteella voidaan luoda seuraava salt-state tiedosto lokien keräämiselle. Halusin jatkoa varten luoda tiedostosta helposti muokattavan asettamalla mahdollisimman monta osaa muuttujiksi, joita komennoissa kutsutaan. Tämä onnistuu .sls tiedostoissa [Jinja](https://docs.saltproject.io/en/3006/topics/jinja/index.html):n avulla. 
+
+```yaml
+{% set log_dir = '/tmp/logcollection/logs' %}
+{% set temp_dir = '/tmp/logcollection' %}
+{% set minion_id = grains['id'] %}
+{% set log_time = salt['cmd.run']('date +%Y%m%d_%H%M%S') %}
+{% set tar_filename = minion_id ~ '_' ~ log_time ~ '.tar.gz' %}
+{% set tar_path = temp_dir ~ '/' ~ tar_filename %}
+
+create_log_dir:
+  file.directory:
+    - name: {{ log_dir }}
+    - makedirs: True
+    - user: root
+    - group: root
+    - mode: 755
+
+collect_logs:
+  cmd.run:
+    - name: find / -type f -name "*.log" -exec cp --parents {} {{ log_dir }} \; 2>/dev/null
+    - runas: root
+    - require:
+      - file: create_log_dir
+
+create_tar:
+  cmd.run:
+    - name: tar -czf {{ tar_path }} -C {{ temp_dir }} logs
+    - runas: root
+    - require:
+      - cmd: collect_logs
+
+push_files:
+  cmd.run:
+    - name: salt-call cp.push {{ tar_path }}
+    - runas: root
+    - require:
+      - cmd: create_tar
+
+remove_tmp:
+  file.absent:
+    - name: {{ temp_dir }}
+    - require:
+      - cmd: push_files
+```
 
 ## Testiympäristön luominen
 
@@ -400,6 +452,10 @@ Tar -dokumentaatio.
 The Salt Project. s.a. Salt.modules.cp. 
 https://docs.saltproject.io/en/3006/ref/modules/all/salt.modules.cp.html
 Salt.modules.cp. -dokumentaatio. 
+
+The Salt Project. s.a. Understanding Jinja.
+https://docs.saltproject.io/en/3006/topics/jinja/index.html
+Jinja .sls tiedostossa. 
 
 Le, G. 2025. h4 Pkg-file-service. 
 https://github.com/gianglex/Courses/blob/main/Palvelinten-Hallinta/h4-pkg-file-service.md
