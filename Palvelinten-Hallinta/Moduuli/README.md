@@ -1,41 +1,21 @@
 # Log collection Salt State File for Salt-Project master-minion
 Created by Giang Le
 
-Goal of this salt state is to create an easy way to collect all relevant logs from your Minions to your Master. This is just a proof of concept for collecting logs from minions. 
+Goal of this salt state is to create an easy way to collect all relevant logs from your Minions to your Master along with creating testing environment to test log collection. This is just a proof of concept for collecting logs from minions. 
 
-## How to use
-- Allow file receiving by modifying your /etc/salt/master with ```sudoedit /etc/salt/master```
+## How to use logcollection state as a standalone
+- Allow file receiving by modifying your /etc/salt/master with ```sudoedit /etc/salt/master```. 
 
 ```bash
 file_recv: True
 file_recv_size_max: 1000
 ```
-- move the saltcollection folder into
+
+- Download and move the logcollection salt state folder into ```/srv/salt/logcollection/``` on your salt-master. 
+- Run ```salt '*' state.apply logcollection``` to collect logs from minions.
 
 
-1. Prequisites: 
-    - Working Vagrant installation
-    - Files from this repository
-2. Setup Vagrant environment with the provided Vagrantfile
-    - Create folder for your Vagrant and move the Vagrantfile there
-    - Navigate to the path Vagrantfile is in
-    - Create the virtual machines with command ```vagrant up```
-3. Connect into your master ```vagrant ssh boss```
-4. Move the salt state folders ```logcollection``` and ```testenvironment``` to ```/srv/salt/logcollection/``` and ```/srv/salt/testenvironment/```. 
-    - Optionally create the folders manually and then create the corresponding init.sls files into correct path
-      - ```sudo mkdir -p /srv/salt/logcollection/```
-      - ```sudoedit /srv/salt/logcollection/init.sls``` <-- copy the /logcollection/init.sls contents here
-      - ```sudo mkdir -p /srv/salt/testenvironment/```
-      - ```sudoedit /srv/salt/testenvironment/init.sls``` <-- copy the /testenvironment/init.sls contents here
-5. Edit your salt-master configuration to allow for file sending with ```sudoedit /etc/salt/master```
-    - You can also just append new lines into the end of configuration file
-      - ```echo "file_recv: True" | sudo tee -a /etc/salt/master```
-      - ```echo "file_recv_size_max: 1000" | sudo tee -a /etc/salt/master```
-6. Run ```salt '*' state.apply testenvironment``` to setup test environment into minions
-7. Run ```salt '*' state.apply logcollection``` to collect logs from minions.
-
-
-## Test environment
+## Using test environment
 Vagrantfile creates master ```boss``` and 3 minions ```bob```, ```stuart``` and ```kevin```.    
 It also edits ```/etc/salt/master``` to allow for file transfers from minions.    
 Lastly it imports ```logcollection``` and ```testenvironment``` salt state folders into boss.    
