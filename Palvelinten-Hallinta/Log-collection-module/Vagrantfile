@@ -81,12 +81,13 @@ $lord = <<'LORD'
 echo "Initializing LORD"
 sudo apt-get update
 sudo apt-get -qy install salt-master
-echo "auto_accept: True" | sudo tee -a /etc/salt/master
-echo "file_recv: True" | sudo tee -a /etc/salt/master
-echo "file_recv_size_max: 1000" | sudo tee -a /etc/salt/master
+echo "Editing /etc/salt/master"
+echo "auto_accept: True" | sudo tee -a /etc/salt/master > /dev/null
+echo "file_recv: True" | sudo tee -a /etc/salt/master > /dev/null
+echo "file_recv_size_max: 1000" | sudo tee -a /etc/salt/master > /dev/null
 sudo systemctl enable salt-master --now
 sudo systemctl restart salt-master
-echo "Importing logcollection"
+echo "Creating logcollection salt state"
 sudo mkdir -p /srv/salt/logcollection/
 sudo tee /srv/salt/logcollection/init.sls > /dev/null <<'EOF'
 {% set working_dir = '/logcollection' %}
@@ -132,7 +133,7 @@ remove_tmp:
     - require:
       - cmd: push_files
 EOF
-echo "Importing testenvironment"
+echo "Creating testenvironment salt state"
 sudo mkdir -p /srv/salt/testenvironment/
 sudo tee /srv/salt/testenvironment/init.sls > /dev/null <<'EOF'
 curl:
