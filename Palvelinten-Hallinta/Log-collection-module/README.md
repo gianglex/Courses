@@ -19,7 +19,7 @@ file_recv_size_max: 1000
 ## Using the provided test environment
 Vagrantfile creates salt-master ```boss``` and 3 salt-minions ```bob```, ```stuart``` and ```kevin```.    
 It also edits ```/etc/salt/master``` to allow for file transfers from minions.    
-Lastly it imports ```logcollection``` and ```testenvironment``` salt state folders into boss.    
+Lastly it has ```logcollection``` and ```testenvironment``` salt state folders included in salt-master ```boss```.    
 
 1. Prequisites: 
     - Working Vagrant installation
