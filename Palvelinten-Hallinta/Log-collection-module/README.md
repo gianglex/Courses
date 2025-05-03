@@ -34,7 +34,7 @@ Lastly it imports ```logcollection``` and ```testenvironment``` salt state folde
 
 
 ## Further setup
-You might want to modify the /logcollection/init.sls to fit your log collection needs as it searches for logs everywhere. Most things you'd likely want to edit are set as variables. 
+You might want to modify the /logcollection/init.sls to fit your log collection needs as it currently searches for all logs (which is not feasible for production use). Most things you'd likely want to edit are set as variables. 
 
 ```{% set working_dir = '/logcollection' %}``` = Main directory the salt state will be using.    
 ```{% set log_dir = working_dir + '/logs' %}``` = Directory you want logs to be collected into on your minion.    
