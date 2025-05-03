@@ -3,6 +3,8 @@ Created by Giang Le
 
 Goal of this salt state is to create an easy way to collect all relevant logs from your Minions to your Master along with creating testing environment to test log collection. Currently just a proof of concept for collecting logs from salt-minions. 
 
+<img src="https://github.com/user-attachments/assets/7ac34f79-51ab-4015-bca2-4ff53a317f29" width="500"> <br/>
+
 ## How to use logcollection state as a standalone
 - Allow file receiving by modifying your /etc/salt/master with ```sudoedit /etc/salt/master```. 
 
