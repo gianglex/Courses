@@ -15,7 +15,7 @@ file_recv_size_max: 1000
 - Run ```salt '*' state.apply logcollection``` to collect logs from minions.
 
 
-## Using test environment
+## Using the provided test environment
 Vagrantfile creates master ```boss``` and 3 minions ```bob```, ```stuart``` and ```kevin```.    
 It also edits ```/etc/salt/master``` to allow for file transfers from minions.    
 Lastly it imports ```logcollection``` and ```testenvironment``` salt state folders into boss.    
