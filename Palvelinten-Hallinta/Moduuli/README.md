@@ -1,4 +1,4 @@
-# Log collection Salt State File for Salt-Project master-minion
+# Log collection Salt State for Salt-Project
 Created by Giang Le
 
 Goal of this salt state is to create an easy way to collect all relevant logs from your Minions to your Master along with creating testing environment to test log collection. This is just a proof of concept for collecting logs from minions. 
