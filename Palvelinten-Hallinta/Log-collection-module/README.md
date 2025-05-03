@@ -11,7 +11,7 @@ file_recv: True
 file_recv_size_max: 1000
 ```
 
-- Download and move the logcollection salt state folder into ```/srv/salt/logcollection/``` on your salt-master. 
+- Download and move the ```logcollection``` Salt state folder into ```/srv/salt/logcollection/``` on your salt-master. 
 - Run ```salt '*' state.apply logcollection``` to collect logs from minions.
 
 
