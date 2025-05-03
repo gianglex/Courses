@@ -12,7 +12,7 @@ file_recv_size_max: 1000
 ```
 
 - Download and move the ```logcollection``` Salt state folder into ```/srv/salt/logcollection/``` on your salt-master. 
-- Run ```salt '*' state.apply logcollection``` to collect logs from minions.
+- Run ```sudo salt '*' state.apply logcollection``` to collect logs from minions.
 - All logs should now be found as a compressed archive file on your salt-master ```/var/cache/salt/master/minions/MINIONID/logcollection/```
 
 
@@ -29,8 +29,8 @@ Lastly it has ```logcollection``` and ```testenvironment``` salt state folders i
     - Navigate to the path Vagrantfile is in within terminal
     - Create the virtual machines with command ```vagrant up```
 3. Connect into your master ```vagrant ssh boss```
-4. Run ```salt '*' state.apply testenvironment``` to setup test environment into minions
-5. Run ```salt '*' state.apply logcollection``` to collect logs from minions.
+4. Run ```sudo salt '*' state.apply testenvironment``` to setup test environment into minions
+5. Run ```sudo salt '*' state.apply logcollection``` to collect logs from minions.
 6. Check whether the file has been collected and sent to master ```find /var/cache/salt/master/minions/ -type f```
 
 
