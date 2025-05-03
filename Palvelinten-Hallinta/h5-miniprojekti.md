@@ -125,14 +125,7 @@ Tarkastetaan ensin tilanne, ajetaan komento ja tarkastetaan, että ovat poistune
 
 ### .sls tiedoston luonti lokien keräykselle
 
-Lokienkeräys: 
-- Luo kansion X. 
-- Etsii ja kerää halutut lokitiedostot kansioon X. 
-- Pakkaa kansion X tiedostoksi. 
-- Lähettää paketoidun kansion masterille.
-- Poistaa kansion X.
-
-Kerätään käytetyt komennot ja luodaan niiden pohjalta .sls tiedosto:    
+Kootaan aiemmat komennot ja luodaan niiden pohjalta .sls tiedosto:    
 Kansion luonti: ```mkdir testtmp``` --> file.directory    
 Tiedostojen haku ja kopiointi: ```sudo find / -type f -name "*.log" -exec cp --parents {} /home/phallinta/testtmp/ \; 2>/dev/null``` --> cmd.run    
 Pakkaus: ```tar -czf /home/phallinta/testtmp.tar.gz -C /home/phallinta/testtmp/``` --> cmd.run    
