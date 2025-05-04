@@ -583,7 +583,8 @@ Loppuun vielä tarkastus, että tiedostot löytyvät masterilta.
 Omia huomioita projektista: 
 - Ehkä tulevaisuudessa Vagrantfile hakisi suoraan salt state kansiot verkosta (= hakee aina uusimmat) eikä niiden asennus olisi leivottu Vagrantfilen sisälle. Toisaalta tämä varmistaa testiympäristön toimivuuden. 
 - Tällä hetkellä kerää kaikkialta lokit (ei ideaalia oikeissa ympäristöissä).
-- Konseptina todella hyödyllinen minioneiden hallinnassa jos tarvitaan lokitietoja, mutta vaatii jonkin verran kustomointia ollakseen oikeasti hyödyllinen. 
+- Konseptina todella hyödyllinen minioneiden hallinnassa jos tarvitaan lokitietoja, mutta vaatii jonkin verran kustomointia ollakseen oikeasti hyödyllinen.
+- Ei ehkä mikään suurinta jännitystä herättävä projekti vaikka hyödyllinen voisikin olla. 
 
 
 ## Ajankäyttö 
