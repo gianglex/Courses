@@ -590,6 +590,8 @@ Loppuun vielä tarkastus, että tiedostot löytyvät masterilta.
 
 <img src="https://github.com/user-attachments/assets/4ba615d3-eef5-4fca-a2ec-dbe9a7b15474" width="500"> <br/>
 
+Projekti löytyy täältä: [Log collection module](https://github.com/gianglex/Courses/tree/main/Palvelinten-Hallinta/Log-collection-module). 
+
 Omia huomioita projektista: 
 - Ehkä tulevaisuudessa Vagrantfile hakisi suoraan salt state kansiot verkosta (= hakee aina uusimmat) eikä niiden asennus olisi leivottu Vagrantfilen sisälle. Toisaalta tämä varmistaa testiympäristön toimivuuden.
 - Aika paljon tavaraa leivottu Vagrantfileen, mitä voisi optimoida tulevaisuudessa. 
