@@ -580,8 +580,17 @@ Loppuun vielä tarkastus, että tiedostot löytyvät masterilta.
 
 ```find /var/cache/salt/master/minions/ -type f```
 
+<img src="https://github.com/user-attachments/assets/6e9fa8ac-f47a-46ae-a253-d220954d623e" width="500"> <br/>
+
+```cp PAKATUTLOKITIEDOSTOT.tar.gz /home/vagrant/```
+
+```find /home/vagrant/logs/ -type f```
+
+<img src="https://github.com/user-attachments/assets/4ba615d3-eef5-4fca-a2ec-dbe9a7b15474" width="500"> <br/>
+
 Omia huomioita projektista: 
-- Ehkä tulevaisuudessa Vagrantfile hakisi suoraan salt state kansiot verkosta (= hakee aina uusimmat) eikä niiden asennus olisi leivottu Vagrantfilen sisälle. Toisaalta tämä varmistaa testiympäristön toimivuuden. 
+- Ehkä tulevaisuudessa Vagrantfile hakisi suoraan salt state kansiot verkosta (= hakee aina uusimmat) eikä niiden asennus olisi leivottu Vagrantfilen sisälle. Toisaalta tämä varmistaa testiympäristön toimivuuden.
+- Aika paljon tavaraa leivottu Vagrantfileen, mitä voisi optimoida tulevaisuudessa. 
 - Tällä hetkellä kerää kaikkialta lokit (ei ideaalia oikeissa ympäristöissä).
 - Konseptina todella hyödyllinen minioneiden hallinnassa jos tarvitaan lokitietoja, mutta vaatii jonkin verran kustomointia ollakseen oikeasti hyödyllinen.
 - Ei ehkä mikään suurinta jännitystä herättävä projekti vaikka hyödyllinen voisikin olla. 
