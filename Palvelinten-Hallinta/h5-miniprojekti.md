@@ -37,13 +37,13 @@ Aloitin salt state tiedoston pohjustamisen tekemällä ensin lokienkeräyksen ma
 
 ```sudo find / -type f -name "*.log"```
 
-![a1](https://github.com/user-attachments/assets/4a8cce28-1d7a-4d20-966f-66dfdf227988)
+<img src="https://github.com/user-attachments/assets/4a8cce28-1d7a-4d20-966f-66dfdf227988" width="500"> <br/>
 
 Sillä tämä tulostaa myös virheilmoitukset (Kuvassa ```find: ‘/run/user/1000/doc’: Permission denied```), lisätään komennon loppuun vielä ```2>/dev/null```, jonka avulla saadaan virheilmoitukset poistettua tulostuksesta. 
 
 ```sudo find / -type f -name "*.log 2>/dev/null"```
 
-![a2](https://github.com/user-attachments/assets/9dd3c1ce-1656-495e-a64a-f1eac5110d0d)
+<img src="https://github.com/user-attachments/assets/9dd3c1ce-1656-495e-a64a-f1eac5110d0d" width="500"> <br/>
 
 Muokataan vielä aiempaa komentoa, jotta löydetyt tiedostot saadaan kopiointua kohdekansioon. ```cp``` -komento kopioi tiedostot. Komennossa jokaiselle findin löytämälle ```.log``` tiedostolle ajetaann ```cp``` -komento. 
 
@@ -53,7 +53,7 @@ Tarkastetaan lopuksi vielä, että kohdetiedostot kopioituivat kohdekansioon
 
 ```sudo find /home/phallinta/testtmp/```
 
-![a3](https://github.com/user-attachments/assets/3af2cda7-0823-4268-bdf4-f606af36411a)
+<img src="https://github.com/user-attachments/assets/3af2cda7-0823-4268-bdf4-f606af36411a" width="500"> <br/>
 
 ### Kansion pakkaus
 
@@ -65,7 +65,7 @@ Lopuksi tarkastetaan vielä, että pakattu tiedosto tosiaan muodostui.
 
 ```ls```
 
-![a4](https://github.com/user-attachments/assets/59a7f1ef-7049-4190-80ae-fd4f284716de)
+<img src="https://github.com/user-attachments/assets/59a7f1ef-7049-4190-80ae-fd4f284716de" width="500"> <br/>
 
 ### Tiedoston lähetys
 
@@ -89,7 +89,7 @@ Master: ```sudoedit /etc/salt/master```
 ```file_recv: True```
 ```file_recv_size_max: 1000```
 
-![b1](https://github.com/user-attachments/assets/97a69632-23ab-4343-8e05-868d7a386d34)
+<img src="https://github.com/user-attachments/assets/97a69632-23ab-4343-8e05-868d7a386d34" width="500"> <br/>
 
 Master: ```sudo systemctl restart salt-master```
 
@@ -97,17 +97,17 @@ Luodaan minionille testitiedosto ja pusketaan se masterille.
 
 Minion: ```touch /home/vagrant/test.txt```
 
-![b2](https://github.com/user-attachments/assets/eed1df63-9655-4241-a650-dff871843b71)
+<img src="https://github.com/user-attachments/assets/eed1df63-9655-4241-a650-dff871843b71" width="500"> <br/>
 
 Master: ```sudo salt 'lettuce' cmd.run 'salt-call cp.push /home/vagrant/test.txt'```
 
-![b3](https://github.com/user-attachments/assets/a74a1f1e-a6e8-4e6f-96c2-4a800c95763d)
+<img src="https://github.com/user-attachments/assets/a74a1f1e-a6e8-4e6f-96c2-4a800c95763d" width="500"> <br/>
 
 Tarkastetaan vielä, että tiedosto tuli perille. 
 
 Master: ```find /var/cache/salt/master/minions/lettuce/```
 
-![b4](https://github.com/user-attachments/assets/a7b4e8ab-ac05-4da3-83f3-5ee7c4c4b854)
+<img src="https://github.com/user-attachments/assets/a7b4e8ab-ac05-4da3-83f3-5ee7c4c4b854" width="500"> <br/>
 
 ### Kansion poistaminen. 
 
@@ -121,7 +121,7 @@ Tarkastetaan ensin tilanne, ajetaan komento ja tarkastetaan, että ovat poistune
 
 ```ls```
 
-![a5](https://github.com/user-attachments/assets/6d7fbc05-e893-4f28-a3f3-24bdbc21c902)
+<img src="https://github.com/user-attachments/assets/6d7fbc05-e893-4f28-a3f3-24bdbc21c902" width="500"> <br/>
 
 ### .sls tiedoston luonti lokien keräykselle
 
@@ -591,32 +591,28 @@ Aikaa kului:
 - Moduulien hieromiseen, testaamiseen ja tiedon hakemiseen ~6h
 - Dokumentointiin ja raportointiin ~3h
 
-```bash
-file_recv: True
-file_recv_size_max: 1000
-```
 
 ## Lähteet: 
 Karvinen, T. 2025. Palvelinten Hallinta.   
 https://terokarvinen.com/palvelinten-hallinta/   
 Tehtävänanto.   
 
-Geeksforgeeks. 2025. How to Find a File in Linux | Find Command. 
-https://www.geeksforgeeks.org/find-command-in-linux-with-examples/
-Find dokumentaatio. 
+Geeksforgeeks. 2025. How to Find a File in Linux | Find Command.   
+https://www.geeksforgeeks.org/find-command-in-linux-with-examples/   
+Find dokumentaatio.   
 
-Geeksforgeeks. 2025. How to Compress Files in Linux | Tar Command. 
-https://www.geeksforgeeks.org/tar-command-linux-examples/
-Tar -dokumentaatio. 
+Geeksforgeeks. 2025. How to Compress Files in Linux | Tar Command.   
+https://www.geeksforgeeks.org/tar-command-linux-examples/   
+Tar -dokumentaatio.   
 
-The Salt Project. s.a. Salt.modules.cp. 
-https://docs.saltproject.io/en/3006/ref/modules/all/salt.modules.cp.html
-Salt.modules.cp. -dokumentaatio. 
+The Salt Project. s.a. Salt.modules.cp.   
+https://docs.saltproject.io/en/3006/ref/modules/all/salt.modules.cp.html   
+Salt.modules.cp. -dokumentaatio.   
 
-The Salt Project. s.a. Understanding Jinja.
-https://docs.saltproject.io/en/3006/topics/jinja/index.html
-Jinja .sls tiedostossa. 
+The Salt Project. s.a. Understanding Jinja.   
+https://docs.saltproject.io/en/3006/topics/jinja/index.html   
+Jinja .sls tiedostossa.   
 
-Le, G. 2025. h4 Pkg-file-service. 
-https://github.com/gianglex/Courses/blob/main/Palvelinten-Hallinta/h4-pkg-file-service.md
-Pohja testiympäristölle. 
+Le, G. 2025. h4 Pkg-file-service.   
+https://github.com/gianglex/Courses/blob/main/Palvelinten-Hallinta/h4-pkg-file-service.md   
+Pohja testiympäristölle.   
