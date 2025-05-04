@@ -86,7 +86,7 @@ Muokataan masterin konfiguraatiota, jotta tiedostojen lähettäminen masterille 
 
 Master: ```sudoedit /etc/salt/master```
 
-```file_recv: True```
+```file_recv: True```    
 ```file_recv_size_max: 1000```
 
 <img src="https://github.com/user-attachments/assets/97a69632-23ab-4343-8e05-868d7a386d34" width="500"> <br/>
