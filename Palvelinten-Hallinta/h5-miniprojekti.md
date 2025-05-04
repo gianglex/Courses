@@ -135,12 +135,13 @@ Kansion poisto: ```sudo rm -rf /home/phallinta/testtmp/``` --> file.absent
 Näiden perusteella voidaan luoda seuraava salt-state tiedosto lokien keräämiselle. Halusin jatkoa varten luoda tiedostosta helposti muokattavan asettamalla mahdollisimman monta osaa muuttujiksi, joita komennoissa kutsutaan. Tämä onnistuu .sls tiedostoissa [Jinja](https://docs.saltproject.io/en/3006/topics/jinja/index.html):n avulla. 
 
 ```yaml
-{% set log_dir = '/tmp/logcollection/logs' %}
-{% set temp_dir = '/tmp/logcollection' %}
+{% set working_dir = '/logcollection' %}
+{% set log_dir = working_dir + '/logs' %}
+{% set search_dir = '/' %}
 {% set minion_id = grains['id'] %}
 {% set log_time = salt['cmd.run']('date +%Y%m%d_%H%M%S') %}
 {% set tar_filename = minion_id ~ '_' ~ log_time ~ '.tar.gz' %}
-{% set tar_path = temp_dir ~ '/' ~ tar_filename %}
+{% set tar_path = working_dir ~ '/' ~ tar_filename %}
 
 create_log_dir:
   file.directory:
@@ -152,14 +153,14 @@ create_log_dir:
 
 collect_logs:
   cmd.run:
-    - name: find / -type f -name "*.log" -exec cp --parents {} {{ log_dir }} \; 2>/dev/null
+    - name: find {{ search_dir }} -type f -name "*.log" -exec cp --parents {} {{ log_dir }} \; 2>/dev/null
     - runas: root
     - require:
       - file: create_log_dir
 
 create_tar:
   cmd.run:
-    - name: tar -czf {{ tar_path }} -C {{ temp_dir }} logs
+    - name: tar -czf {{ tar_path }} -C {{ working_dir }} logs
     - runas: root
     - require:
       - cmd: collect_logs
@@ -173,7 +174,7 @@ push_files:
 
 remove_tmp:
   file.absent:
-    - name: {{ temp_dir }}
+    - name: {{ working_dir }}
     - require:
       - cmd: push_files
 ```
@@ -183,8 +184,9 @@ remove_tmp:
 Käytin testiympäristön luontiin pohjana aiemmin luomaani Vagrantfileä ([h4](https://github.com/gianglex/Courses/blob/main/Palvelinten-Hallinta/h4-pkg-file-service.md)). 
 
 Vagrantfile lyhyesti: 
-- Luo masterin ja 3 minionia.
-- Asentaa näihin salt-masterin masteriin ja salt-minionin minioneille. 
+- Luo masterin ```boss``` ja 3 minionia ```bob```, ```stuart```, ```kevin```.
+- Asentaa näihin salt-masterin masteriin ja salt-minionin minioneille.
+- Luo valmiiksi salt-masterille ```boss``` salt statet ```logcollection``` ja ```testenvironment```
 
 ```bash
 # -*- mode: ruby -*-
@@ -262,50 +264,195 @@ sudo apt-get -qy install salt-minion
 echo "master: 192.168.33.100" > /etc/salt/minion
 sudo systemctl enable salt-minion --now
 sudo systemctl restart salt-minion
-echo "Burger filling added. Added to accompany Ketchup at 192.168.33.100"
+echo "Minion created. Added to accompany Lord at 192.168.33.100"
 echo "MON finished"
 MON
 
-$trainer = <<'TRAINER'
-echo "Initializing TRAINER"
+$lord = <<'LORD'
+echo "Initializing LORD"
 sudo apt-get update
 sudo apt-get -qy install salt-master
-echo "auto_accept: True" | sudo tee -a /etc/salt/master
+echo "Editing /etc/salt/master"
+echo "auto_accept: True" | sudo tee -a /etc/salt/master > /dev/null
+echo "file_recv: True" | sudo tee -a /etc/salt/master > /dev/null
+echo "file_recv_size_max: 1000" | sudo tee -a /etc/salt/master > /dev/null
 sudo systemctl enable salt-master --now
 sudo systemctl restart salt-master
-echo "Ketchup ready to become Burger"
-echo "TRAINER finished"
-TRAINER
+echo "Creating logcollection salt state"
+sudo mkdir -p /srv/salt/logcollection/
+sudo tee /srv/salt/logcollection/init.sls > /dev/null <<'EOF'
+{% set working_dir = '/logcollection' %}
+{% set log_dir = working_dir + '/logs' %}
+{% set search_dir = '/' %}
+{% set minion_id = grains['id'] %}
+{% set log_time = salt['cmd.run']('date +%Y%m%d_%H%M%S') %}
+{% set tar_filename = minion_id ~ '_' ~ log_time ~ '.tar.gz' %}
+{% set tar_path = working_dir ~ '/' ~ tar_filename %}
+
+create_log_dir:
+  file.directory:
+    - name: {{ log_dir }}
+    - makedirs: True
+    - user: root
+    - group: root
+    - mode: 755
+
+collect_logs:
+  cmd.run:
+    - name: find {{ search_dir }} -type f -name "*.log" -exec cp --parents {} {{ log_dir }} \; 2>/dev/null
+    - runas: root
+    - require:
+      - file: create_log_dir
+
+create_tar:
+  cmd.run:
+    - name: tar -czf {{ tar_path }} -C {{ working_dir }} logs
+    - runas: root
+    - require:
+      - cmd: collect_logs
+
+push_files:
+  cmd.run:
+    - name: salt-call cp.push {{ tar_path }}
+    - runas: root
+    - require:
+      - cmd: create_tar
+
+remove_tmp:
+  file.absent:
+    - name: {{ working_dir }}
+    - require:
+      - cmd: push_files
+EOF
+echo "Creating testenvironment salt state"
+sudo mkdir -p /srv/salt/testenvironment/
+sudo tee /srv/salt/testenvironment/init.sls > /dev/null <<'EOF'
+curl:
+  pkg.installed
+
+apache2:
+  pkg.installed
+
+apache2_service:
+  service.running:
+    - name: apache2
+    - enable: True
+    - watch:
+      - file: /etc/apache2/sites-available/exampleenvironment.com.conf
+
+/etc/apache2/sites-available/exampleenvironment.com.conf:
+  file.managed:
+    - user: root
+    - group: root
+    - mode: '644'
+    - contents: |
+        <VirtualHost *:80>
+          ServerName exampleenvironment.com
+          ServerAlias www.exampleenvironment.com
+          DocumentRoot /home/vagrant/public-sites/exampleenvironment.com
+          <Directory /home/vagrant/public-sites/exampleenvironment.com>
+            Require all granted
+          </Directory>
+        </VirtualHost>
+
+exampleenvironment.com-enabled:
+  cmd.run:
+    - name: a2ensite exampleenvironment.com.conf
+    - unless: "a2query -s exampleenvironment.com"
+    - require:
+      - file: /etc/apache2/sites-available/exampleenvironment.com.conf
+    - watch_in:
+      - service: apache2_service
+
+/home/vagrant/public-sites:
+  file.directory:
+    - user: vagrant
+    - group: vagrant
+    - mode: '755'
+
+/home/vagrant/public-sites/exampleenvironment.com:
+  file.directory:
+    - user: vagrant
+    - group: vagrant
+    - mode: '755'
+
+/home/vagrant/public-sites/exampleenvironment.com/index.html:
+  file.managed:
+    - user: vagrant
+    - group: vagrant
+    - mode: '755'
+    - contents: |
+        Test page for test environment
+
+exampleenvironment.com-hosts:
+  file.append:
+    - name: /etc/hosts
+    - text: "127.0.0.1 exampleenvironment.com"
+
+curl_localhost:
+  cmd.run:
+    - name: curl exampleenvironment.com
+    - onlyif: test -f /etc/apache2/sites-enabled/exampleenvironment.com.conf
+    - onchanges:
+      - service: apache2_service
+
+/home/vagrant/fakelogs:
+  file.directory:
+    - user: vagrant
+    - group: vagrant
+    - mode: '755'
+
+/home/vagrant/fakelogs/fake.log:
+  file.managed:
+    - user: vagrant
+    - group: vagrant
+    - mode: '644'
+    - contents: |
+        # I'm a fake log. Collect me.
+        Fakers gonna fake. 
+
+/home/vagrant/fakelogs/fake2.log:
+  file.managed:
+    - user: vagrant
+    - group: vagrant
+    - mode: '644'
+    - contents: |
+        # I'm a fake log2. Collect me.
+        They see me fakin, they hatin. 
+EOF
+echo "Boss ready. "
+echo "LORD finished"
+LORD
 
 Vagrant.configure("2") do |config|
   config.vm.box = "debian/bookworm64"
 
-  # Salt Master - Ketchup
-  config.vm.define "ketchup", primary: true do |ketchup|
-    ketchup.vm.provision :shell, inline: "#{$salt}\n#{$trainer}"
-    ketchup.vm.network "private_network", ip: "192.168.33.100"
-    ketchup.vm.hostname = "ketchup"
+  # Salt Master - Boss
+  config.vm.define "boss", primary: true do |boss|
+    boss.vm.provision :shell, inline: "#{$salt}\n#{$lord}"
+    boss.vm.network "private_network", ip: "192.168.33.100"
+    boss.vm.hostname = "boss"
   end
 
-  # Mon 1 - Lettuce
-  config.vm.define "lettuce" do |lettuce|
-    lettuce.vm.provision :shell, inline: "#{$salt}\n#{$mon}"
-    lettuce.vm.network "private_network", ip: "192.168.33.101"
-    lettuce.vm.hostname = "lettuce"
+  # Mon 1 - Bob
+  config.vm.define "bob" do |bob|
+    bob.vm.provision :shell, inline: "#{$salt}\n#{$mon}"
+    bob.vm.network "private_network", ip: "192.168.33.101"
+    bob.vm.hostname = "bob"
   end
 
-  # Mon 2 - Tomato
-  config.vm.define "tomato" do |tomato|
-    tomato.vm.provision :shell, inline: "#{$salt}\n#{$mon}"
-    tomato.vm.network "private_network", ip: "192.168.33.102"
-    tomato.vm.hostname = "tomato"
+  # Mon 2 - Stuart
+  config.vm.define "stuart" do |stuart|
+    stuart.vm.provision :shell, inline: "#{$salt}\n#{$mon}"
+    stuart.vm.network "private_network", ip: "192.168.33.102"
+    stuart.vm.hostname = "stuart"
   end
 
-  # Mon 3 - Mustard
-  config.vm.define "mustard" do |mustard|
-    mustard.vm.provision :shell, inline: "#{$salt}\n#{$mon}"
-    mustard.vm.network "private_network", ip: "192.168.33.103"
-    mustard.vm.hostname = "mustard"
+  # Mon 3 - Kevin
+  config.vm.define "kevin" do |kevin|
+    kevin.vm.provision :shell, inline: "#{$salt}\n#{$mon}"
+    kevin.vm.network "private_network", ip: "192.168.33.103"
+    kevin.vm.hostname = "kevin"
   end
 end
 ```
@@ -385,7 +532,7 @@ exampleenvironment.com-hosts:
 
 curl_localhost:
   cmd.run:
-    - name: curl localhost
+    - name: curl exampleenvironment.com
     - onlyif: test -f /etc/apache2/sites-enabled/exampleenvironment.com.conf
     - onchanges:
       - service: apache2_service
@@ -415,14 +562,34 @@ curl_localhost:
         They see me fakin, they hatin. 
 ```
 
+## Projektikansio
 
+Kun palaset olivat koossa tein lopuksi vielä testiajon moduuleille, jotta pystyisin samalla luomaan ohjeet miniprojektille. 
+
+Koko testiajo yksinkertaisuudessaan: 
+
+```vagrant up```
+
+```vagrant ssh boss```
+
+```sudo salt '*' state.apply testenvironment```
+
+```sudo salt '*' state.apply logcollection```
+
+Loppuun vielä tarkastus, että tiedostot löytyvät masterilta. 
+
+```find /var/cache/salt/master/minions/ -type f```
+
+Omia huomioita projektista: 
+- Ehkä tulevaisuudessa Vagrantfile hakisi suoraan salt state kansiot verkosta (= hakee aina uusimmat) eikä niiden asennus olisi leivottu Vagrantfilen sisälle. Toisaalta tämä varmistaa testiympäristön toimivuuden. 
+- Tällä hetkellä kerää kaikkialta lokit (ei ideaalia oikeissa ympäristöissä).
+- Konseptina todella hyödyllinen minioneiden hallinnassa jos tarvitaan lokitietoja, mutta vaatii jonkin verran kustomointia ollakseen oikeasti hyödyllinen. 
 
 
 ## Ajankäyttö 
 Aikaa kului: 
-- Tiivistelmään ~15min
-- Tehtävien tekemiseen ja tiedon hakemiseen ~3h
-- Dokumentointiin ja raportointiin ~2h
+- Moduulien hieromiseen, testaamiseen ja tiedon hakemiseen ~6h
+- Dokumentointiin ja raportointiin ~3h
 
 ```bash
 file_recv: True
