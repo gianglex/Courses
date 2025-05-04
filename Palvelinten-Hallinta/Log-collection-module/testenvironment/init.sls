@@ -62,7 +62,7 @@ exampleenvironment.com-hosts:
 
 curl_localhost:
   cmd.run:
-    - name: curl localhost
+    - name: curl exampleenvironment.com
     - onlyif: test -f /etc/apache2/sites-enabled/exampleenvironment.com.conf
     - onchanges:
       - service: apache2_service
