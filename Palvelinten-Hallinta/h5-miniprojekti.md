@@ -584,6 +584,8 @@ Loppuun vielä tarkastus, että tiedostot löytyvät masterilta.
 
 ```cp PAKATUTLOKITIEDOSTOT.tar.gz /home/vagrant/```
 
+```tar -xzf PAKATUTLOKITIEDOSTOT.tar.gz```
+
 ```find /home/vagrant/logs/ -type f```
 
 <img src="https://github.com/user-attachments/assets/4ba615d3-eef5-4fca-a2ec-dbe9a7b15474" width="500"> <br/>
