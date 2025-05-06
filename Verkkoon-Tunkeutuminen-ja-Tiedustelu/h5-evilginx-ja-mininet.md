@@ -92,7 +92,7 @@ Lopetin hyökkäyksen lopuksi CTRL+C:llä.
 
 
 ## Lähteet
-Iso-Anttila, L. 2025. Haaga-Helia Moodle. Verkkoon tunkeutuminen ja tiedustelu - ICI013AS3A-3001 / 5. Laboratorio- ja simulaatioympäristöt hyökkäyksissä
+Iso-Anttila, L. 2025. Haaga-Helia Moodle. Verkkoon tunkeutuminen ja tiedustelu - ICI013AS3A-3001 / 5. Laboratorio- ja simulaatioympäristöt hyökkäyksissä     
 https://hhmoodle.haaga-helia.fi/course/view.php?id=42566&section=1#tabs-tree-start    
 Tehtävänanto.    
 
