@@ -71,7 +71,7 @@ Aloitin luomalla mininet topologian.
 
 ```sudo mn --topo single,2 --mac --switch ovsk --controller remote```
 
-![c1](https://github.com/user-attachments/assets/7431e6ed-c984-4413-8b4f-051032e93446)
+<img src="https://github.com/user-attachments/assets/7431e6ed-c984-4413-8b4f-051032e93446" width="500"> <br/>
 
 Tarkastin sen jälkeen vielä luodun verkon. 
 
