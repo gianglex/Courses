@@ -19,17 +19,17 @@ Aloitin lataamalla .ovpn -tiedoston HTB Dancing tehtävänannosta. Tämän jälk
 
 Käynnistyksen jälkeen sivulle ilmestyi ```SPAWN MACHINE```, josta sai käynnistettyä koneen. 
 
-![a1](https://github.com/user-attachments/assets/98e06045-3cc7-4d81-a25f-78dc73668d36)
+<img src="https://github.com/user-attachments/assets/98e06045-3cc7-4d81-a25f-78dc73668d36" width="500"> <br/>
 
-![a2](https://github.com/user-attachments/assets/cd4d4949-8ec1-4174-bc2d-e5b16ebe36f8)
+<img src="https://github.com/user-attachments/assets/cd4d4949-8ec1-4174-bc2d-e5b16ebe36f8" width="500"> <br/>
 
-![a3](https://github.com/user-attachments/assets/0ffae1aa-bd75-4b84-b44d-9d8764a1765e)
+<img src="https://github.com/user-attachments/assets/0ffae1aa-bd75-4b84-b44d-9d8764a1765e" width="500"> <br/>
 
 Nyt pystyy aloittamaan lippujen etsimisen. Aloitin ensimmäisenä ajamalla nmapin, josta saikin moniin flageihin vastauksen. 
 
 ```sudo nmap -sV 10.129.240.71```
 
-![a4](https://github.com/user-attachments/assets/820e5c36-b473-40de-a508-47935f8d4680)
+<img src="https://github.com/user-attachments/assets/820e5c36-b473-40de-a508-47935f8d4680" width="500"> <br/>
 
 ### What does the 3-letter acronym SMB stand for?
 
@@ -37,7 +37,7 @@ Flagin sain pääteltyä googlen avulla.
 
 **Flag: Server Message Block**
 
-![a5](https://github.com/user-attachments/assets/66e3a36e-b3fe-4005-a7e4-c01c8af2ecdd)
+<img src="https://github.com/user-attachments/assets/66e3a36e-b3fe-4005-a7e4-c01c8af2ecdd" width="500"> <br/>
 
 ### What port does SMB use to operate at?
 
@@ -45,7 +45,7 @@ Aiemman tiedonkeräyksen ja nmapin perusteella pystyi päättelemään flagin.
 
 **Flag: 445**
 
-![a6](https://github.com/user-attachments/assets/12813b19-d0b0-409b-b209-ece1a7368a1e)
+<img src="https://github.com/user-attachments/assets/12813b19-d0b0-409b-b209-ece1a7368a1e" width="500"> <br/>
 
 ### What is the service name for port 445 that came up in our Nmap scan?
 
@@ -53,7 +53,7 @@ Flagin sai nmapin tuloksista.
 
 **Flag: microsoft-ds **
 
-![a7](https://github.com/user-attachments/assets/84e168c0-462b-4545-87cd-d15da127e3e3)
+<img src="https://github.com/user-attachments/assets/84e168c0-462b-4545-87cd-d15da127e3e3" width="500"> <br/>
 
 ### What is the 'flag' or 'switch' that we can use with the smbclient utility to 'list' the available shares on Dancing?
 
@@ -61,17 +61,17 @@ Tämän vastauksen saa ajamalla ```smbclient --help```, jonka avulla voi pääte
 
 **Flag: -L**
 
-![a8](https://github.com/user-attachments/assets/3f27865f-6ff3-4d39-b8ce-92354c7b2396)
+<img src="https://github.com/user-attachments/assets/3f27865f-6ff3-4d39-b8ce-92354c7b2396" width="500"> <br/>
 
 ### How many shares are there on Dancing?
 
 Tähän saa vastauksen ajamalla ```smbclient -L 10.129.240.71```. Salasanan voi jättää tyhjäksi. 
 
-![a9](https://github.com/user-attachments/assets/4db54aaa-78d1-4375-a2c6-5a5293288106)
+<img src="https://github.com/user-attachments/assets/4db54aaa-78d1-4375-a2c6-5a5293288106" width="500"> <br/>
 
 **Flag: 4**
 
-![a10](https://github.com/user-attachments/assets/bad22d66-c82a-4bea-9857-bc9180a6960a)
+<img src="https://github.com/user-attachments/assets/bad22d66-c82a-4bea-9857-bc9180a6960a" width="500"> <br/>
 
 ### What is the name of the share we are able to access in the end with a blank password?
 
@@ -85,21 +85,22 @@ Tämän sain kokeilemalla yhdistää eri shareihin.
 
 ```smbclient \\\\10.129.240.71\\WorkShares```
 
-![a11](https://github.com/user-attachments/assets/303e4c13-6617-4cb6-8b71-a3b37cb3370b)
+<img src="https://github.com/user-attachments/assets/303e4c13-6617-4cb6-8b71-a3b37cb3370b" width="500"> <br/>
 
 **Flag: WorkShares**
 
-![a12](https://github.com/user-attachments/assets/13bdc279-52df-41fc-b331-50ce57c3378f)
+<img src="https://github.com/user-attachments/assets/13bdc279-52df-41fc-b331-50ce57c3378f" width="500"> <br/>
 
 ### What is the command we can use within the SMB shell to download the files we find?
 
 ```help``` -komennolla saadaan näkyville kaikki komennot, joista voi päätellä ```get``` -komennon. 
 
-![a13](https://github.com/user-attachments/assets/0522885d-dde4-4080-a549-5b6f2612a27f)
+<img src="https://github.com/user-attachments/assets/0522885d-dde4-4080-a549-5b6f2612a27f" width="500"> <br/>
 
 **Flag: get**
 
-![a14](https://github.com/user-attachments/assets/dd4f7811-def3-43e0-8c75-e96596921651)
+<img src="https://github.com/user-attachments/assets/dd4f7811-def3-43e0-8c75-e96596921651" width="500"> <br/>
+
 
 ### Submit root flag
 
@@ -113,11 +114,11 @@ Tämän saa ladattua ```get``` -komennolla.
 
 ```cat flag.txt```
 
-![a15](https://github.com/user-attachments/assets/359c65e5-8fdf-4c32-a611-46a6dbd6ac2f)
+<img src="https://github.com/user-attachments/assets/359c65e5-8fdf-4c32-a611-46a6dbd6ac2f" width="500"> <br/>
 
 **Flag: 5f61c10dffbc77a704d76016a22f1664**
 
-![a16](https://github.com/user-attachments/assets/cf8a1499-b3f6-45c3-a54b-4bdc2c80be78)
+<img src="https://github.com/user-attachments/assets/cf8a1499-b3f6-45c3-a54b-4bdc2c80be78" width="500"> <br/>
 
 ## b) HTB Responder
 
@@ -125,7 +126,7 @@ Tämän saa ladattua ```get``` -komennolla.
 
 Tämä löytyy yhdistämällä selaimella tai curlilla ip osoitteeseen. 
 
-![b1](https://github.com/user-attachments/assets/7c9b4c6b-aa56-4c4d-ad24-ab7e8f64c51e)
+<img src="https://github.com/user-attachments/assets/7c9b4c6b-aa56-4c4d-ad24-ab7e8f64c51e" width="500"> <br/>
 
 **Flag: unika.htb**
 
@@ -190,7 +191,7 @@ Ennen tätä meidän pitää selvittää oma IP, jotta voimme sisällyttää sen
 
 ```ip -A | grep tun```
 
-![b2](https://github.com/user-attachments/assets/75d55c04-78d7-4a71-b95e-3d823ce20290)
+<img src="https://github.com/user-attachments/assets/75d55c04-78d7-4a71-b95e-3d823ce20290" width="500"> <br/>
 
 Käynnistetään Responder ja hyödynnetään aiemmin mainittua RFI haavoittuvuutta. 
 
@@ -202,7 +203,7 @@ Tämän jälkeen selaimella yritetään tehdä RFI hyökkäystä.
 
 Muutaman yrityksen jälkeen responder oli napannut talteen Hashin. 
 
-![b3](https://github.com/user-attachments/assets/e4d97cad-abb6-4578-9da3-fa51fb8dbc93)
+<img src="https://github.com/user-attachments/assets/e4d97cad-abb6-4578-9da3-fa51fb8dbc93" width="500"> <br/>
 
 Tallenetaan tämä napattu hash ```hash.txt``` tiedostoon nanon avulla. 
 
@@ -212,7 +213,7 @@ Tämän jälkeen voidaan yrittää murtaa salasana John the Ripperillä.
 
 ```john -w=rockyou.txt hash.txt```
 
-![b4](https://github.com/user-attachments/assets/128001db-c01a-4fa7-bf68-5d35fe32372f)
+<img src="https://github.com/user-attachments/assets/128001db-c01a-4fa7-bf68-5d35fe32372f" width="500"> <br/>
 
 **Flag: badminton**
 
@@ -229,18 +230,18 @@ Kun tunnus ja salasana on tiedossa, voimme käyttää evil-winrm:ää yhdistäm�
 
 ```evil-winrm -i 10.129.117.85 -u administrator -p badminton```
 
-![b5](https://github.com/user-attachments/assets/f2cbc575-bc7e-46c1-bf3d-24f73df25897)
+<img src="https://github.com/user-attachments/assets/f2cbc575-bc7e-46c1-bf3d-24f73df25897" width="500"> <br/>
 
 Kokeilin alkuun navigoida koneessa ```dir``` ja ```cd``` -komennoilla, mutta nämä antoivat vain tyhjää vastausta. Kokeilin lopuksi komentoa ```cd ..```, jonka jälkeen myös ```dir``` alkoi antaa vastausta. 
 Tämä johtui siis siitä, että ```C:\Users\Administrator\Documents``` oli tyhjä kansio. 
 
-![b6](https://github.com/user-attachments/assets/752abb39-a316-4e21-9a70-e0fe6a603770)
+<img src="https://github.com/user-attachments/assets/752abb39-a316-4e21-9a70-e0fe6a603770" width="500"> <br/>
 
 Jonkin aikaa seilaultuani löytyi kansio ```C:\Users\mike```, jonka työpöytäkansiosta ```C:\Users\mike\Desktop``` löytyi tiedosto ```flag.txt```. 
 
 ```type flag.txt```
 
-![b7](https://github.com/user-attachments/assets/80a7ccd2-60bd-4b29-967a-e301dfebcde2)
+<img src="https://github.com/user-attachments/assets/80a7ccd2-60bd-4b29-967a-e301dfebcde2" width="500"> <br/>
 
 **Flag: ea81b7afddd03efaa0945333ed147fac**
 
@@ -259,7 +260,15 @@ https://terokarvinen.com/tunkeutumistestaus/
 Tehtävänanto.    
 
 Karvinen, T. 2025. Start Your Research with a Review Article.    
-https://terokarvinen.com/review-article/
-Tehtävä x. 
+https://terokarvinen.com/review-article/    
+Tehtävä x.    
 
-Railkar, D.N. & Joshi, S. 2023. A comprehensive literature review of artificial intelligent practices in the field of penetration testing. Intelligent Systems and Applications: Select Proceedings of ICISA 2022 (2023). s. 75-85.
+Railkar, D.N. & Joshi, S. 2023. A comprehensive literature review of artificial intelligent practices in the field of penetration testing. Intelligent Systems and Applications: Select Proceedings of ICISA 2022 (2023). s. 75-85.    
+
+Kali. s.a. Responder.    
+https://www.kali.org/tools/responder/    
+Tehtävä b.    
+
+GitHub. s.a. Evil-winrm.    
+https://github.com/Hackplayers/evil-winrm    
+Tehtävä b.    
