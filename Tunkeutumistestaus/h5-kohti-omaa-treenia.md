@@ -33,7 +33,7 @@ Nyt pystyy aloittamaan lippujen etsimisen. Aloitin ensimmäisenä ajamalla nmapi
 
 ### What does the 3-letter acronym SMB stand for?
 
-Flagin sain pääteltyä googlen avulla. 
+Flagin sain pääteltyä [googlen](https://en.wikipedia.org/wiki/Server_Message_Block) avulla. 
 
 **Flag: Server Message Block**
 
@@ -264,6 +264,14 @@ https://terokarvinen.com/review-article/
 Tehtävä x.    
 
 Railkar, D.N. & Joshi, S. 2023. A comprehensive literature review of artificial intelligent practices in the field of penetration testing. Intelligent Systems and Applications: Select Proceedings of ICISA 2022 (2023). s. 75-85.    
+
+Wikipedia. s.a. Server Message Block.    
+https://en.wikipedia.org/wiki/Server_Message_Block    
+Tehtävä a.    
+
+Wikipedia. s.a. NTLM.    
+https://en.wikipedia.org/wiki/NTLM    
+Tehtävä b.    
 
 Kali. s.a. Responder.    
 https://www.kali.org/tools/responder/    
