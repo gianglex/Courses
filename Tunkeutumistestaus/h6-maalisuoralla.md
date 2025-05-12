@@ -136,6 +136,8 @@ Mennään selaimella osoitteeseen ```10.129.254.51/login.php``` kokeilemaan aiem
 
 Flag: **c7110277ac44d78b6a9fff2232434d16**
 
+<img src="https://github.com/user-attachments/assets/09da0110-26bd-40a0-b187-a07bd4a8a3cb" width="500"> <br/>
+
 
 ## Ajankäyttö: 
 
