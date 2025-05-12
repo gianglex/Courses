@@ -1,4 +1,4 @@
-# H5 Kohti omaa treeniä
+# H6 Maalisuoralla
 
 ## x) Lue & Tiivistä
 - Deviant Ollam. All About Implantable RFID: Is Cyborgification Right for YOU?
