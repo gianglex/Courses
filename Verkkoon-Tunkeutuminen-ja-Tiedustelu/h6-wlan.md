@@ -4,7 +4,7 @@
 
 <img src="https://github.com/user-attachments/assets/63576b73-a64b-408d-982f-681c555ff8fd" width="500"> <br/>
 
-Aloitin rekisteröitymällä sivulla ja asentamalla VirtualBox version WifiChallenge Lab:sta. Tein tämän jälkeen ratkoin muutaman tehtävän. 
+Aloitin rekisteröitymällä sivulla ja asentamalla VirtualBox version WifiChallenge Lab:sta. Tämän jälkeen ratkoin muutaman tehtävän. 
 
 <img src="https://github.com/user-attachments/assets/8975797f-8b43-4697-a2d2-0ae6ec05ad1a" width="500"> <br/>
 
